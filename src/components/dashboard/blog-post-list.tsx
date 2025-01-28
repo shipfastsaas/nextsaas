@@ -25,9 +25,12 @@ export function BlogPostList() {
           throw new Error('Failed to fetch posts')
         }
         const data = await response.json()
-        setPosts(data)
+        // S'assurer que data est un tableau
+        setPosts(Array.isArray(data) ? data : [])
       } catch (err) {
+        console.error('Error fetching posts:', err)
         setError(err instanceof Error ? err.message : 'Failed to load posts')
+        setPosts([]) // Réinitialiser les posts en cas d'erreur
       } finally {
         setLoading(false)
       }

@@ -56,9 +56,9 @@ export async function GET() {
   const { isBuildTime } = getEnvironmentData()
   console.log('GET /api/posts - Starting')
   
-  // Pendant le build, retourner une réponse factice
+  // Pendant le build, retourner un tableau vide
   if (isBuildTime) {
-    return NextResponse.json({ posts: [] })
+    return NextResponse.json([])
   }
 
   try {
@@ -72,9 +72,7 @@ export async function GET() {
     return NextResponse.json(posts)
   } catch (error) {
     console.error('Error in GET /api/posts:', error)
-    return NextResponse.json(
-      { error: 'Failed to fetch posts' },
-      { status: 500 }
-    )
+    // Retourner un tableau vide en cas d'erreur au lieu d'un objet d'erreur
+    return NextResponse.json([])
   }
 }
