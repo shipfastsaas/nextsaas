@@ -8,11 +8,10 @@ export const revalidate = 0
 
 // Fonction utilitaire pour vérifier l'environnement
 function getEnvironmentData() {
-  const isBuildTime = process.env.VERCEL_ENV === 'production' && process.env.NODE_ENV === 'production'
+  // Enlever la vérification du build time qui cause des problèmes en production
   const hasMongoDB = !!process.env.MONGODB_URI
-
   return {
-    isBuildTime,
+    isBuildTime: false,
     hasMongoDB,
   }
 }
@@ -53,15 +52,8 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-  const { isBuildTime } = getEnvironmentData()
-  console.log('GET /api/posts - Starting')
-  
-  // Pendant le build, retourner un tableau vide
-  if (isBuildTime) {
-    return NextResponse.json([])
-  }
-
   try {
+    console.log('GET /api/posts - Starting')
     console.log('Connecting to database...')
     await dbConnect()
     console.log('Database connected')
@@ -72,7 +64,6 @@ export async function GET() {
     return NextResponse.json(posts)
   } catch (error) {
     console.error('Error in GET /api/posts:', error)
-    // Retourner un tableau vide en cas d'erreur au lieu d'un objet d'erreur
     return NextResponse.json([])
   }
 }
