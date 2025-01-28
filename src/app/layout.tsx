@@ -11,24 +11,28 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ShipFastSaaS - Build Your SaaS & AI Tools Fast',
-  description: 'The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.',
-  keywords: 'nextjs boilerplate, saas starter, ai tool builder, web app template, online business, nextjs template, saas development, ai development, make money online, startup builder, nextjs 14, typescript, tailwind css',
+  title: {
+    template: '%s | ShipFast',
+    default: 'ShipFast - Ship your SaaS faster',
+  },
+  description: 'Ship your SaaS project faster with our Next.js 14 boilerplate. Includes authentication, database, payments, and beautiful UI components.',
+  metadataBase: new URL('https://shipfa.st'),
   openGraph: {
-    title: 'ShipFastSaaS - Build Your SaaS & AI Tools Fast',
-    description: 'The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.',
-    url: 'https://www.shipfastsaas.com',
-    siteName: 'ShipFastSaaS',
+    title: 'ShipFast - Ship your SaaS faster',
+    description: 'Ship your SaaS project faster with our Next.js 14 boilerplate. Includes authentication, database, payments, and beautiful UI components.',
+    url: 'https://shipfa.st',
+    siteName: 'ShipFast',
+    images: '/og.png',
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ShipFastSaaS - Build Your SaaS & AI Tools Fast',
-    description: 'The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.',
+    site: '@shipfast',
     creator: '@shipfast',
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: './favicon.ico',
   },
   verification: {
     google: 'Hkriyba_PuUuOE7hQpLEIovnsPyfxTBfA73G1xvHs3U',
