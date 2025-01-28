@@ -52,18 +52,32 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-  try {
-    console.log('GET /api/posts - Starting')
-    console.log('Connecting to database...')
-    await dbConnect()
-    console.log('Database connected')
+  let retries = 3; // Nombre de tentatives
+  
+  while (retries > 0) {
+    try {
+      console.log(`GET /api/posts - Attempt ${4 - retries}/3`)
+      console.log('Connecting to database...')
+      await dbConnect()
+      console.log('Database connected')
 
-    const posts = await Post.find({}).sort({ createdAt: -1 })
-    console.log('Posts found:', posts.length)
-    
-    return NextResponse.json(posts)
-  } catch (error) {
-    console.error('Error in GET /api/posts:', error)
-    return NextResponse.json([])
+      const posts = await Post.find({}).sort({ createdAt: -1 })
+      console.log('Posts found:', posts.length)
+      
+      return NextResponse.json(posts)
+    } catch (error) {
+      console.error(`Error in GET /api/posts (${4 - retries}/3):`, error)
+      retries--;
+      
+      if (retries === 0) {
+        console.error('All retries failed, returning empty array')
+        return NextResponse.json([])
+      }
+      
+      // Attendre 2 secondes avant de réessayer
+      await new Promise(resolve => setTimeout(resolve, 2000))
+    }
   }
+  
+  return NextResponse.json([])
 }

@@ -38,6 +38,12 @@ class Database {
       // Créer une nouvelle connexion
       this._promise = mongoose.connect(MONGODB_URI, {
         bufferCommands: false,
+        connectTimeoutMS: 10000, // 10 secondes de timeout
+        socketTimeoutMS: 45000,  // 45 secondes de timeout pour les opérations
+        serverSelectionTimeoutMS: 10000, // 10 secondes pour la sélection du serveur
+        maxPoolSize: 10,
+        retryWrites: true,
+        retryReads: true,
       })
 
       this._conn = await this._promise
