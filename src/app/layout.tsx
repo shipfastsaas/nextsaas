@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     creator: '@shipfast',
   },
   icons: {
-    icon: '/favicone.png',
+    icon: '/favicon.ico',
   },
   verification: {
     google: 'Hkriyba_PuUuOE7hQpLEIovnsPyfxTBfA73G1xvHs3U',

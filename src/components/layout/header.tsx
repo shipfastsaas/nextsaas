@@ -47,7 +47,7 @@ export function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <Image
-              src="/logos/logo.svg"
+              src="/logo.png"
               alt="ShipFast"
               width={190}
               height={150}
@@ -87,7 +87,7 @@ export function Header() {
           {/* CTA Button */}
           <a
             href="#pricing"
-            className="rounded-3xl gradient-background px-4 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-rose"
+            className="rounded-3xl bg-gradient-to-r from-primary-rose to-primary-purple px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-rose"
           >
             Get Started
           </a>

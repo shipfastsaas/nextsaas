@@ -65,7 +65,7 @@ export function LiveChat() {
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-50 p-4 gradient-background text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-rose"
+        className="fixed bottom-4 right-4 z-50 p-4 bg-gradient-to-r from-primary-rose to-primary-purple text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-rose"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

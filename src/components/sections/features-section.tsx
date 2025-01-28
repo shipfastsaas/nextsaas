@@ -33,7 +33,7 @@ function FeatureNav({ features, activeId, onSelect }: {
           onClick={() => onSelect(feature.id)}
           className={`flex flex-col items-center p-4 rounded-xl min-w-[100px] transition-all ${
             activeId === feature.id 
-              ? 'bg-primary-rose text-white' 
+              ? 'bg-gradient-to-r from-primary-rose to-primary-purple text-white' 
               : 'hover:bg-background-secondary'
           }`}
         >
@@ -48,14 +48,14 @@ function FeatureNav({ features, activeId, onSelect }: {
 function SubFeatureCard({ subFeature }: { subFeature: SubFeature }) {
   return (
     <div className="bg-surface rounded-xl p-6 hover:shadow-lg transition-all hover:bg-surface-secondary">
-      <div className="h-10 w-10 rounded-lg bg-primary-rose/10 flex items-center justify-center mb-4">
-        <div className="text-primary-rose w-6 h-6">{subFeature.icon}</div>
+      <div className="h-10 w-10 rounded-lg bg-primary-purple/10 flex items-center justify-center mb-4">
+        <div className="text-primary-purple w-6 h-6">{subFeature.icon}</div>
       </div>
       <h3 className="text-lg font-semibold mb-2">{subFeature.title}</h3>
       <p className="text-text-secondary mb-4">{subFeature.description}</p>
       <div className="flex gap-4">
         {subFeature.hasDemo && (
-          <a href="#" className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary-rose">
+          <a href="#" className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary-purple">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
             </svg>
@@ -63,7 +63,7 @@ function SubFeatureCard({ subFeature }: { subFeature: SubFeature }) {
           </a>
         )}
         {subFeature.hasDocs && (
-          <a href="#" className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary-rose">
+          <a href="#" className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary-purple">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
             </svg>
@@ -82,7 +82,7 @@ function FeatureContent({ feature }: { feature: Feature }) {
         <div>
           <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
             {feature.title}
-            <span className="text-primary-rose">.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">.</span>
           </h2>
           <p className="text-lg text-text-secondary">{feature.description}</p>
         </div>
@@ -385,7 +385,7 @@ export function FeaturesSection() {
     <section className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight gradient-text sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple sm:text-4xl">
             Everything you need to ship your SaaS
           </h2>
           <p className="mt-6 text-lg leading-8 text-text-secondary">

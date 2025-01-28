@@ -66,7 +66,7 @@ export function TestimonialsSection() {
     <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight gradient-text sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple sm:text-4xl">
             Trusted by founders who move fast
           </h2>
           <p className="mt-6 text-lg leading-8 text-text-secondary">
@@ -83,7 +83,7 @@ export function TestimonialsSection() {
               >
                 <div className="flex items-center gap-4">
                   <Image
-                    className="h-12 w-12 rounded-full ring-2 ring-primary-rose/10"
+                    className="h-12 w-12 rounded-full ring-2 ring-primary-purple/10"
                     src={testimonial.author.image}
                     alt={testimonial.author.name}
                     width={48}
@@ -104,10 +104,10 @@ export function TestimonialsSection() {
                 </blockquote>
 
                 {testimonial.metrics && (
-                  <div className="grid grid-cols-3 gap-4 border-t border-gray-900/10 dark:border-gray-800 pt-6">
+                  <div className="grid grid-cols-3 gap-4 py-4 border-y border-gray-900/10 dark:border-gray-800">
                     {testimonial.metrics.map((metric, idx) => (
-                      <div key={idx} className="text-center">
-                        <div className="text-2xl font-bold text-primary-rose">
+                      <div key={idx}>
+                        <div className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">
                           {metric.value}
                         </div>
                         <div className="text-sm text-text-secondary mt-1">

@@ -6,8 +6,8 @@ export function HeroSection() {
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-background to-transparent" />
-        <div className="absolute top-0 -left-4 w-72 h-72 gradient-background-30 rounded-full filter blur-3xl opacity-70 animate-pulse" />
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-orange/30 rounded-full filter blur-3xl opacity-70 animate-pulse delay-75" />
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-primary-rose/30 rounded-full filter blur-3xl opacity-70 animate-pulse" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-purple/30 rounded-full filter blur-3xl opacity-70 animate-pulse delay-75" />
         <div className="absolute -z-10 inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
 
@@ -16,7 +16,7 @@ export function HeroSection() {
           {/* Left Column - Text Content */}
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-8">
-              <span className="px-3 py-1 text-sm text-primary-rose gradient-background-10 rounded-full">
+              <span className="px-3 py-1 text-sm text-primary-purple bg-primary-purple/10 rounded-full">
                 Next.js 14 Starter Kit
               </span>
               <span className="flex items-center text-sm text-text-secondary">
@@ -26,7 +26,7 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              <span className="gradient-text">Ship Faster.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">Ship Faster.</span>
               <br />
               <span className="text-text-primary">Focus on Product.</span>
             </h1>
@@ -38,7 +38,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
                 href="#"
-                className="w-full sm:w-auto rounded-full gradient-background px-8 py-4 text-white font-medium shadow-lg shadow-primary-rose/25 hover:shadow-xl transition-all duration-200 text-center"
+                className="w-full sm:w-auto rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-white font-medium shadow-lg shadow-primary-purple/25 hover:shadow-xl transition-all duration-200 text-center"
               >
                 Get Started Now
               </a>
@@ -58,42 +58,42 @@ export function HeroSection() {
               {/* Stats Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
                 <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800/50 p-6 backdrop-blur-sm ring-1 ring-gray-900/5 dark:ring-white/5 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-rose/10 to-primary-orange/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-rose/10 to-primary-purple/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
                     <div className="flex items-center gap-4 mb-2">
-                      <div className="h-12 w-12 rounded-full gradient-background-10 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-rose">
+                      <div className="h-12 w-12 rounded-full bg-primary-purple/10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-purple">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                         </svg>
                       </div>
                       <div className="flex flex-col">
-                        <div className="text-3xl font-bold gradient-text">200+</div>
+                        <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">200+</div>
                         <div className="text-sm text-text-secondary">Active Developers</div>
                       </div>
                     </div>
                     <div className="h-2 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                      <div className="h-full w-[80%] bg-gradient-to-r from-primary-rose to-primary-orange rounded-full" />
+                      <div className="h-full w-[80%] bg-gradient-to-r from-primary-rose to-primary-purple rounded-full" />
                     </div>
                   </div>
                 </div>
 
                 <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800/50 p-6 backdrop-blur-sm ring-1 ring-gray-900/5 dark:ring-white/5 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-rose/10 to-primary-orange/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-rose to-primary-purple opacity-0 group-hover:opacity-10 transition-opacity" />
                   <div className="relative">
                     <div className="flex items-center gap-4 mb-2">
-                      <div className="h-12 w-12 rounded-full gradient-background-10 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-rose">
+                      <div className="h-12 w-12 rounded-full bg-primary-purple/10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-purple">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
                         </svg>
                       </div>
                       <div className="flex flex-col">
-                        <div className="text-3xl font-bold gradient-text">4.9/5</div>
+                        <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">4.9/5</div>
                         <div className="text-sm text-text-secondary">Average Rating</div>
                       </div>
                     </div>
                     <div className="flex gap-1">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <svg key={star} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <svg key={star} className="w-4 h-4 text-primary-purple" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
@@ -102,16 +102,16 @@ export function HeroSection() {
                 </div>
 
                 <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800/50 p-6 backdrop-blur-sm ring-1 ring-gray-900/5 dark:ring-white/5 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-rose/10 to-primary-orange/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-rose to-primary-purple opacity-0 group-hover:opacity-10 transition-opacity" />
                   <div className="relative">
                     <div className="flex items-center gap-4 mb-2">
-                      <div className="h-12 w-12 rounded-full gradient-background-10 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-rose">
+                      <div className="h-12 w-12 rounded-full bg-primary-purple/10 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-purple">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
                         </svg>
                       </div>
                       <div className="flex flex-col">
-                        <div className="text-3xl font-bold gradient-text">24/7</div>
+                        <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">24/7</div>
                         <div className="text-sm text-text-secondary">Discord Support</div>
                       </div>
                     </div>

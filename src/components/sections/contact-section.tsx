@@ -39,7 +39,7 @@ export function ContactSection() {
     <section className="relative py-24 bg-background">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-rose to-primary-purple" />
         <div className="absolute top-0 -left-4 w-72 h-72 bg-primary-rose/30 rounded-full filter blur-3xl opacity-70 animate-pulse" />
         <div className="absolute bottom-0 -right-4 w-72 h-72 bg-primary-orange/30 rounded-full filter blur-3xl opacity-70 animate-pulse delay-75" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -47,8 +47,9 @@ export function ContactSection() {
 
       <div className="relative px-6 mx-auto max-w-7xl lg:px-8">
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            <span className="gradient-text">Get in Touch</span>
+          <h2 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+            Get in touch
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">.</span>
           </h2>
           <p className="text-lg text-text-secondary">
             Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll get back to you as soon as possible.
@@ -67,7 +68,9 @@ export function ContactSection() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-text-primary">Email</h3>
+                  <h3 className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">
+                    Email
+                  </h3>
                   <p className="text-text-secondary">contact@yourcompany.com</p>
                 </div>
               </div>
@@ -81,7 +84,9 @@ export function ContactSection() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-text-primary">Location</h3>
+                  <h3 className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">
+                    Location
+                  </h3>
                   <p className="text-text-secondary">123 Market St, San Francisco, CA</p>
                 </div>
               </div>
@@ -155,7 +160,7 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={formStatus === 'sending'}
-                className="w-full rounded-full bg-primary-rose px-8 py-4 text-white font-medium shadow-lg shadow-primary-rose/25 hover:shadow-xl hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-white font-medium shadow-lg shadow-primary-rose/25 hover:shadow-xl hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
               </button>

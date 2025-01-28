@@ -5,7 +5,7 @@ export function CtaSection() {
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background/50" />
         <div className="absolute top-0 -left-4 w-96 h-96 bg-primary-rose/30 rounded-full filter blur-3xl opacity-70 animate-pulse" />
-        <div className="absolute bottom-0 -right-4 w-96 h-96 bg-primary-orange/30 rounded-full filter blur-3xl opacity-70 animate-pulse delay-75" />
+        <div className="absolute bottom-0 -right-4 w-96 h-96 bg-primary-purple/30 rounded-full filter blur-3xl opacity-70 animate-pulse delay-75" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
 
@@ -14,7 +14,7 @@ export function CtaSection() {
           <div className="relative mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Ready to Ship{' '}
-              <span className="text-primary-rose">Faster</span>?
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">Faster</span>?
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
               Join thousands of developers who are already shipping amazing products with our starter kit.
@@ -23,7 +23,7 @@ export function CtaSection() {
             <div className="mt-10 flex items-center justify-center gap-6">
               <a
                 href="#"
-                className="rounded-full bg-white px-8 py-4 text-base font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all duration-200"
+                className="rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-base font-semibold text-white shadow-sm hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-all duration-200"
               >
                 Start Building
               </a>
@@ -45,8 +45,8 @@ export function CtaSection() {
             <circle cx={512} cy={512} r={512} fill="url(#gradient)" fillOpacity="0.15" />
             <defs>
               <radialGradient id="gradient">
-                <stop stopColor="#FF6B6B" />
-                <stop offset={1} stopColor="#FF8E53" />
+                <stop stopColor="#FF8C8C" />
+                <stop offset={1} stopColor="#A855F7" />
               </radialGradient>
             </defs>
           </svg>

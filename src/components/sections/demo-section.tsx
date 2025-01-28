@@ -11,7 +11,7 @@ export function DemoSection() {
         {/* Section header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            <span className="gradient-text">See it in Action</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">See it in Action</span>
           </h2>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             Watch how our template can help you build and launch your SaaS product faster than ever.

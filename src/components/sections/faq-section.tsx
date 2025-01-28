@@ -35,8 +35,9 @@ export function FaqSection() {
     <section id="faq" className="py-24 sm:py-32 bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold tracking-tight text-center gradient-text sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Frequently asked questions
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">.</span>
           </h2>
           <p className="mt-4 text-center text-lg text-text-secondary">
             Can&apos;t find what you&apos;re looking for? {' '}
