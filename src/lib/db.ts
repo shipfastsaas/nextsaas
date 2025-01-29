@@ -2,7 +2,17 @@ import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI
 
-let cached = (global as any).mongoose || { conn: null }
+interface GlobalMongoose {
+  mongoose: {
+    conn: typeof mongoose | null;
+  } | null;
+}
+
+declare global {
+  var mongoose: { conn: typeof mongoose | null } | null;
+}
+
+const cached = (global as unknown as GlobalMongoose).mongoose || { conn: null }
 
 /**
  * Global is used here to maintain a cached connection across hot reloads
