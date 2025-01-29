@@ -1,67 +1,45 @@
 import mongoose from 'mongoose'
 
-const MONGODB_URI = process.env.MONGODB_URI || ''
+const MONGODB_URI = process.env.MONGODB_URI
 
-interface GlobalMongo {
-  conn: typeof mongoose | null
-  promise: Promise<typeof mongoose> | null
+if (!MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable')
 }
 
-// Définir le type pour la variable globale mongoose
-declare global {
-  // eslint-disable-next-line no-unused-vars
-  interface Global {
-    mongoose: GlobalMongo | undefined
+/**
+ * Global is used here to maintain a cached connection across hot reloads
+ * in development. This prevents connections growing exponentially
+ * during API Route usage.
+ */
+let cached = (global as any)._mongooseCache || { conn: null, promise: null }
+
+if (!cached.promise) {
+  const opts = {
+    bufferCommands: false,
+    maxPoolSize: 10,
   }
+
+  cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+    return mongoose
+  })
+
+  // Add to the cache
+  ;(global as any)._mongooseCache = cached
 }
 
-let cached = global.mongoose
-
-if (!cached) {
-  cached = global.mongoose = {
-    conn: null,
-    promise: null
-  }
-}
-
-async function dbConnect(): Promise<typeof mongoose> {
-  if (!MONGODB_URI) {
-    throw new Error('Please define the MONGODB_URI environment variable')
-  }
-
-  if (cached?.conn) {
-    console.log('Using cached MongoDB connection')
-    return cached.conn
-  }
-
-  if (!cached?.promise) {
-    const opts = {
-      bufferCommands: false,
-      maxPoolSize: 10,
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-      family: 4 // Forcer IPv4
+async function dbConnect() {
+  try {
+    if (cached.conn) {
+      return cached.conn
     }
 
-    console.log('Connecting to MongoDB...', {
-      uri_defined: !!MONGODB_URI,
-      uri_length: MONGODB_URI.length,
-      uri_starts_with: MONGODB_URI.startsWith('mongodb')
-    })
+    if (!cached.promise) {
+      throw new Error('MongoDB connection promise not initialized')
+    }
 
-    mongoose.set('debug', process.env.NODE_ENV === 'development')
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      console.log('MongoDB connected successfully')
-      return mongoose
-    })
-  }
-
-  try {
     cached.conn = await cached.promise
     return cached.conn
   } catch (e) {
-    cached.promise = null
     console.error('MongoDB connection error:', e)
     throw e
   }
