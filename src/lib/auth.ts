@@ -1,7 +1,18 @@
-import { NextAuthOptions } from 'next-auth'
+import type { DefaultSession, NextAuthConfig } from "next-auth"
 import GoogleProvider from 'next-auth/providers/google'
 
-export const authOptions: NextAuthOptions = {
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user: {
+      id: string
+      email: string
+      name: string
+      image?: string
+    }
+  }
+}
+
+export const authOptions: NextAuthConfig = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -9,12 +20,14 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }) {
-      return session
-    },
-    async jwt({ token }) {
-      return token
-    },
+    session: ({ session, token }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: token.sub,
+      },
+    }),
+    jwt: ({ token }) => token,
   },
   pages: {
     signIn: '/auth/signin',
