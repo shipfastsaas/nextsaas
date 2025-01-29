@@ -20,16 +20,24 @@ export function BlogPostList() {
   useEffect(() => {
     async function fetchPosts() {
       try {
+        console.log('Fetching posts...')
         const response = await fetch('/api/posts')
+        console.log('Response status:', response.status)
+        
         if (!response.ok) {
-          throw new Error('Failed to fetch posts')
+          const errorData = await response.text()
+          console.error('Response not OK:', errorData)
+          throw new Error(`Failed to fetch posts: ${errorData}`)
         }
+        
         const data = await response.json()
+        console.log('Posts received:', data)
+        
         // S'assurer que data est un tableau
         setPosts(Array.isArray(data) ? data : [])
       } catch (err) {
         console.error('Error fetching posts:', err)
-        setError(err instanceof Error ? err.message : 'Failed to load posts')
+        setError(err instanceof Error ? err.message : 'Failed to fetch posts')
         setPosts([]) // Réinitialiser les posts en cas d'erreur
       } finally {
         setLoading(false)
