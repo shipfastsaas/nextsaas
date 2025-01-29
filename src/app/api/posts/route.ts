@@ -6,8 +6,8 @@ export const dynamic = 'force-dynamic'
 
 export async function GET() {
   try {
-    const db = await dbConnect()
-    const posts = await Post.find().sort({ createdAt: -1 }).lean()
+    await dbConnect()
+    const posts = await Post.find()
     return NextResponse.json(posts)
   } catch (error) {
     console.error('Failed to fetch posts:', error)
