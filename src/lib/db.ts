@@ -19,6 +19,17 @@ class Database {
   }
 
   async connect(): Promise<typeof mongoose> {
+    if (!MONGODB_URI) {
+      console.error('MONGODB_URI is not defined in environment variables')
+      throw new Error('MONGODB_URI is not defined')
+    }
+
+    console.log('MongoDB URI check:', {
+      defined: !!MONGODB_URI,
+      length: MONGODB_URI.length,
+      startsWith: MONGODB_URI.startsWith('mongodb'),
+    })
+
     // Si déjà connecté, retourner la connexion existante
     if (this._conn) {
       console.log('Reusing existing MongoDB connection')
