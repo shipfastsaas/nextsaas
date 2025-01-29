@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
 import dbConnect from '@/lib/db'
 import Post from '@/models/Post'
+import mongoose from 'mongoose'
 
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
-export const revalidate = 0
 
 // Fonction utilitaire pour vérifier l'environnement
 function getEnvironmentData() {
@@ -52,26 +52,42 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-  const { isBuildTime, hasMongoDB } = getEnvironmentData()
   console.log('GET /api/posts - Starting')
-  console.log('Environment check:', { isBuildTime, hasMongoDB, mongoUri: process.env.MONGODB_URI ? 'defined' : 'undefined' })
-
-  if (isBuildTime) {
-    console.log('Build time detected, returning empty array')
-    return NextResponse.json([])
-  }
 
   try {
-    console.log('Attempting database connection...')
+    console.log('Connecting to database...')
     await dbConnect()
-    console.log('Database connected successfully')
-    
-    const posts = await Post.find({}).sort({ createdAt: -1 })
+
+    // Vérifier l'état de la connexion
+    if (mongoose.connection.readyState !== 1) {
+      throw new Error(`Invalid connection state: ${mongoose.connection.readyState}`)
+    }
+
+    console.log('Database connected, fetching posts...')
+    const posts = await Post.find({})
+      .sort({ createdAt: -1 })
+      .lean()
+      .exec()
+
     console.log(`Found ${posts.length} posts`)
-    
     return NextResponse.json(posts)
+
   } catch (error) {
-    console.error('Error in GET /api/posts:', error)
-    return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 })
+    // Construire un message d'erreur détaillé
+    const errorDetails = {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      type: error instanceof Error ? error.name : 'Unknown',
+      connectionState: mongoose.connection.readyState,
+      timestamp: new Date().toISOString()
+    }
+
+    console.error('Error in GET /api/posts:', errorDetails)
+    
+    return NextResponse.json({ 
+      error: 'Failed to fetch posts',
+      details: errorDetails
+    }, { 
+      status: 500 
+    })
   }
 }
