@@ -2,12 +2,17 @@ import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI || ''
 
+interface GlobalMongo {
+  conn: typeof mongoose | null
+  promise: Promise<typeof mongoose> | null
+}
+
 // Définir le type pour la variable globale mongoose
 declare global {
-  var mongoose: {
-    conn: typeof mongoose | null
-    promise: Promise<typeof mongoose> | null
-  } | undefined
+  // eslint-disable-next-line no-unused-vars
+  interface Global {
+    mongoose: GlobalMongo | undefined
+  }
 }
 
 let cached = global.mongoose
