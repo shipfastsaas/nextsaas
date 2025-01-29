@@ -2,11 +2,21 @@ import mongoose from 'mongoose'
 
 const MONGODB_URI = process.env.MONGODB_URI || ''
 
-// Cette variable globale est sûre car Next.js crée une nouvelle instance pour chaque requête
+// Définir le type pour la variable globale mongoose
+declare global {
+  var mongoose: {
+    conn: typeof mongoose | null
+    promise: Promise<typeof mongoose> | null
+  } | undefined
+}
+
 let cached = global.mongoose
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null }
+  cached = global.mongoose = {
+    conn: null,
+    promise: null
+  }
 }
 
 async function dbConnect(): Promise<typeof mongoose> {
@@ -14,12 +24,12 @@ async function dbConnect(): Promise<typeof mongoose> {
     throw new Error('Please define the MONGODB_URI environment variable')
   }
 
-  if (cached.conn) {
+  if (cached?.conn) {
     console.log('Using cached MongoDB connection')
     return cached.conn
   }
 
-  if (!cached.promise) {
+  if (!cached?.promise) {
     const opts = {
       bufferCommands: false,
       maxPoolSize: 10,
