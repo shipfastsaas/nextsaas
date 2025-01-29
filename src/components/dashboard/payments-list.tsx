@@ -1,30 +1,66 @@
-import { formatDate, formatCurrency } from '@/lib/utils'
+'use client'
 
-const payments = [
-  {
-    id: 1,
-    amount: 250.00,
-    status: 'success',
-    email: 'john@example.com',
-    date: '2024-01-21',
-  },
-  {
-    id: 2,
-    amount: 150.00,
-    status: 'success',
-    email: 'sarah@example.com',
-    date: '2024-01-20',
-  },
-  {
-    id: 3,
-    amount: 350.00,
-    status: 'success',
-    email: 'mike@example.com',
-    date: '2024-01-19',
-  },
-]
+import { formatDate, formatCurrency } from '@/lib/utils'
+import { useEffect, useState } from 'react'
+import { Loader2 } from 'lucide-react'
+
+interface Payment {
+  id: string
+  amount: number
+  status: string
+  created: string
+  currency: string
+  email: string
+}
 
 export function PaymentsList() {
+  const [payments, setPayments] = useState<Payment[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchPayments() {
+      try {
+        const response = await fetch('/api/payments')
+        if (!response.ok) {
+          throw new Error('Failed to fetch payments')
+        }
+        const data = await response.json()
+        setPayments(data.payments)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch payments')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchPayments()
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <Loader2 className="h-8 w-8 animate-spin text-gray-500" />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="bg-red-50 dark:bg-red-900/10 p-4 rounded-lg">
+        <p className="text-red-600 dark:text-red-400 text-sm">{error}</p>
+      </div>
+    )
+  }
+
+  if (payments.length === 0) {
+    return (
+      <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+        <p className="text-gray-600 dark:text-gray-400 text-sm text-center">No payments found</p>
+      </div>
+    )
+  }
+
   return (
     <div className="bg-white dark:bg-gray-800 shadow rounded-lg">
       <div className="overflow-x-auto">
@@ -49,7 +85,9 @@ export function PaymentsList() {
             {payments.map((payment) => (
               <tr key={payment.id}>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900 dark:text-white">{payment.email}</div>
+                  <div className="text-sm text-gray-900 dark:text-white">
+                    {payment.email}
+                  </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-900 dark:text-white">
@@ -57,12 +95,18 @@ export function PaymentsList() {
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                    payment.status === 'succeeded' 
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
+                      : payment.status === 'processing'
+                      ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
+                      : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
+                  }`}>
                     {payment.status}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                  {formatDate(payment.date)}
+                  {formatDate(payment.created)}
                 </td>
               </tr>
             ))}
