@@ -2,13 +2,19 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { NewspaperIcon, CreditCardIcon, HomeIcon } from '@heroicons/react/24/outline'
+import { 
+  NewspaperIcon, 
+  CreditCardIcon, 
+  HomeIcon,
+  ChatBubbleLeftRightIcon 
+} from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import clsx from 'clsx'
 
 const navigation = [
   { name: 'Overview', href: '/dashboard', icon: HomeIcon },
   { name: 'Blog Posts', href: '/dashboard/posts', icon: NewspaperIcon },
+  { name: 'Messages', href: '/dashboard/messages', icon: ChatBubbleLeftRightIcon },
   { name: 'Payments', href: '/dashboard/payments', icon: CreditCardIcon },
 ]
 

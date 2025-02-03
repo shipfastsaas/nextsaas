@@ -1,15 +1,19 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { Toast } from '@/components/ui/toast'
 
 export function ContactSection() {
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [showToast, setShowToast] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFormStatus('sending')
 
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const formData = new FormData(form)
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
@@ -28,7 +32,8 @@ export function ContactSection() {
       if (!response.ok) throw new Error('Failed to send message')
       
       setFormStatus('sent')
-      e.currentTarget.reset()
+      setShowToast(true)
+      form.reset()
     } catch (error) {
       console.error(error)
       setFormStatus('error')
@@ -37,6 +42,14 @@ export function ContactSection() {
 
   return (
     <section className="relative py-24 bg-background">
+      {showToast && (
+        <Toast
+          message="Message sent successfully! We'll get back to you soon."
+          type="success"
+          onClose={() => setShowToast(false)}
+        />
+      )}
+
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-primary-rose to-primary-purple" />
@@ -116,7 +129,7 @@ export function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-2">
                 Name
