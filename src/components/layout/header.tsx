@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Testimonials', href: '#testimonials' },
   { name: 'Pricing', href: '#pricing' },
   { name: 'FAQ', href: '#faq' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ]
 
