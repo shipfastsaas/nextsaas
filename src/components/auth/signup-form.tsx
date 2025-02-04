@@ -2,24 +2,76 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { FaGoogle, FaGithub } from 'react-icons/fa'
+import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
+import { FaGoogle } from 'react-icons/fa'
+import { toast } from 'sonner'
 
 export function SignUpForm() {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Add your registration logic here
-    setTimeout(() => setIsLoading(false), 1000)
+
+    try {
+      // Register user
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          password: formData.password,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong')
+      }
+
+      // Sign in the user after successful registration
+      const result = await signIn('credentials', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        throw new Error('Failed to sign in')
+      }
+
+      toast.success('Account created successfully!')
+      router.push('/dashboard')
+    } catch (error: any) {
+      toast.error(error.message)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  const handleGoogleSignUp = () => {
-    // Add Google sign up logic here
-  }
-
-  const handleGithubSignUp = () => {
-    // Add GitHub sign up logic here
+  const handleGoogleSignUp = async () => {
+    try {
+      await signIn('google', { callbackUrl: '/dashboard' })
+    } catch (error) {
+      toast.error('Failed to sign in with Google')
+    }
   }
 
   return (
@@ -33,14 +85,6 @@ export function SignUpForm() {
         >
           <FaGoogle className="w-5 h-5" />
           Continue with Google
-        </button>
-        <button
-          type="button"
-          onClick={handleGithubSignUp}
-          className="w-full flex items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white/5 px-4 py-2 text-text-primary hover:bg-white/10 transition-colors duration-200"
-        >
-          <FaGithub className="w-5 h-5" />
-          Continue with GitHub
         </button>
       </div>
 
@@ -64,6 +108,8 @@ export function SignUpForm() {
               type="text"
               id="firstName"
               name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
               required
               className="mt-2 block w-full rounded-lg border border-gray-300 bg-white/5 px-4 py-2 text-text-primary shadow-sm focus:border-primary-rose focus:ring-primary-rose"
             />
@@ -76,6 +122,8 @@ export function SignUpForm() {
               type="text"
               id="lastName"
               name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
               required
               className="mt-2 block w-full rounded-lg border border-gray-300 bg-white/5 px-4 py-2 text-text-primary shadow-sm focus:border-primary-rose focus:ring-primary-rose"
             />
@@ -90,6 +138,8 @@ export function SignUpForm() {
             type="email"
             id="email"
             name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
             className="mt-2 block w-full rounded-lg border border-gray-300 bg-white/5 px-4 py-2 text-text-primary shadow-sm focus:border-primary-rose focus:ring-primary-rose"
           />
@@ -103,55 +153,26 @@ export function SignUpForm() {
             type="password"
             id="password"
             name="password"
+            value={formData.password}
+            onChange={handleChange}
             required
+            minLength={8}
             className="mt-2 block w-full rounded-lg border border-gray-300 bg-white/5 px-4 py-2 text-text-primary shadow-sm focus:border-primary-rose focus:ring-primary-rose"
           />
-        </div>
-
-        <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-text-primary">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            required
-            className="mt-2 block w-full rounded-lg border border-gray-300 bg-white/5 px-4 py-2 text-text-primary shadow-sm focus:border-primary-rose focus:ring-primary-rose"
-          />
-        </div>
-
-        <div className="flex items-center">
-          <input
-            id="terms"
-            name="terms"
-            type="checkbox"
-            required
-            className="h-4 w-4 rounded border-gray-300 text-primary-rose focus:ring-primary-rose"
-          />
-          <label htmlFor="terms" className="ml-2 block text-sm text-text-secondary">
-            I agree to the{' '}
-            <Link href="#" className="font-medium text-primary-rose hover:text-primary-rose/80">
-              Terms of Service
-            </Link>{' '}
-            and{' '}
-            <Link href="#" className="font-medium text-primary-rose hover:text-primary-rose/80">
-              Privacy Policy
-            </Link>
-          </label>
+          <p className="mt-1 text-sm text-text-secondary">Must be at least 8 characters</p>
         </div>
 
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full rounded-full gradient-background px-8 py-3 text-white font-medium shadow-lg shadow-primary-rose/25 hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary-rose hover:bg-primary-rose/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-rose disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
         >
           {isLoading ? 'Creating account...' : 'Create account'}
         </button>
 
-        <p className="text-center text-sm text-text-secondary">
+        <p className="text-sm text-center text-text-secondary">
           Already have an account?{' '}
-          <Link href="/signin" className="font-medium text-primary-rose hover:text-primary-rose/80">
+          <Link href="/signin" className="text-primary-rose hover:text-primary-rose/90">
             Sign in
           </Link>
         </p>

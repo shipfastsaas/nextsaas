@@ -6,13 +6,15 @@ import {
   NewspaperIcon, 
   CreditCardIcon, 
   HomeIcon,
-  ChatBubbleLeftRightIcon 
+  ChatBubbleLeftRightIcon,
+  UsersIcon 
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import clsx from 'clsx'
 
 const navigation = [
   { name: 'Overview', href: '/dashboard', icon: HomeIcon },
+  { name: 'Users', href: '/dashboard/users', icon: UsersIcon },
   { name: 'Blog Posts', href: '/dashboard/posts', icon: NewspaperIcon },
   { name: 'Messages', href: '/dashboard/messages', icon: ChatBubbleLeftRightIcon },
   { name: 'Payments', href: '/dashboard/payments', icon: CreditCardIcon },

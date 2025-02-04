@@ -8,6 +8,10 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  // Configuration des images
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
   // Configuration spécifique pour les routes API
   async headers() {
     return [
