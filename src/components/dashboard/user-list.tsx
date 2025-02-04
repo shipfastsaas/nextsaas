@@ -127,7 +127,7 @@ export function UserList() {
                     </span>
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 text-sm text-text-secondary">
-                    {format(new Date(user.createdAt), 'MMM d, yyyy')}
+                    {user.createdAt ? format(new Date(user.createdAt), 'MMM d, yyyy') : 'N/A'}
                   </td>
                 </tr>
               ))}

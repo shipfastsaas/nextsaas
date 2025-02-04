@@ -10,7 +10,7 @@ const nextConfig = {
   },
   // Configuration des images
   images: {
-    domains: ['lh3.googleusercontent.com'],
+    domains: ['lh3.googleusercontent.com', 'api.dicebear.com'],
   },
   // Configuration spécifique pour les routes API
   async headers() {
