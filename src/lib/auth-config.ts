@@ -1,4 +1,4 @@
-import type { NextAuthConfig } from '@auth/core'
+import type { AuthConfig } from '@auth/core'
 import Google from 'next-auth/providers/google'
 import Credentials from 'next-auth/providers/credentials'
 import { MongoDBAdapter } from '@auth/mongodb-adapter'
@@ -73,4 +73,4 @@ export const authConfig = {
   pages: {
     signIn: '/signin',
   },
-} satisfies NextAuthConfig
+} satisfies AuthConfig

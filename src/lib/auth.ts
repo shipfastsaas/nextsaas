@@ -1,11 +1,11 @@
-import { NextAuthConfig } from 'next-auth'
+import { AuthConfig } from '@auth/core'
 import Google from 'next-auth/providers/google'
 import Credentials from 'next-auth/providers/credentials'
 import dbConnect from '@/lib/db'
 import User from '@/models/User'
 import bcrypt from 'bcryptjs'
 
-export const authConfig: NextAuthConfig = {
+export const authConfig: AuthConfig = {
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
