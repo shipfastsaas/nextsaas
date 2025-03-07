@@ -17,23 +17,58 @@ export const saveBase64Image = async (base64Data: string, fileName: string): Pro
     
     // Créer le chemin complet vers le fichier
     const publicDir = path.join(process.cwd(), 'public');
-    const imgBlogDir = path.join(publicDir, 'img-blog');
-    const filePath = path.join(imgBlogDir, fileName);
+    console.log(`Public directory path: ${publicDir}`);
     
-    // S'assurer que le répertoire existe
+    const imgBlogDir = path.join(publicDir, 'img-blog');
+    console.log(`Image blog directory path: ${imgBlogDir}`);
+    
+    const filePath = path.join(imgBlogDir, fileName);
+    console.log(`Full file path: ${filePath}`);
+    
+    // Vérifier si le répertoire public existe
+    if (!fs.existsSync(publicDir)) {
+      console.log(`Public directory does not exist, creating: ${publicDir}`);
+      try {
+        fs.mkdirSync(publicDir, { recursive: true });
+        console.log('Public directory created successfully');
+      } catch (dirError) {
+        console.error(`Error creating public directory: ${dirError}`);
+        // Fallback: retourner une URL d'image par défaut
+        return '/img-blog/default-post-image.jpg';
+      }
+    }
+    
+    // S'assurer que le répertoire img-blog existe
     if (!fs.existsSync(imgBlogDir)) {
-      fs.mkdirSync(imgBlogDir, { recursive: true });
+      console.log(`Image blog directory does not exist, creating: ${imgBlogDir}`);
+      try {
+        fs.mkdirSync(imgBlogDir, { recursive: true });
+        console.log('Image blog directory created successfully');
+      } catch (dirError) {
+        console.error(`Error creating img-blog directory: ${dirError}`);
+        // Fallback: retourner une URL d'image par défaut
+        return '/img-blog/default-post-image.jpg';
+      }
     }
     
     // Convertir les données base64 en buffer et les écrire dans un fichier
     const buffer = Buffer.from(imageData, 'base64');
-    fs.writeFileSync(filePath, buffer);
+    
+    try {
+      fs.writeFileSync(filePath, buffer);
+      console.log(`Image successfully saved to: ${filePath}`);
+    } catch (writeError) {
+      console.error(`Error writing image file: ${writeError}`);
+      // Fallback: retourner une URL d'image par défaut
+      return '/img-blog/default-post-image.jpg';
+    }
     
     // Retourner le chemin relatif pour l'accès via URL
     return `/img-blog/${fileName}`;
   } catch (error) {
-    console.error('Error saving image:', error);
-    throw new Error('Failed to save image');
+    console.error('Error in saveBase64Image:', error);
+    // En cas d'erreur, retourner une URL d'image par défaut au lieu de lancer une exception
+    return '/img-blog/default-post-image.jpg';
   }
 };
 

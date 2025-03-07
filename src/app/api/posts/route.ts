@@ -56,25 +56,33 @@ export async function POST(request: Request) {
     }
     
     // Gérer l'image principale
-    let featuredImagePath = '';
+    let featuredImagePath = '/img-blog/default-post-image.jpg'; // Image par défaut
     if (data.featuredImage) {
+      console.log('Processing featured image...');
       try {
         // Si l'image est une URL data (base64), la traiter
         if (data.featuredImage.startsWith('data:')) {
+          console.log('Image is base64 data, processing...');
           const imageType = getImageTypeFromBase64(data.featuredImage);
+          console.log(`Detected image type: ${imageType}`);
           const fileName = `post-image-${Date.now()}.${imageType}`;
           
           // Sauvegarder l'image et obtenir le chemin
+          console.log(`Attempting to save image with filename: ${fileName}`);
           featuredImagePath = await saveBase64Image(data.featuredImage, fileName);
-          console.log(`Image saved to: ${featuredImagePath}`);
+          console.log(`Image processing complete. Path: ${featuredImagePath}`);
         } else {
           // Si c'est déjà une URL, l'utiliser directement
+          console.log('Image is already a URL, using directly');
           featuredImagePath = data.featuredImage;
         }
       } catch (error) {
         console.error('Error processing image:', error);
-        // Continuer sans image en cas d'erreur
+        // Utiliser l'image par défaut en cas d'erreur
+        console.log('Using default image due to error');
       }
+    } else {
+      console.log('No featured image provided, using default');
     }
     
     // Créer un nouvel article
