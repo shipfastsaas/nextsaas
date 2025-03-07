@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   } catch (error) {
     return {
-      title: 'Article non trouvé'
+      title: 'Article Not Found'
     }
   }
 }

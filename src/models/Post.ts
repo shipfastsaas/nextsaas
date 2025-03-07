@@ -4,7 +4,7 @@ const PostSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, 'Please provide a title for this post'],
-    maxlength: [60, 'Title cannot be more than 60 characters'],
+    maxlength: [150, 'Title cannot be more than 150 characters'],
   },
   content: {
     type: String,
@@ -13,7 +13,11 @@ const PostSchema = new mongoose.Schema({
   excerpt: {
     type: String,
     required: [true, 'Please provide a short excerpt for this post'],
-    maxlength: [160, 'Excerpt cannot be more than 160 characters'],
+    maxlength: [500, 'Excerpt cannot be more than 500 characters'],
+  },
+  featuredImage: {
+    type: String,
+    default: '',
   },
   status: {
     type: String,
@@ -31,4 +35,12 @@ const PostSchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.models.Post || mongoose.model('Post', PostSchema)
+// Forcer la recompilation du modèle en ajoutant un timestamp
+const modelName = 'Post';
+
+// Supprimer le modèle s'il existe déjà pour forcer sa recompilation
+if (mongoose.models && mongoose.models[modelName]) {
+  delete mongoose.models[modelName];
+}
+
+export default mongoose.model(modelName, PostSchema)

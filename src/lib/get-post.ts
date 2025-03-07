@@ -19,8 +19,10 @@ export async function getPost(id: string) {
     _id: post._id.toString(),
     title: post.title,
     content: post.content,
+    excerpt: post.excerpt,
+    featuredImage: post.featuredImage,
     status: post.status,
     createdAt: post.createdAt,
-    excerpt: post.excerpt
+    updatedAt: post.updatedAt
   }
 }
