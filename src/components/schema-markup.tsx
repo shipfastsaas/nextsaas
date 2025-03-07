@@ -2,13 +2,13 @@ export const SchemaMarkup = () => {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "https://www.shipfastsaas.com",
-    "name": "ShipFastSaaS",
-    "description": "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.",
-    "keywords": "nextjs boilerplate, saas starter, ai tool builder, web app template, online business",
+    "url": "https://shipfaststarter.com",
+    "name": "ShipFastStarter",
+    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
+    "keywords": "next.js saas starter kit, react saas boilerplate, saas template, build and ship faster, nextjs boilerplate, react starter kit, saas starter",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://www.shipfastsaas.com/search?q={search_term_string}",
+      "target": "https://shipfaststarter.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -16,57 +16,62 @@ export const SchemaMarkup = () => {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "url": "https://www.shipfastsaas.com",
-    "name": "ShipFastSaaS",
-    "description": "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.",
-    "logo": "https://www.shipfastsaas.com/logo.png",
+    "url": "https://shipfaststarter.com",
+    "name": "ShipFastStarter",
+    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
+    "logo": "https://shipfaststarter.com/logo.png",
     "sameAs": [
-      "https://twitter.com/shipfast",
-      "https://github.com/shipfast"
+      "https://twitter.com/shipfaststarter",
+      "https://github.com/shipfaststarter"
     ]
   };
 
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "ShipFastSaaS Boilerplate",
-    "description": "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.",
+    "name": "ShipFastStarter - Next.js SaaS Starter Kit",
+    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
     "category": "Software Development Tools",
     "brand": {
       "@type": "Brand",
-      "name": "ShipFastSaaS"
+      "name": "ShipFastStarter"
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://www.shipfastsaas.com",
+      "url": "https://shipfaststarter.com",
       "price": "0",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock"
-    }
+    },
+    "keywords": "next.js saas starter kit, react saas boilerplate, saas template, build and ship faster"
   };
 
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "ShipFastSaaS",
+    "name": "ShipFastStarter - Next.js SaaS Starter Kit",
     "applicationCategory": "DeveloperApplication",
-    "description": "The NextJS boilerplate with all you need to build your SaaS, AI tool, or any other web app and make your first $ online fast.",
+    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
     "operatingSystem": "Any",
-    "url": "https://www.shipfastsaas.com",
+    "url": "https://shipfaststarter.com",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
     "applicationSubCategory": "Web Development Framework",
+    "keywords": "next.js saas starter kit, react saas boilerplate, saas template, build and ship faster",
     "featureList": [
-      "NextJS 14",
+      "Next.js 14",
+      "React SaaS Boilerplate",
       "Authentication",
       "Payment Integration",
-      "AI Tools Support",
+      "Beautiful UI Components",
       "Marketing Pages",
       "TypeScript",
-      "TailwindCSS"
+      "TailwindCSS",
+      "SEO Optimized",
+      "Fast Development"
     ]
   };
 
