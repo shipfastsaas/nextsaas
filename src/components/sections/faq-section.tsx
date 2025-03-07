@@ -5,28 +5,36 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 const faqs = [
   {
-    question: "What&apos;s included in the starter kit?",
-    answer: "Everything you need to build a modern SaaS: Authentication, Database, API Routes, Admin Dashboard, User Management, Stripe Integration, Email System, and more. All components are built with TypeScript and Next.js 13."
+    question: "What technologies does ShipFastStarter use?",
+    answer: "ShipFastStarter is built with Next.js 14, TypeScript, Tailwind CSS, MongoDB, and Stripe for payments. It uses the App Router architecture and includes authentication with NextAuth.js, responsive UI components, and a complete user management system."
   },
   {
-    question: "Can I use it for commercial projects?",
-    answer: "Yes! Your purchase includes a commercial license. Use ShipFast for as many projects as you want, including client work and commercial projects."
+    question: "How does ShipFastStarter handle authentication?",
+    answer: "ShipFastStarter includes a complete authentication system powered by NextAuth.js with multiple providers (email/password, Google, GitHub), secure session management, role-based access control, and protected routes. Everything is pre-configured and ready to use out of the box."
   },
   {
-    question: "Do I get free updates?",
-    answer: "Absolutely! You get lifetime access to all future updates. We regularly add new features and improvements based on user feedback."
+    question: "Is ShipFastStarter SEO optimized?",
+    answer: "Yes! ShipFastStarter comes with built-in SEO optimization including dynamic metadata, structured data, automatic sitemap generation, robots.txt configuration, and integration with Google Search Console and Google Analytics. It's designed for global reach and optimal search engine visibility."
   },
   {
-    question: "What if I need help?",
-    answer: "You get access to our private Discord community where you can get help from the team and other developers. We also have comprehensive documentation and video tutorials."
+    question: "How does the payment system work?",
+    answer: "ShipFastStarter integrates Stripe for payment processing with support for one-time payments and subscriptions. It includes pre-built components for checkout, customer portal, subscription management, and webhooks for handling events like payment success, failure, and subscription status changes."
   },
   {
-    question: "Is it beginner-friendly?",
-    answer: "While some experience with React and TypeScript is recommended, our starter kit comes with detailed documentation and video tutorials to help you get started."
+    question: "Can I deploy ShipFastStarter on Vercel?",
+    answer: "Absolutely! ShipFastStarter is optimized for Vercel deployment with zero configuration. We've resolved common deployment issues like dependency conflicts between next-auth, @auth/core, and @auth/mongodb-adapter. Just connect your GitHub repo to Vercel and you're ready to go."
   },
   {
-    question: "What&apos;s your refund policy?",
-    answer: "We offer a 30-day money-back guarantee. If you&apos;re not satisfied with ShipFast, just let us know and we&apos;ll refund your purchase."
+    question: "Does ShipFastStarter include a blog system?",
+    answer: "Yes, ShipFastStarter includes a complete blog system with markdown support, categories, tags, search functionality, and SEO optimization. You can easily create, edit, and publish blog posts to attract your target audience of developers and entrepreneurs."
+  },
+  {
+    question: "How customizable is ShipFastStarter?",
+    answer: "ShipFastStarter is built to be highly customizable. All components are modular and built with Tailwind CSS, making it easy to adapt the design to your brand. The codebase follows best practices with clean architecture, making it easy to extend or modify functionality."
+  },
+  {
+    question: "What kind of support do I get with ShipFastStarter?",
+    answer: "Your purchase includes access to comprehensive documentation, video tutorials, and our private Discord community where you can get help from our team and other developers. We also offer priority email support for any technical issues you might encounter."
   }
 ]
 

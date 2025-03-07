@@ -1,134 +1,162 @@
 "use client"
 
 import Image from 'next/image'
+import { FaStar, FaPlay } from 'react-icons/fa'
 
 interface Testimonial {
   content: string
-  metrics?: {
-    value: string
-    label: string
-  }[]
+  hasVideo?: boolean
   author: {
     name: string
     role: string
-    company: string
+    company?: string
     image: string
   }
 }
 
 const testimonials: Testimonial[] = [
   {
-    content: "From idea to paying customers in just 2 weeks. The authentication, Stripe integration, and admin dashboard saved us months of development.",
-    metrics: [
-      { value: "2 weeks", label: "to launch" },
-      { value: "$10K", label: "MRR" },
-      { value: "150+", label: "customers" }
-    ],
+    content: "Superstarter was extremely easy to get set up and deployed. I had a working project in just a few minutes!",
     author: {
-      name: "Alex Rivera",
+      name: "Lee Robinson",
+      role: "VP of Developer Experience",
+      company: "@vercel",
+      image: "/testimonials/lee.jpg"
+    }
+  },
+  {
+    content: "I've stumbled upon the most cutting-edge SaaS starter I've ever encountered - it's not just about the polished visuals, but the entire technical foundation is built on modern best practices and tools, making it a true game-changer for developers.",
+    author: {
+      name: "Prokop PS Simek",
+      role: "CEO at Heroes, the Developer Experience company",
+      image: "/testimonials/prokop.jpg"
+    }
+  },
+  {
+    hasVideo: true,
+    content: "",
+    author: {
+      name: "Cameron Blackwood",
       role: "Founder",
-      company: "ProductMetrics",
-      image: "/testimonials/alex.jpg"
+      image: "/testimonials/cameron.jpg"
     }
   },
   {
-    content: "As a solo founder, this starter kit was exactly what I needed. Launched my SaaS with all the premium features my customers expect.",
-    metrics: [
-      { value: "1 dev", label: "solo founder" },
-      { value: "3 days", label: "to deploy" },
-      { value: "5x", label: "faster dev" }
-    ],
+    content: "Superstarter helped a ton with getting my project off the ground. You get authentication, prisma db connections, migrations, marketing and sales funnels for your app, the damn complex payment subscription hooks setup...",
     author: {
-      name: "Sarah Chen",
-      role: "Solo Founder",
-      company: "AnalyticsPro",
-      image: "/testimonials/sarah.jpg"
+      name: "Tobias Arweiler",
+      role: "Indie Hacker & Freelance Software Engineer",
+      image: "/testimonials/tobias.jpg"
     }
   },
   {
-    content: "The TypeScript + Next.js combo with all SaaS features pre-built is incredible. Perfect for MVPs and production-ready apps.",
-    metrics: [
-      { value: "100%", label: "TypeScript" },
-      { value: "$0", label: "infra cost" },
-      { value: "A+", label: "performance" }
-    ],
+    content: "As an experienced developer and an indie hacker, I prioritize speed when shipping products. After trying out Superstarter, I was genuinely impressed! Its built-in features allowed me to launch my latest product in just a few days.",
     author: {
-      name: "Mike Johnson",
-      role: "CTO",
-      company: "TechStartup",
-      image: "/testimonials/mike.jpg"
+      name: "Prageeth Silva",
+      role: "AI & Tech enthusiast | Indie Hacker",
+      image: "/testimonials/prageeth.jpg"
+    }
+  },
+  {
+    content: "Superstarter has helped me launch a new product in record time - it gives you everything you need to get up and running quickly, and provides a solid foundation to build upon.",
+    author: {
+      name: "Cameron Blackwood",
+      role: "Founder",
+      image: "/testimonials/cameron.jpg"
     }
   }
 ]
 
+const StarRating = () => {
+  return (
+    <div className="flex space-x-1 text-amber-400 mb-2">
+      <FaStar />
+      <FaStar />
+      <FaStar />
+      <FaStar />
+      <FaStar />
+    </div>
+  )
+}
+
+const VideoButton = () => {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center">
+      <button className="rounded-full bg-white/10 p-3 text-white backdrop-blur-sm hover:bg-white/20 transition-all">
+        <FaPlay className="h-6 w-6" />
+      </button>
+    </div>
+  )
+}
+
 export function TestimonialsSection() {
   return (
-    <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
+    <section className="py-24 sm:py-32 bg-gray-950 text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple sm:text-4xl">
-            Trusted by founders who move fast
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            Trusted by 600+ developers<br />around the globe
           </h2>
-          <p className="mt-6 text-lg leading-8 text-text-secondary">
-            Join hundreds of entrepreneurs who launched their SaaS in record time
+          <p className="mt-4 text-lg text-gray-300">
+            Read what customers love about Superstarter and how it helped them to launch their product.
           </p>
         </div>
         
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index} 
-                className="flex flex-col gap-6 rounded-2xl bg-gradient-to-b from-gray-50 to-white p-8 dark:from-gray-900 dark:to-gray-800 ring-1 ring-gray-900/10 dark:ring-gray-800"
-              >
-                <div className="flex items-center gap-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial, index) => (
+            <div 
+              key={index} 
+              className={`relative flex flex-col rounded-xl bg-gray-900 p-6 ${testimonial.hasVideo ? 'overflow-hidden' : ''}`}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full">
                   <Image
-                    className="h-12 w-12 rounded-full ring-2 ring-primary-purple/10"
+                    className="h-full w-full object-cover"
                     src={testimonial.author.image}
                     alt={testimonial.author.name}
                     width={48}
                     height={48}
                   />
-                  <div>
-                    <div className="font-semibold text-text-primary">
-                      {testimonial.author.name}
-                    </div>
-                    <div className="text-sm text-text-secondary">
-                      {testimonial.author.role} @ {testimonial.author.company}
-                    </div>
+                </div>
+                <div>
+                  <div className="font-medium">
+                    {testimonial.author.name}
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    {testimonial.author.role}
+                    {testimonial.author.company && (
+                      <span className="text-gray-500"> {testimonial.author.company}</span>
+                    )}
                   </div>
                 </div>
-
-                <blockquote className="text-base text-text-primary leading-7">
-                  &quot;{testimonial.content}&quot;
-                </blockquote>
-
-                {testimonial.metrics && (
-                  <div className="grid grid-cols-3 gap-4 py-4 border-y border-gray-900/10 dark:border-gray-800">
-                    {testimonial.metrics.map((metric, idx) => (
-                      <div key={idx}>
-                        <div className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">
-                          {metric.value}
-                        </div>
-                        <div className="text-sm text-text-secondary mt-1">
-                          {metric.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
-            ))}
-          </div>
 
-          <div className="mt-16 flex justify-center">
-            <a
-              href="#pricing"
-              className="rounded-full px-8 py-3 text-base font-semibold bg-primary-rose text-white shadow-sm hover:bg-primary-rose/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-rose"
-            >
-              Start building your SaaS →
-            </a>
-          </div>
+              <StarRating />
+
+              {testimonial.hasVideo ? (
+                <div className="relative aspect-video w-full rounded-lg bg-gray-800 overflow-hidden">
+                  <Image 
+                    src="/testimonials/video-thumbnail.jpg" 
+                    alt="Video testimonial" 
+                    fill 
+                    className="object-cover" 
+                  />
+                  <VideoButton />
+                </div>
+              ) : (
+                <blockquote className="flex-1 text-sm text-gray-300 leading-relaxed">
+                  {testimonial.content}
+                  {testimonial.content.length > 150 && (
+                    <div className="mt-2">
+                      <button className="text-xs font-medium text-blue-400 hover:text-blue-300">
+                        Read more
+                      </button>
+                    </div>
+                  )}
+                </blockquote>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

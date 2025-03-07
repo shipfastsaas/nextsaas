@@ -25,9 +25,9 @@ const navigation: {
     { name: 'Contact', href: '#' },
   ],
   legal: [
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
-    { name: 'License', href: '#' },
+    { name: 'Privacy Policy', href: '/legal/privacy-policy' },
+    { name: 'Terms of Service', href: '/legal/terms-of-service' },
+    { name: 'License', href: '/legal/license' },
   ],
   social: [
     {
