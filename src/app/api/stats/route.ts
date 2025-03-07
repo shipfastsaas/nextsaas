@@ -43,7 +43,8 @@ export async function GET(request: Request) {
     
     // Calculer le total des revenus de la journée
     const todayRevenue = charges.data.reduce((total, charge) => {
-      if (charge.status === 'succeeded' || charge.status === 'completed') {
+      // Dans Stripe, le statut 'succeeded' est utilisé pour les paiements réussis
+      if (charge.status === 'succeeded') {
         return total + charge.amount
       }
       return total
