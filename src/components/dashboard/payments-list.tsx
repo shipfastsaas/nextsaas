@@ -8,8 +8,8 @@ interface Payment {
   id: string
   amount: number
   status: string
-  created: string
-  currency: string
+  date: string // L'API renvoie 'date' au lieu de 'created'
+  currency?: string // Optionnel car pas toujours présent dans l'API
   email: string
 }
 
@@ -26,7 +26,8 @@ export function PaymentsList() {
           throw new Error('Failed to fetch payments')
         }
         const data = await response.json()
-        setPayments(data.payments)
+        // L'API renvoie directement un tableau de paiements, pas un objet avec une propriété payments
+        setPayments(Array.isArray(data) ? data : [])
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to fetch payments')
       } finally {
@@ -96,9 +97,9 @@ export function PaymentsList() {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                    payment.status === 'succeeded' 
+                    payment.status === 'completed' || payment.status === 'succeeded'
                       ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
-                      : payment.status === 'processing'
+                      : payment.status === 'processing' || payment.status === 'pending'
                       ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
                       : 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400'
                   }`}>
@@ -106,7 +107,7 @@ export function PaymentsList() {
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                  {formatDate(payment.created)}
+                  {formatDate(payment.date)}
                 </td>
               </tr>
             ))}

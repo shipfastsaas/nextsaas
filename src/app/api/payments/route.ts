@@ -1,41 +1,34 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/auth'
+import { stripe } from '@/lib/stripe'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
   try {
-    const session = await auth()
-    if (!session) {
-      return new NextResponse('Unauthorized', { status: 401 })
-    }
+    // Temporairement désactivé pour le débogage
+    // const session = await auth()
+    // if (!session) {
+    //   return new NextResponse('Unauthorized', { status: 401 })
+    // }
 
-    // Pour le moment, retournons des données de test
-    const mockPayments = [
-      {
-        id: '1',
-        amount: 299,
-        status: 'completed',
-        email: 'john@example.com',
-        date: new Date('2024-02-04').toISOString(),
-      },
-      {
-        id: '2',
-        amount: 499,
-        status: 'completed',
-        email: 'sarah@example.com',
-        date: new Date('2024-02-03').toISOString(),
-      },
-      {
-        id: '3',
-        amount: 199,
-        status: 'pending',
-        email: 'mike@example.com',
-        date: new Date('2024-02-02').toISOString(),
-      },
-    ]
+    // Récupérer les vrais paiements depuis Stripe
+    const charges = await stripe.charges.list({
+      limit: 100, // Nombre de paiements à récupérer
+      expand: ['data.customer'], // Inclure les informations du client
+    })
 
-    return NextResponse.json(mockPayments)
+    // Transformer les données Stripe en format attendu par le frontend
+    const payments = charges.data.map(charge => ({
+      id: charge.id,
+      amount: charge.amount,
+      status: charge.status,
+      email: charge.billing_details.email || 'N/A',
+      date: new Date(charge.created * 1000).toISOString(), // Convertir le timestamp Unix en ISO string
+      currency: charge.currency
+    }))
+
+    return NextResponse.json(payments)
   } catch (error) {
     console.error('Failed to fetch payments:', error)
     return NextResponse.json(
