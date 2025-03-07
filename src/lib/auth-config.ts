@@ -1,7 +1,7 @@
 import type { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { MongoDBAdapter } from '@next-auth/mongodb-adapter'
+import { MongoDBAdapter } from '@auth/mongodb-adapter'
 import clientPromise from '@/lib/mongodb-adapter'
 import dbConnect from '@/lib/db'
 import User from '@/models/User'
