@@ -9,12 +9,16 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'ShipFastStarter - Next.js SaaS Starter Kit | React SaaS Boilerplate',
-  description: 'Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.',
-  keywords: 'next.js saas starter kit, react saas boilerplate, saas template, build and ship faster, nextjs boilerplate, react starter kit, saas starter',
+  title: 'ShipFastStarter - Global Next.js SaaS Starter Kit | React SaaS Boilerplate',
+  description: 'Launch your SaaS globally with our modern Next.js starter kit. Complete international-ready React SaaS boilerplate with authentication, payments, and beautiful UI components.',
+  keywords: 'next.js saas starter kit, react saas boilerplate, global saas template, international saas solution, build and ship faster, nextjs boilerplate, react starter kit, saas starter, multi-language saas, global payments',
+  alternates: {
+    canonical: 'https://shipfaststarter.com',
+    
+  },
   openGraph: {
-    title: 'ShipFastStarter - Next.js SaaS Starter Kit | React SaaS Boilerplate',
-    description: 'Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.',
+    title: 'ShipFastStarter - Global Next.js SaaS Starter Kit | React SaaS Boilerplate',
+    description: 'Launch your SaaS globally with our modern Next.js starter kit. Complete international-ready React SaaS boilerplate with authentication, payments, and beautiful UI components.',
     url: 'https://shipfaststarter.com',
     siteName: 'ShipFastStarter',
     images: [
@@ -22,7 +26,7 @@ export const metadata = {
         url: 'https://shipfaststarter.com/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'ShipFastStarter - Next.js SaaS Starter Kit',
+        alt: 'ShipFastStarter - Global Next.js SaaS Starter Kit',
       },
     ],
     locale: 'en_US',
@@ -30,8 +34,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ShipFastStarter - Next.js SaaS Starter Kit | React SaaS Boilerplate',
-    description: 'Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.',
+    title: 'ShipFastStarter - Global Next.js SaaS Starter Kit | React SaaS Boilerplate',
+    description: 'Launch your SaaS globally with our modern Next.js starter kit. Complete international-ready React SaaS boilerplate with authentication, payments, and beautiful UI components.',
     images: ['https://shipfaststarter.com/twitter-image.jpg'],
   },
 }

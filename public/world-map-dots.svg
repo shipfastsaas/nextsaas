@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="400px" viewBox="0 0 800 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>World Map Dots</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(50.000000, 50.000000)" fill="#A855F7" fill-opacity="0.5">
+            <!-- North America -->
+            <circle cx="100" cy="80" r="4"></circle>
+            <circle cx="150" cy="70" r="4"></circle>
+            <circle cx="120" cy="100" r="4"></circle>
+            <circle cx="180" cy="90" r="4"></circle>
+            <circle cx="140" cy="120" r="4"></circle>
+            <circle cx="90" cy="110" r="4"></circle>
+            <circle cx="160" cy="130" r="4"></circle>
+            
+            <!-- South America -->
+            <circle cx="180" cy="200" r="4"></circle>
+            <circle cx="200" cy="220" r="4"></circle>
+            <circle cx="190" cy="250" r="4"></circle>
+            <circle cx="210" cy="230" r="4"></circle>
+            <circle cx="170" cy="240" r="4"></circle>
+            
+            <!-- Europe -->
+            <circle cx="300" cy="80" r="4"></circle>
+            <circle cx="320" cy="70" r="4"></circle>
+            <circle cx="340" cy="90" r="4"></circle>
+            <circle cx="310" cy="100" r="4"></circle>
+            <circle cx="330" cy="85" r="4"></circle>
+            <circle cx="350" cy="75" r="4"></circle>
+            
+            <!-- Africa -->
+            <circle cx="300" cy="150" r="4"></circle>
+            <circle cx="320" cy="170" r="4"></circle>
+            <circle cx="340" cy="190" r="4"></circle>
+            <circle cx="310" cy="210" r="4"></circle>
+            <circle cx="330" cy="180" r="4"></circle>
+            
+            <!-- Asia -->
+            <circle cx="400" cy="100" r="4"></circle>
+            <circle cx="450" cy="90" r="4"></circle>
+            <circle cx="500" cy="110" r="4"></circle>
+            <circle cx="420" cy="120" r="4"></circle>
+            <circle cx="470" cy="130" r="4"></circle>
+            <circle cx="520" cy="100" r="4"></circle>
+            <circle cx="440" cy="140" r="4"></circle>
+            <circle cx="490" cy="120" r="4"></circle>
+            
+            <!-- Australia -->
+            <circle cx="550" cy="220" r="4"></circle>
+            <circle cx="570" cy="230" r="4"></circle>
+            <circle cx="560" cy="210" r="4"></circle>
+            
+            <!-- Map outline - simplified continents -->
+            <path d="M100,70 Q150,50 200,80 Q250,70 300,60 Q350,50 400,70 Q450,60 500,80 Q550,90 600,100 Q620,120 630,150 Q640,180 620,210 Q600,230 570,240 Q540,230 520,210 Q500,220 480,200 Q460,190 440,180 Q420,170 400,160 Q380,150 360,170 Q340,190 320,210 Q300,230 280,210 Q260,190 240,210 Q220,230 200,250 Q180,270 160,250 Q140,230 120,210 Q100,190 80,170 Q60,150 70,120 Q80,90 100,70 Z" stroke="#A855F7" stroke-width="1" fill-opacity="0.1"></path>
+            
+            <!-- Connection lines -->
+            <path d="M100,80 Q200,50 300,80" stroke="#A855F7" stroke-width="1" stroke-dasharray="2,2"></path>
+            <path d="M300,80 Q400,50 500,100" stroke="#A855F7" stroke-width="1" stroke-dasharray="2,2"></path>
+            <path d="M180,200 Q240,150 300,150" stroke="#A855F7" stroke-width="1" stroke-dasharray="2,2"></path>
+            <path d="M300,150 Q400,130 500,110" stroke="#A855F7" stroke-width="1" stroke-dasharray="2,2"></path>
+            <path d="M500,110 Q530,160 550,220" stroke="#A855F7" stroke-width="1" stroke-dasharray="2,2"></path>
+        </g>
+    </g>
+</svg>

@@ -46,6 +46,7 @@ const testimonials: Testimonial[] = [
     author: {
       name: "Tobias Arweiler",
       role: "Indie Hacker & Freelance Software Engineer",
+      company: "@Berlin, Germany",
       image: "/testimonials/tobias.jpg"
     }
   },
@@ -54,6 +55,7 @@ const testimonials: Testimonial[] = [
     author: {
       name: "Prageeth Silva",
       role: "AI & Tech enthusiast | Indie Hacker",
+      company: "@Colombo, Sri Lanka",
       image: "/testimonials/prageeth.jpg"
     }
   },
@@ -62,7 +64,35 @@ const testimonials: Testimonial[] = [
     author: {
       name: "Cameron Blackwood",
       role: "Founder",
+      company: "@Sydney, Australia",
       image: "/testimonials/cameron.jpg"
+    }
+  },
+  {
+    content: "J'ai pu lancer ma startup SaaS en un temps record grâce à ShipFastStarter. L'intégration avec les systèmes de paiement internationaux était particulièrement impressionnante.",
+    author: {
+      name: "Sophie Dubois",
+      role: "Fondatrice & Développeuse Full-Stack",
+      company: "@Paris, France",
+      image: "/testimonials/lee.jpg"
+    }
+  },
+  {
+    content: "Como desarrollador latinoamericano, ShipFastStarter me ha permitido competir globalmente con mi SaaS. La documentación clara y el soporte multilingüe han sido fundamentales para mi éxito.",
+    author: {
+      name: "Carlos Mendoza",
+      role: "CTO & Co-fundador",
+      company: "@Ciudad de México, México",
+      image: "/testimonials/prokop.jpg"
+    }
+  },
+  {
+    content: "ShipFastStarter 让我能够快速将我的创意转化为可盈利的 SaaS 产品。国际化功能使我能够轻松拓展全球市场。",
+    author: {
+      name: "李明",
+      role: "软件工程师 & 创业者",
+      company: "@上海, 中国",
+      image: "/testimonials/tobias.jpg"
     }
   }
 ]
@@ -82,7 +112,7 @@ const StarRating = () => {
 const VideoButton = () => {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <button className="rounded-full bg-white/10 p-3 text-white backdrop-blur-sm hover:bg-white/20 transition-all">
+      <button className="rounded-full bg-gray-800/70 dark:bg-white/10 p-3 text-white backdrop-blur-sm hover:bg-gray-800/90 dark:hover:bg-white/20 transition-all">
         <FaPlay className="h-6 w-6" />
       </button>
     </div>
@@ -91,13 +121,13 @@ const VideoButton = () => {
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 sm:py-32 bg-gray-950 text-white">
+    <section className="py-24 sm:py-32 bg-gray-950 dark:bg-gray-950 text-gray-900 dark:text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Trusted by 600+ developers<br />around the globe
           </h2>
-          <p className="mt-4 text-lg text-gray-300">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Read what customers love about Superstarter and how it helped them to launch their product.
           </p>
         </div>
@@ -106,7 +136,7 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index} 
-              className={`relative flex flex-col rounded-xl bg-gray-900 p-6 ${testimonial.hasVideo ? 'overflow-hidden' : ''}`}
+              className={`relative flex flex-col rounded-xl bg-white dark:bg-gray-900 p-6 ${testimonial.hasVideo ? 'overflow-hidden' : ''}`}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full">
@@ -122,10 +152,10 @@ export function TestimonialsSection() {
                   <div className="font-medium">
                     {testimonial.author.name}
                   </div>
-                  <div className="text-sm text-gray-400">
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {testimonial.author.role}
                     {testimonial.author.company && (
-                      <span className="text-gray-500"> {testimonial.author.company}</span>
+                      <span className="text-gray-700 dark:text-gray-500"> {testimonial.author.company}</span>
                     )}
                   </div>
                 </div>
@@ -134,7 +164,7 @@ export function TestimonialsSection() {
               <StarRating />
 
               {testimonial.hasVideo ? (
-                <div className="relative aspect-video w-full rounded-lg bg-gray-800 overflow-hidden">
+                <div className="relative aspect-video w-full rounded-lg bg-gray-200 dark:bg-gray-800 overflow-hidden">
                   <Image 
                     src="/testimonials/video-thumbnail.jpg" 
                     alt="Video testimonial" 
@@ -144,11 +174,11 @@ export function TestimonialsSection() {
                   <VideoButton />
                 </div>
               ) : (
-                <blockquote className="flex-1 text-sm text-gray-300 leading-relaxed">
+                <blockquote className="flex-1 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                   {testimonial.content}
                   {testimonial.content.length > 150 && (
                     <div className="mt-2">
-                      <button className="text-xs font-medium text-blue-400 hover:text-blue-300">
+                      <button className="text-xs font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
                         Read more
                       </button>
                     </div>

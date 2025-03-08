@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import React from 'react'
 
 interface IconProps {
@@ -73,8 +74,14 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <Link href="/" className="text-xl font-bold gradient-text">
-              ShipFast
+            <Link href="/" className="block">
+              <Image 
+                src="/logos/logo.svg" 
+                alt="ShipFastStarter Logo" 
+                width={150} 
+                height={40} 
+                className="dark:invert" 
+              />
             </Link>
             <p className="text-sm leading-6 text-text-secondary">
               Ship your next SaaS project faster with our Next.js starter kit.
