@@ -10,14 +10,14 @@ interface ComparisonItem {
 
 export function UniqueValueSection() {
   const comparisonItems: ComparisonItem[] = [
-    { feature: "Optimisé pour le déploiement global", shipFast: true, competitors: false },
-    { feature: "Support multi-langues intégré", shipFast: true, competitors: false },
-    { feature: "Paiements internationaux", shipFast: true, competitors: true },
-    { feature: "Conformité RGPD/GDPR", shipFast: true, competitors: true },
-    { feature: "Optimisation SEO internationale", shipFast: true, competitors: false },
-    { feature: "Documentation en plusieurs langues", shipFast: true, competitors: false },
-    { feature: "Support technique 24/7", shipFast: true, competitors: false },
-    { feature: "Mise à jour régulière", shipFast: true, competitors: true },
+    { feature: "Optimized for global deployment", shipFast: true, competitors: false },
+    { feature: "Integrated multi-language support", shipFast: true, competitors: false },
+    { feature: "International payments", shipFast: true, competitors: true },
+    { feature: "GDPR compliance", shipFast: true, competitors: true },
+    { feature: "International SEO optimization", shipFast: true, competitors: false },
+    { feature: "Multi-language documentation", shipFast: true, competitors: false },
+    { feature: "24/7 technical support", shipFast: true, competitors: false },
+    { feature: "Regular updates", shipFast: true, competitors: true },
   ]
 
   return (
@@ -25,10 +25,10 @@ export function UniqueValueSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Pourquoi choisir <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">ShipFastStarter</span>
+            Why choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">ShipFastStarter</span>
           </h2>
           <p className="mt-6 text-lg text-text-secondary">
-            Notre starter kit se distingue par sa conception orientée vers un déploiement global, permettant à votre SaaS de toucher un public international dès le premier jour.
+            Our starter kit stands out with its global deployment-oriented design, allowing your SaaS to reach an international audience from day one.
           </p>
         </div>
 
@@ -39,13 +39,13 @@ export function UniqueValueSection() {
               <div className="grid grid-cols-3">
                 {/* Header */}
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 text-center font-medium">
-                  Fonctionnalité
+                  Feature
                 </div>
                 <div className="bg-primary-purple/10 p-4 text-center font-medium text-primary-purple">
                   ShipFastStarter
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 text-center font-medium">
-                  Concurrents
+                  Competitors
                 </div>
                 
                 {/* Rows */}
@@ -96,14 +96,14 @@ export function UniqueValueSection() {
             <div className="relative mx-auto w-full max-w-lg">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-rose to-primary-purple rounded-lg blur opacity-30"></div>
               <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden p-8">
-                <h3 className="text-2xl font-bold mb-4">Présence Globale</h3>
+                <h3 className="text-2xl font-bold mb-4">Global Presence</h3>
                 <p className="text-text-secondary mb-6">
-                  ShipFastStarter est conçu pour vous aider à atteindre des clients dans le monde entier, avec des fonctionnalités spécifiquement adaptées pour un déploiement international.
+                  ShipFastStarter is designed to help you reach customers worldwide, with features specifically tailored for international deployment.
                 </p>
                 
                 <div className="relative h-64 w-full">
                   <Image
-                    src="/world-map-dots.svg"
+                    src="/world-map-dots.jpg"
                     alt="Global presence map"
                     fill
                     className="object-contain"
@@ -113,15 +113,15 @@ export function UniqueValueSection() {
                 <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary-purple">150+</div>
-                    <div className="text-sm text-text-secondary">Pays</div>
+                    <div className="text-sm text-text-secondary">Countries</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary-purple">20+</div>
-                    <div className="text-sm text-text-secondary">Langues</div>
+                    <div className="text-sm text-text-secondary">Languages</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary-purple">50+</div>
-                    <div className="text-sm text-text-secondary">Devises</div>
+                    <div className="text-sm text-text-secondary">Currencies</div>
                   </div>
                 </div>
               </div>
