@@ -99,7 +99,7 @@ const testimonials: Testimonial[] = [
 
 const StarRating = () => {
   return (
-    <div className="flex space-x-1 text-amber-400 mb-2">
+    <div className="flex space-x-1 text-amber-500 mb-3">
       <FaStar />
       <FaStar />
       <FaStar />
@@ -121,25 +121,25 @@ const VideoButton = () => {
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 sm:py-32 bg-gray-950 dark:bg-gray-950 text-gray-900 dark:text-white">
+    <section className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-center mb-20">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl text-gray-900 dark:text-white">
             Trusted by 600+ developers<br />around the globe
           </h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Read what customers love about Superstarter and how it helped them to launch their product.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 px-2">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index} 
-              className={`relative flex flex-col rounded-xl bg-white dark:bg-gray-900 p-6 ${testimonial.hasVideo ? 'overflow-hidden' : ''}`}
+              className={`relative flex flex-col rounded-xl bg-gray-100 dark:bg-gray-900 p-6 shadow-md border border-gray-200 dark:border-gray-800 ${testimonial.hasVideo ? 'overflow-hidden' : ''} hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300`}
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="relative h-12 w-12 overflow-hidden rounded-full">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full ring-2 ring-gray-200 dark:ring-gray-700">
                   <Image
                     className="h-full w-full object-cover"
                     src={testimonial.author.image}
@@ -149,7 +149,7 @@ export function TestimonialsSection() {
                   />
                 </div>
                 <div>
-                  <div className="font-medium">
+                  <div className="font-medium text-gray-900 dark:text-white">
                     {testimonial.author.name}
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -164,7 +164,7 @@ export function TestimonialsSection() {
               <StarRating />
 
               {testimonial.hasVideo ? (
-                <div className="relative aspect-video w-full rounded-lg bg-gray-200 dark:bg-gray-800 overflow-hidden">
+                <div className="relative aspect-video w-full rounded-lg bg-gray-200 dark:bg-gray-800 overflow-hidden shadow-inner">
                   <Image 
                     src="/testimonials/video-thumbnail.jpg" 
                     alt="Video testimonial" 
@@ -174,11 +174,11 @@ export function TestimonialsSection() {
                   <VideoButton />
                 </div>
               ) : (
-                <blockquote className="flex-1 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                <blockquote className="flex-1 text-sm text-gray-800 dark:text-gray-300 leading-relaxed">
                   {testimonial.content}
                   {testimonial.content.length > 150 && (
                     <div className="mt-2">
-                      <button className="text-xs font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+                      <button className="text-xs font-medium text-primary-purple hover:text-primary-purple/80 dark:text-primary-purple dark:hover:text-primary-purple/80 transition-colors">
                         Read more
                       </button>
                     </div>

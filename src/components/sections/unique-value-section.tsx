@@ -1,6 +1,7 @@
 "use client"
 
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 
 interface ComparisonItem {
   feature: string
@@ -9,6 +10,7 @@ interface ComparisonItem {
 }
 
 export function UniqueValueSection() {
+  const { resolvedTheme } = useTheme()
   const comparisonItems: ComparisonItem[] = [
     { feature: "Optimized for global deployment", shipFast: true, competitors: false },
     { feature: "Integrated multi-language support", shipFast: true, competitors: false },
@@ -24,10 +26,10 @@ export function UniqueValueSection() {
     <section className="py-24 bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl text-gray-900 dark:text-white">
             Why choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">ShipFastStarter</span>
           </h2>
-          <p className="mt-6 text-lg text-text-secondary">
+          <p className="mt-6 text-lg text-gray-700 dark:text-gray-300">
             Our starter kit stands out with its global deployment-oriented design, allowing your SaaS to reach an international audience from day one.
           </p>
         </div>
@@ -41,7 +43,7 @@ export function UniqueValueSection() {
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 text-center font-medium">
                   Feature
                 </div>
-                <div className="bg-primary-purple/10 p-4 text-center font-medium text-primary-purple">
+                <div className="bg-primary-purple/10 dark:bg-primary-purple/20 p-4 text-center font-medium text-primary-purple dark:text-primary-purple">
                   ShipFastStarter
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-900 p-4 text-center font-medium">
@@ -96,32 +98,39 @@ export function UniqueValueSection() {
             <div className="relative mx-auto w-full max-w-lg">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary-rose to-primary-purple rounded-lg blur opacity-30"></div>
               <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden p-8">
-                <h3 className="text-2xl font-bold mb-4">Global Presence</h3>
-                <p className="text-text-secondary mb-6">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Global Presence</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-6">
                   ShipFastStarter is designed to help you reach customers worldwide, with features specifically tailored for international deployment.
                 </p>
                 
-                <div className="relative h-64 w-full">
-                  <Image
-                    src="/world-map-dots.jpg"
-                    alt="Global presence map"
-                    fill
-                    className="object-contain"
-                  />
+                <div className="relative h-64 w-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Image
+                      src="/world-map-dots.jpg"
+                      alt="Global presence map"
+                      fill
+                      className={`object-contain ${resolvedTheme === 'dark' ? 'dark-map-filter' : 'light-map-filter'}`}
+                      style={{
+                        filter: resolvedTheme === 'dark' ? 'invert(0.8) hue-rotate(180deg) brightness(0.8) contrast(1.2)' : 'brightness(1) contrast(1)',
+                        mixBlendMode: resolvedTheme === 'dark' ? 'lighten' : 'normal',
+                        opacity: resolvedTheme === 'dark' ? '0.9' : '0.85'
+                      }}
+                    />
+                  </div>
                 </div>
                 
                 <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary-purple">150+</div>
-                    <div className="text-sm text-text-secondary">Countries</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300">Countries</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary-purple">20+</div>
-                    <div className="text-sm text-text-secondary">Languages</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300">Languages</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-primary-purple">50+</div>
-                    <div className="text-sm text-text-secondary">Currencies</div>
+                    <div className="text-sm text-gray-700 dark:text-gray-300">Currencies</div>
                   </div>
                 </div>
               </div>
