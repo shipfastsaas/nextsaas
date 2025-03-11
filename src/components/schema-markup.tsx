@@ -3,9 +3,9 @@ export const SchemaMarkup = () => {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "url": "https://shipfaststarter.com",
-    "name": "ShipFastStarter",
-    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
-    "keywords": "next.js saas starter kit, react saas boilerplate, saas template, build and ship faster, nextjs boilerplate, react starter kit, saas starter",
+    "name": "ShipFastStarter - The Best Next.js Boilerplate",
+    "description": "Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.",
+    "keywords": "best next.js boilerplate, next.js template, saas starter kit, react saas boilerplate, nextjs boilerplate, saas template, next.js 14, global saas solution, build and ship faster",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://shipfaststarter.com/search?q={search_term_string}",
@@ -18,7 +18,7 @@ export const SchemaMarkup = () => {
     "@type": "Organization",
     "url": "https://shipfaststarter.com",
     "name": "ShipFastStarter",
-    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
+    "description": "Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.",
     "logo": "https://shipfaststarter.com/logo.png",
     "sameAs": [
       "https://twitter.com/shipfaststarter",
@@ -29,8 +29,8 @@ export const SchemaMarkup = () => {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "ShipFastStarter - Next.js SaaS Starter Kit",
-    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
+    "name": "The Best Next.js Boilerplate | SaaS Starter Kit Template",
+    "description": "Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.",
     "category": "Software Development Tools",
     "brand": {
       "@type": "Brand",
@@ -39,31 +39,31 @@ export const SchemaMarkup = () => {
     "offers": {
       "@type": "Offer",
       "url": "https://shipfaststarter.com",
-      "price": "0",
+      "price": "199",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock"
     },
-    "keywords": "next.js saas starter kit, react saas boilerplate, saas template, build and ship faster"
+    "keywords": "best next.js boilerplate, next.js template, saas starter kit, react saas boilerplate, nextjs boilerplate, saas template, next.js 14, global saas solution"
   };
 
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "ShipFastStarter - Next.js SaaS Starter Kit",
+    "name": "The Best Next.js Boilerplate | SaaS Starter Kit Template",
     "applicationCategory": "DeveloperApplication",
-    "description": "Build and ship faster with our modern Next.js SaaS starter kit. Complete React SaaS boilerplate with authentication, payments, and beautiful UI components.",
+    "description": "Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.",
     "operatingSystem": "Any",
     "url": "https://shipfaststarter.com",
     "offers": {
       "@type": "Offer",
-      "price": "0",
+      "price": "199",
       "priceCurrency": "USD"
     },
     "applicationSubCategory": "Web Development Framework",
-    "keywords": "next.js saas starter kit, react saas boilerplate, saas template, build and ship faster",
+    "keywords": "best next.js boilerplate, next.js template, saas starter kit, react saas boilerplate, nextjs boilerplate, saas template, next.js 14",
     "featureList": [
       "Next.js 14",
-      "React SaaS Boilerplate",
+      "Best React SaaS Boilerplate",
       "Authentication",
       "Payment Integration",
       "Beautiful UI Components",
