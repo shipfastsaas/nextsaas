@@ -26,9 +26,9 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">Ship Faster.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">The Best Next.js Boilerplate</span>
               <br />
-              <span className="text-text-primary">Build Anything.</span>
+              <span className="text-text-primary">SaaS Starter Kit Template</span>
             </h1>
 
             <p className="text-lg text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0">
@@ -37,7 +37,7 @@ export function HeroSection() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
-                href="#"
+                href="#pricing"
                 className="w-full sm:w-auto rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-white font-medium shadow-lg shadow-primary-purple/25 hover:shadow-xl transition-all duration-200 text-center"
               >
                 Get Started Now

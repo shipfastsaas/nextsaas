@@ -16,15 +16,55 @@ export async function GET(request: Request) {
     // }
 
     console.log('Connecting to database...')
-    await dbConnect()
-    console.log('Connected to database, fetching posts...')
-    
-    // Récupérer les vrais articles de blog depuis MongoDB
-    const posts = await Post.find({}).sort({ createdAt: -1 })
-    
-    console.log(`Found ${posts.length} posts in database`)
-    
-    return NextResponse.json(posts)
+    try {
+      await dbConnect()
+      console.log('Connected to database, fetching posts...')
+      
+      // Récupérer les vrais articles de blog depuis MongoDB
+      const posts = await Post.find({}).sort({ createdAt: -1 })
+      
+      console.log(`Found ${posts.length} posts in database`)
+      
+      return NextResponse.json(posts)
+    } catch (dbError) {
+      console.error('Database connection failed, using mock data:', dbError)
+      
+      // Données fictives à utiliser lorsque la base de données n'est pas disponible
+      const mockPosts = [
+        {
+          _id: '1',
+          title: 'Comment déployer votre SaaS sur Vercel',
+          content: 'Contenu détaillé sur le déploiement de SaaS...',
+          excerpt: 'Un guide étape par étape pour déployer votre application SaaS sur Vercel',
+          featuredImage: '/img-blog/default-post-image.jpg',
+          status: 'published',
+          createdAt: new Date('2025-02-15'),
+          updatedAt: new Date('2025-02-15')
+        },
+        {
+          _id: '2',
+          title: 'Optimisation SEO pour applications Next.js',
+          content: 'Stratégies d\'optimisation SEO pour Next.js...',
+          excerpt: 'Découvrez comment améliorer le référencement de votre application Next.js',
+          featuredImage: '/img-blog/default-post-image.jpg',
+          status: 'published',
+          createdAt: new Date('2025-02-10'),
+          updatedAt: new Date('2025-02-10')
+        },
+        {
+          _id: '3',
+          title: 'Internationalisation avec next-intl',
+          content: 'Guide complet d\'internationalisation...',
+          excerpt: 'Comment rendre votre application accessible dans plusieurs langues',
+          featuredImage: '/img-blog/default-post-image.jpg',
+          status: 'published',
+          createdAt: new Date('2025-02-05'),
+          updatedAt: new Date('2025-02-05')
+        }
+      ];
+      
+      return NextResponse.json(mockPosts)
+    }
   } catch (error) {
     console.error('Failed to fetch posts:', error)
     return NextResponse.json(

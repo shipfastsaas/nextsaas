@@ -1,5 +1,6 @@
 "use client"
 
+import React from 'react'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 
@@ -52,15 +53,13 @@ export function UniqueValueSection() {
                 
                 {/* Rows */}
                 {comparisonItems.map((item, index) => (
-                  <>
+                  <React.Fragment key={`row-${index}`}>
                     <div 
-                      key={`feature-${index}`}
                       className={`p-4 border-t border-gray-200 dark:border-gray-800 ${index % 2 === 0 ? 'bg-white dark:bg-gray-950' : 'bg-gray-50 dark:bg-gray-900'}`}
                     >
                       {item.feature}
                     </div>
                     <div 
-                      key={`shipfast-${index}`}
                       className={`p-4 border-t border-gray-200 dark:border-gray-800 text-center ${index % 2 === 0 ? 'bg-white dark:bg-gray-950' : 'bg-gray-50 dark:bg-gray-900'}`}
                     >
                       {item.shipFast ? (
@@ -74,7 +73,6 @@ export function UniqueValueSection() {
                       )}
                     </div>
                     <div 
-                      key={`competitors-${index}`}
                       className={`p-4 border-t border-gray-200 dark:border-gray-800 text-center ${index % 2 === 0 ? 'bg-white dark:bg-gray-950' : 'bg-gray-50 dark:bg-gray-900'}`}
                     >
                       {item.competitors ? (
@@ -87,7 +85,7 @@ export function UniqueValueSection() {
                         </svg>
                       )}
                     </div>
-                  </>
+                  </React.Fragment>
                 ))}
               </div>
             </div>

@@ -28,14 +28,14 @@ export function DashboardStats() {
     },
     {
       name: 'Total Posts',
-      value: stats ? stats.totalPosts.toString() : '0',
+      value: stats && stats.totalPosts !== undefined ? stats.totalPosts.toString() : '0',
       icon: DocumentTextIcon,
       trend: '+4.75%',
       trendColor: 'text-green-500',
     },
     {
       name: 'Total Users',
-      value: stats ? stats.totalUsers.toString() : '0',
+      value: stats && stats.totalUsers !== undefined ? stats.totalUsers.toString() : '0',
       icon: UsersIcon,
       trend: '+21.2%',
       trendColor: 'text-green-500',

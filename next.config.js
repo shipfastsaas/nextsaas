@@ -13,7 +13,16 @@ const nextConfig = {
   },
   // Configuration des images
   images: {
-    domains: ['lh3.googleusercontent.com', 'api.dicebear.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.dicebear.com',
+      },
+    ],
   },
   // Configuration spécifique pour les routes API
   async headers() {

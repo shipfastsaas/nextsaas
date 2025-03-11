@@ -76,7 +76,7 @@ export function Footer() {
           <div className="space-y-8">
             <Link href="/" className="block">
               <Image 
-                src="/logos/logo.svg" 
+                src="/logo.png" 
                 alt="ShipFastStarter Logo" 
                 width={150} 
                 height={40} 
