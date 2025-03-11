@@ -1,7 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
+import { useGoogleAdsPageViewConversion } from '@/components/analytics/google-ads'
 
 export default function ThankYouPage() {
+  // Activer le suivi de conversion Google Ads
+  useGoogleAdsPageViewConversion()
+  
   return (
     <div className="min-h-[80vh] flex items-center justify-center">
       <div className="max-w-2xl mx-auto px-4 text-center">
