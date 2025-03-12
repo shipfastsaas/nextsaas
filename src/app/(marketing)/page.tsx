@@ -16,10 +16,9 @@ export default function Home() {
       <FeaturesSection />
       <UniqueValueSection />
       <TestimonialsSection />
-      <NewsletterSection />
       <PricingSection />
       <FaqSection />
-      <CtaSection />
+      <NewsletterSection />
     </main>
   )
 }
