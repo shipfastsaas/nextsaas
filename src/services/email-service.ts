@@ -31,13 +31,9 @@ export async function sendPurchaseConfirmationEmail({
       })
     );
 
-    // Déterminer l'adresse du destinataire
-    // En production, envoyer à l'adresse email réelle du client
-    // En développement, envoyer à l'adresse de test
-    const isProduction = process.env.NODE_ENV === 'production';
-    const recipientEmail = isProduction 
-      ? customerEmail 
-      : 'shipfaststartup@gmail.com';
+    // Toujours envoyer à l'adresse email du client
+    // Resend permet maintenant d'envoyer à n'importe quelle adresse avec un domaine vérifié
+    const recipientEmail = customerEmail;
 
     // Envoyer l'email via Resend
     const { data, error } = await resend.emails.send({
