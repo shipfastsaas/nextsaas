@@ -2,6 +2,7 @@
 
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useCheckout } from '@/hooks/use-checkout'
+import Image from 'next/image'
 
 const features = [
   {
@@ -39,6 +40,50 @@ export function PricingSection() {
             <p className="text-xl text-text-secondary mb-8">
               ShipFast is a one-time purchase with no recurring fees. You get access to the repository and can use it for as many projects as you want.
             </p>
+            
+            {/* Testimonials Section */}
+            <div className="mb-8">
+              <div className="flex items-center mb-2">
+                <div className="flex -space-x-2 mr-4">
+                  <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                    <Image src="/testimonials/cameron.jpg" alt="User" width={40} height={40} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                    <Image src="/testimonials/lee.jpg" alt="User" width={40} height={40} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                    <Image src="/testimonials/prageeth.jpg" alt="User" width={40} height={40} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                    <Image src="/testimonials/tobias.jpg" alt="User" width={40} height={40} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                    <Image src="/testimonials/prokop.jpg" alt="User" width={40} height={40} className="w-full h-full object-cover" />
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center text-yellow-400 mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                    </svg>
+                    <span className="ml-2 text-2xl font-semibold text-gray-800 dark:text-white">5.0</span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">trusted by 100+ developers & founders</p>
+                </div>
+              </div>
+            </div>
             
             <div className="flex items-center gap-4 mb-8">
               <div className="bg-primary-purple/10 p-2 rounded-lg">
@@ -87,9 +132,13 @@ export function PricingSection() {
               <button 
                 onClick={checkout}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-primary-rose to-primary-purple text-white rounded-xl py-4 px-6 font-semibold hover:opacity-90 transition-opacity mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-6 py-4 text-base font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
               >
-                {isLoading ? 'Processing...' : 'Get ShipFast Now'}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                  <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+                </svg>
+                <span className="relative z-10">{isLoading ? 'Processing...' : 'Get ShipFast Now'}</span>
+                <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
               </button>
 
               {error && (
