@@ -31,10 +31,18 @@ export async function sendPurchaseConfirmationEmail({
       })
     );
 
+    // Déterminer l'adresse du destinataire
+    // En production, envoyer à l'adresse email réelle du client
+    // En développement, envoyer à l'adresse de test
+    const isProduction = process.env.NODE_ENV === 'production';
+    const recipientEmail = isProduction 
+      ? customerEmail 
+      : 'shipfaststartup@gmail.com';
+
     // Envoyer l'email via Resend
     const { data, error } = await resend.emails.send({
       from: SENDER_EMAIL,
-      to: customerEmail,
+      to: recipientEmail,
       subject: `Confirmation d'achat - ${productName || 'ShipFast Starter Kit'}`,
       html,
     });

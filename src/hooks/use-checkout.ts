@@ -1,8 +1,5 @@
 import { useState } from 'react'
 
-// Utiliser stripePromise ou le supprimer si non nécessaire
-// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
-
 export function useCheckout() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -21,7 +18,13 @@ export function useCheckout() {
       })
 
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        const errorData = await response.text().catch(() => null);
+        console.error('Checkout API error:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorData
+        });
+        throw new Error(`Network response was not ok (${response.status}: ${response.statusText})`);
       }
 
       const { url } = await response.json()

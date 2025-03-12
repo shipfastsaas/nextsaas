@@ -30,6 +30,7 @@ export const PurchaseConfirmationEmail = ({
   amount = '$199',
 }: PurchaseConfirmationEmailProps) => {
   const previewText = `Merci pour votre achat de ${productName}`;
+  const logoUrl = 'https://www.shipfastsaas.com/_next/image?url=%2Flogo.png&w=384&q=75';
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://shipfaststarter.com';
 
   return (
@@ -42,9 +43,9 @@ export const PurchaseConfirmationEmail = ({
           {/* Header with logo */}
           <Section style={logoContainer}>
             <Img
-              src={`${appUrl}/logo.png`}
-              width="80"
-              height="80"
+              src={logoUrl}
+              width="150"
+              height="40"
               alt="ShipFastStarter Logo"
               style={logo}
             />

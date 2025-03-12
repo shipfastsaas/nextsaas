@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   metadataBase: new URL('https://shipfaststarter.com'),
-  title: 'The Best Next.js Boilerplate | SaaS Starter Kit Template | ShipFastStarter',
+  title: 'The Best Next.js Boilerplate | SaaS Starter Kit Template | All-in-One Next.js Solution',
   description: 'Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.',
   keywords: 'best next.js boilerplate, next.js template, saas starter kit, react saas boilerplate, nextjs boilerplate, saas template, next.js 14, global saas solution, build and ship faster, multi-language saas, global payments',
   alternates: {

@@ -3,6 +3,23 @@ import { stripe, SUCCESS_URL, CANCEL_URL } from '@/lib/stripe'
 
 export async function POST() {
   try {
+    // Vérifier les variables d'environnement nécessaires
+    if (!process.env.STRIPE_SECRET_KEY) {
+      console.error('Missing STRIPE_SECRET_KEY environment variable');
+      return NextResponse.json(
+        { error: 'Server configuration error: Missing Stripe key' },
+        { status: 500 }
+      );
+    }
+
+    if (!process.env.NEXT_PUBLIC_APP_URL) {
+      console.error('Missing NEXT_PUBLIC_APP_URL environment variable');
+      return NextResponse.json(
+        { error: 'Server configuration error: Missing app URL' },
+        { status: 500 }
+      );
+    }
+
     // Create Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -29,11 +46,21 @@ export async function POST() {
     })
 
     return NextResponse.json({ url: session.url })
-  } catch (error) {
-    console.error('Error creating checkout session:', error)
+  } catch (error: any) {
+    console.error('Error creating checkout session:', error);
+    
+    // Fournir des informations d'erreur plus détaillées
+    const errorMessage = error.message || 'Unknown error';
+    const errorType = error.type || 'unknown_type';
+    const errorCode = error.statusCode || 500;
+    
     return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
+      { 
+        error: 'Stripe Error', 
+        message: errorMessage,
+        type: errorType 
+      },
+      { status: errorCode }
     )
   }
 }
