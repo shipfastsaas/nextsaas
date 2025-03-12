@@ -10,17 +10,27 @@ export function useGoogleAdsPageViewConversion() {
   const searchParams = useSearchParams()
   
   useEffect(() => {
-    // Assurez-vous que window et gtag sont définis
-    if (typeof window !== 'undefined' && typeof (window as any).gtag !== 'undefined') {
-      // Déclencher la conversion pour les pages spécifiques
-      if (pathname === '/thank-you' || pathname === '/merci') {
-        // Envoyer un événement de conversion avec l'ID spécifique
+    // Vérifier si nous sommes sur la page thank-you
+    const isThankYouPage = pathname === '/thank-you' || pathname === '/merci'
+    
+    if (!isThankYouPage) return
+    
+    // Attendre que gtag soit disponible
+    const checkGtagAndSendConversion = () => {
+      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+        // Envoyer l'événement de conversion avec l'ID spécifique
         (window as any).gtag('event', 'conversion', {
-          'send_to': 'AW-16887311626/aaFxCKCerqkaElrav_Q-',
+          'send_to': 'AW-16887311626/aaFxCKCerqkaElrav_Q-'
         })
         console.log('Google Ads conversion tracked for page:', pathname)
+      } else {
+        // Réessayer dans 1 seconde
+        setTimeout(checkGtagAndSendConversion, 1000)
       }
     }
+    
+    // Démarrer la vérification
+    checkGtagAndSendConversion()
   }, [pathname, searchParams])
 }
 
@@ -29,9 +39,9 @@ export function GoogleAds() {
     <>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=AW-16887311626"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
-      <Script id="google-ads" strategy="afterInteractive">
+      <Script id="google-ads" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
