@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
+import { sendPurchaseConfirmationEmail } from '@/services/email-service'
 
 export async function POST(req: Request) {
   const body = await req.text()
@@ -25,28 +26,57 @@ export async function POST(req: Request) {
 
       // Verify the payment and grant access
       if (session.payment_status === 'paid') {
-        // TODO: Add your logic here
-        // - Create user account if doesn't exist
-        // - Grant access to the starter kit
-        // - Send confirmation email
-        // - etc.
+        console.log('Paiement confirmé, envoi de l\'email de confirmation...')
+        
+        try {
+          // Récupérer les informations du client depuis la session
+          const customerEmail = session.customer_details?.email
+          const customerName = session.customer_details?.name || 'Valued Customer'
+          
+          // Récupérer les informations du produit
+          const productName = 'ShipFast Starter Kit'
+          const amount = new Intl.NumberFormat('fr-FR', {
+            style: 'currency',
+            currency: 'USD'
+          }).format(session.amount_total ? session.amount_total / 100 : 199)
+          
+          // Lien vers le repo GitHub du template
+          const githubLink = 'https://github.com/shipfaststarter/template'
+          
+          if (customerEmail) {
+            // Envoyer l'email de confirmation d'achat
+            const emailResult = await sendPurchaseConfirmationEmail({
+              customerEmail,
+              customerName,
+              productName,
+              githubLink,
+              amount
+            })
+            
+            if (emailResult.success) {
+              console.log(`Email de confirmation envoyé à ${customerEmail}`)
+            } else {
+              console.error(`Échec de l'envoi de l'email à ${customerEmail}:`, emailResult.error)
+            }
+          } else {
+            console.error('Email du client non disponible dans la session Stripe')
+          }
+        } catch (error) {
+          console.error('Erreur lors du traitement de la confirmation d\'achat:', error)
+        }
       }
       break
     }
 
     case 'payment_intent.succeeded': {
       const paymentIntent = event.data.object
-      // Utiliser paymentIntent ou le supprimer si non nécessaire
-      console.log('Payment Intent:', paymentIntent);
-      // TODO: Handle successful payment if needed
+      console.log('Payment Intent succeeded:', paymentIntent.id)
       break
     }
 
     case 'payment_intent.payment_failed': {
       const paymentIntent = event.data.object
-      // Utiliser paymentIntent ou le supprimer si non nécessaire
-      console.log('Payment Intent:', paymentIntent);
-      // TODO: Handle failed payment if needed
+      console.log('Payment Intent failed:', paymentIntent.id)
       break
     }
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
+import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 
 const navigation = [
@@ -88,9 +89,11 @@ export function Header() {
           {/* CTA Button */}
           <a
             href="#pricing"
-            className="rounded-3xl bg-gradient-to-r from-primary-rose to-primary-purple px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-rose"
+            className="rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center gap-1.5"
           >
-            Get Started
+            <ShoppingCartIcon className="h-4 w-4" />
+            <span className="relative z-10">Buy Next.js Template</span>
+            <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
           </a>
         </div>
       </nav>
