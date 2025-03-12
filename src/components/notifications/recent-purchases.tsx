@@ -17,29 +17,29 @@ const samplePurchases: Purchase[] = [
   {
     id: '1',
     name: 'Sarah',
-    location: 'New York, USA',
-    product: 'Pro Plan',
+    location: 'Los Angeles, USA',
+    product: 'Lifetime access',
     time: '2 minutes ago'
   },
   {
     id: '2',
     name: 'Michael',
     location: 'London, UK',
-    product: 'Business Plan',
+    product: 'Lifetime access',
     time: '5 minutes ago'
   },
   {
     id: '3',
     name: 'Emma',
     location: 'Toronto, Canada',
-    product: 'Starter Plan',
+    product: 'Lifetime access',
     time: '8 minutes ago'
   },
   {
     id: '4',
     name: 'James',
     location: 'Sydney, Australia',
-    product: 'Pro Plan',
+    product: 'Lifetime access',
     time: '12 minutes ago'
   },
 ]
