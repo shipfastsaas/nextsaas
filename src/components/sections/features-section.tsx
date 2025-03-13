@@ -266,7 +266,7 @@ export function FeaturesSection() {
         </svg>
       ),
       learnMoreLink: "#landing-page"
-    },
+    }, 
     {
       title: "Deployment",
       description: "One-click deployment to Vercel, Netlify, or your preferred platform.",
