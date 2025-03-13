@@ -32,31 +32,66 @@ export function FaqSection() {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-white dark:bg-gray-900">
+    <section id="faq" className="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
+          <span className="inline-block px-4 py-1 rounded-full bg-primary-purple/10 text-primary-purple text-sm font-medium mb-5">
+            FAQ
+          </span>
+          <h2 className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl mb-6">
             Frequently asked questions
           </h2>
-          <p className="mt-6 text-lg text-text-secondary">
+          <p className="text-lg text-text-secondary">
             Find answers to common questions about ShipFastSaaS and how it can help you build your next web project.
           </p>
         </div>
-        <div className="mx-auto max-w-3xl divide-y divide-gray-200 dark:divide-gray-800">
-          <dl className="space-y-8 divide-y divide-gray-200 dark:divide-gray-800">
-            {faqs.map((faq, index) => (
-              <div key={index} className="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
-                <dt className="text-base font-semibold leading-7 text-text-primary lg:col-span-5">
-                  {faq.question}
-                </dt>
-                <dd className="mt-4 lg:col-span-7 lg:mt-0">
-                  <p className="text-base text-text-secondary">
-                    {faq.answer}
-                  </p>
-                </dd>
-              </div>
-            ))}
-          </dl>
+        
+        <div className="mx-auto max-w-3xl space-y-4">
+          {faqs.map((faq, index) => (
+            <Disclosure as="div" key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
+              {({ open }) => (
+                <>
+                  <Disclosure.Button className="flex w-full justify-between items-center px-6 py-5 text-left">
+                    <span className="text-lg font-semibold text-text-primary">
+                      {faq.question}
+                    </span>
+                    <ChevronDownIcon
+                      className={`${
+                        open ? 'rotate-180 transform' : ''
+                      } h-5 w-5 text-primary-purple transition-transform duration-200`}
+                    />
+                  </Disclosure.Button>
+                  <Transition
+                    show={open}
+                    enter="transition duration-200 ease-out"
+                    enterFrom="transform scale-95 opacity-0"
+                    enterTo="transform scale-100 opacity-100"
+                    leave="transition duration-150 ease-out"
+                    leaveFrom="transform scale-100 opacity-100"
+                    leaveTo="transform scale-95 opacity-0"
+                  >
+                    <Disclosure.Panel className="px-6 pb-5 pt-2">
+                      <p className="text-text-secondary">
+                        {faq.answer}
+                      </p>
+                    </Disclosure.Panel>
+                  </Transition>
+                </>
+              )}
+            </Disclosure>
+          ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <p className="text-text-secondary mb-6">
+            Still have questions? We're here to help.
+          </p>
+          <a 
+            href="#contact" 
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-purple hover:bg-primary-purple/90 transition-colors duration-200"
+          >
+            Contact us
+          </a>
         </div>
       </div>
     </section>
