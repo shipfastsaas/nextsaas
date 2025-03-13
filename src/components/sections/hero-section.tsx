@@ -42,7 +42,7 @@ export function HeroSection() {
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3.5 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                   </svg>
                   Buy Next.js Template
                 </span>
@@ -147,6 +147,92 @@ export function HeroSection() {
               </div>
 
           
+            </div>
+          </div>
+        </div>
+
+        {/* Technology Logos Section */}
+        <div className="mt-16 pt-8">
+          <div className="text-center mb-8">
+            <h3 className="text-sm font-medium text-text-secondary uppercase tracking-wider">BUILT WITH THE TOOLS YOU LOVE</h3>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-8">
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/nextjs-icon.svg" 
+                  alt="Next.js" 
+                  width={40} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Next.js</span>
+            </div>
+            
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/mongodb-logo.svg" 
+                  alt="MongoDB" 
+                  width={100} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">MongoDB</span>
+            </div>
+            
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/resend-logo.webp" 
+                  alt="Resend" 
+                  width={100} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Resend</span>
+            </div>
+            
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/tailwind-css-logo.png" 
+                  alt="Tailwind CSS" 
+                  width={100} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Tailwind CSS</span>
+            </div>
+            
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/stripe-logo.gif" 
+                  alt="Stripe" 
+                  width={80} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Stripe</span>
+            </div>
+            
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/Vercel-Logo.jpg" 
+                  alt="Vercel" 
+                  width={80} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Vercel</span>
             </div>
           </div>
         </div>

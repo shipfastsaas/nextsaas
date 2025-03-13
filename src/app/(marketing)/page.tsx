@@ -12,7 +12,6 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
-      <DemoSection />
       <FeaturesSection />
       <UniqueValueSection />
       <TestimonialsSection />

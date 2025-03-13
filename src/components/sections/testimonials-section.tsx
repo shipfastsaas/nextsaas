@@ -16,85 +16,53 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    content: "Superstarter was extremely easy to get set up and deployed. I had a working project in just a few minutes!",
+    content: "ShipFastSaaS helped me launch my online coaching business in just a week. The built-in payment system and content management tools saved me months of development time.",
     author: {
-      name: "Lee Robinson",
-      role: "VP of Developer Experience",
-      company: "@vercel",
-      image: "/testimonials/lee.jpg"
-    }
-  },
-  {
-    content: "I've stumbled upon the most cutting-edge SaaS starter I've ever encountered - it's not just about the polished visuals, but the entire technical foundation is built on modern best practices and tools, making it a true game-changer for developers.",
-    author: {
-      name: "Prokop PS Simek",
-      role: "CEO at Heroes, the Developer Experience company",
-      image: "/testimonials/prokop.jpg"
-    }
-  },
-  {
-    hasVideo: true,
-    content: "",
-    author: {
-      name: "Cameron Blackwood",
-      role: "Founder",
+      name: "Mark Johnson",
+      role: "Life Coach & Entrepreneur",
       image: "/testimonials/cameron.jpg"
     }
   },
   {
-    content: "Superstarter helped a ton with getting my project off the ground. You get authentication, prisma db connections, migrations, marketing and sales funnels for your app, the damn complex payment subscription hooks setup...",
+    content: "As a non-technical founder, I was amazed at how quickly I could set up my e-commerce site with ShipFastSaaS. The responsive design looks great on all devices and the SEO features are helping me rank higher.",
     author: {
-      name: "Tobias Arweiler",
-      role: "Indie Hacker & Freelance Software Engineer",
-      company: "@Berlin, Germany",
+      name: "Michael Chen",
+      role: "E-commerce Store Owner",
+      image: "/testimonials/video-thumbnail.jpg"
+    }
+  },
+  {
+    content: "The flexibility of ShipFastSaaS is incredible. I've used it to build both my portfolio website and client management system. The customization options let me create exactly what I needed.",
+    author: {
+      name: "Emma Rodriguez",
+      role: "Freelance Designer",
       image: "/testimonials/tobias.jpg"
     }
   },
   {
-    content: "As an experienced developer and an indie hacker, I prioritize speed when shipping products. After trying out Superstarter, I was genuinely impressed! Its built-in features allowed me to launch my latest product in just a few days.",
+    content: "We needed a website that could handle our content marketing strategy while also providing user authentication for our members. ShipFastSaaS delivered both beautifully.",
     author: {
-      name: "Prageeth Silva",
-      role: "AI & Tech enthusiast | Indie Hacker",
-      company: "@Colombo, Sri Lanka",
+      name: "David Kim",
+      role: "Marketing Director",
+      image: "/testimonials/prokop.jpg"
+    }
+  },
+  {
+    content: "The analytics features in ShipFastSaaS have been invaluable for understanding our audience. Setting up our nonprofit's donation system was also surprisingly easy.",
+    author: {
+      name: "Aisha Patel",
+      role: "Nonprofit Founder",
       image: "/testimonials/prageeth.jpg"
     }
   },
   {
-    content: "Superstarter has helped me launch a new product in record time - it gives you everything you need to get up and running quickly, and provides a solid foundation to build upon.",
+    content: "As someone with basic coding skills, I appreciate how ShipFastSaaS gives me the flexibility to customize when I want to, but handles all the complex parts automatically.",
     author: {
-      name: "Cameron Blackwood",
-      role: "Founder",
-      company: "@Sydney, Australia",
-      image: "/testimonials/cameron.jpg"
-    }
-  },
-  {
-    content: "J'ai pu lancer ma startup SaaS en un temps record grâce à ShipFastStarter. L'intégration avec les systèmes de paiement internationaux était particulièrement impressionnante.",
-    author: {
-      name: "Sophie Dubois",
-      role: "Fondatrice & Développeuse Full-Stack",
-      company: "@Paris, France",
+      name: "Thomas Wilson",
+      role: "Small Business Owner",
       image: "/testimonials/lee.jpg"
     }
   },
-  {
-    content: "Como desarrollador latinoamericano, ShipFastStarter me ha permitido competir globalmente con mi SaaS. La documentación clara y el soporte multilingüe han sido fundamentales para mi éxito.",
-    author: {
-      name: "Carlos Mendoza",
-      role: "CTO & Co-fundador",
-      company: "@Ciudad de México, México",
-      image: "/testimonials/prokop.jpg"
-    }
-  },
-  {
-    content: "ShipFastStarter 让我能够快速将我的创意转化为可盈利的 SaaS 产品。国际化功能使我能够轻松拓展全球市场。",
-    author: {
-      name: "李明",
-      role: "软件工程师 & 创业者",
-      company: "@上海, 中国",
-      image: "/testimonials/tobias.jpg"
-    }
-  }
 ]
 
 const StarRating = () => {
@@ -121,70 +89,54 @@ const VideoButton = () => {
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white">
+    <section id="testimonials" className="py-24 bg-gray-50 dark:bg-gray-800/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-20">
           <h2 className="text-4xl font-bold tracking-tight sm:text-5xl text-gray-900 dark:text-white">
-            Trusted by 600+ developers<br />around the globe
+            Trusted by 100+ creators<br />around the globe
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Read what customers love about Superstarter and how it helped them to launch their product.
+            See how people from various industries are using ShipFastSaaS to build their online presence and grow their businesses.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 px-2">
+
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div 
-              key={index} 
-              className={`relative flex flex-col rounded-xl bg-gray-100 dark:bg-gray-900 p-6 shadow-md border border-gray-200 dark:border-gray-800 ${testimonial.hasVideo ? 'overflow-hidden' : ''} hover:shadow-lg hover:translate-y-[-2px] transition-all duration-300`}
+            <div
+              key={index}
+              className="flex flex-col justify-between rounded-3xl bg-white dark:bg-gray-800 p-8 shadow-lg ring-1 ring-gray-900/10 dark:ring-gray-700 h-full"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="relative h-12 w-12 overflow-hidden rounded-full ring-2 ring-gray-200 dark:ring-gray-700">
-                  <Image
-                    className="h-full w-full object-cover"
-                    src={testimonial.author.image}
-                    alt={testimonial.author.name}
-                    width={48}
-                    height={48}
-                  />
-                </div>
-                <div>
-                  <div className="font-medium text-gray-900 dark:text-white">
-                    {testimonial.author.name}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    {testimonial.author.role}
-                    {testimonial.author.company && (
-                      <span className="text-gray-700 dark:text-gray-500"> {testimonial.author.company}</span>
-                    )}
+              <div>
+                <div className="flex gap-x-3">
+                  <img src={testimonial.author.image} alt="" className="h-12 w-12 rounded-full bg-gray-50" />
+                  <div>
+                    <h3 className="text-lg font-semibold leading-6 text-gray-900 dark:text-white">
+                      {testimonial.author.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.author.role}</p>
                   </div>
                 </div>
-              </div>
-
-              <StarRating />
-
-              {testimonial.hasVideo ? (
-                <div className="relative aspect-video w-full rounded-lg bg-gray-200 dark:bg-gray-800 overflow-hidden shadow-inner">
-                  <Image 
-                    src="/testimonials/video-thumbnail.jpg" 
-                    alt="Video testimonial" 
-                    fill 
-                    className="object-cover" 
-                  />
-                  <VideoButton />
-                </div>
-              ) : (
-                <blockquote className="flex-1 text-sm text-gray-800 dark:text-gray-300 leading-relaxed">
+                <blockquote className="mt-6 text-base leading-relaxed text-gray-700 dark:text-gray-300">
                   {testimonial.content}
-                  {testimonial.content.length > 150 && (
-                    <div className="mt-2">
-                      <button className="text-xs font-medium text-primary-purple hover:text-primary-purple/80 dark:text-primary-purple dark:hover:text-primary-purple/80 transition-colors">
-                        Read more
-                      </button>
-                    </div>
-                  )}
                 </blockquote>
-              )}
+              </div>
+              <div className="mt-8 flex items-center text-primary-purple">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                </svg>
+              </div>
             </div>
           ))}
         </div>
