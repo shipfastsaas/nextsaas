@@ -31,7 +31,7 @@ export function Header() {
     if (typeof window === 'undefined') return
     
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
+      setIsScrolled(window.scrollY > 50)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -42,17 +42,19 @@ export function Header() {
   }
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
-    }`}>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+    <header className="fixed w-full z-50 px-4 py-3 flex justify-center">
+      <div className={`max-w-5xl w-full rounded-full transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg' 
+          : 'bg-gray-900/95 dark:bg-gray-800/95 shadow-md'
+      } px-3 py-2 flex items-center justify-between`}>
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="ShipFast"
-              width={190}
-              height={150}
+              width={120}
+              height={40}
               className="h-8 w-auto"
               priority
             />
@@ -60,29 +62,37 @@ export function Header() {
         </div>
         
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex lg:gap-x-8">
+        <div className="hidden md:flex items-center gap-1">
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-text-primary dark:text-white hover:text-primary-rose dark:hover:text-primary-rose transition-colors"
+              className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
+                isScrolled 
+                  ? 'text-text-primary hover:text-primary-rose dark:text-white dark:hover:text-primary-rose' 
+                  : 'text-gray-200 hover:text-primary-rose'
+              }`}
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
 
-        <div className="flex flex-1 justify-end items-center gap-4">
+        <div className="flex items-center gap-2">
           {/* Theme Toggle */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className={`p-2 rounded-full ${
+              isScrolled 
+                ? 'hover:bg-gray-100 dark:hover:bg-gray-700/50' 
+                : 'hover:bg-white/10'
+            }`}
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
-              <SunIcon className="h-5 w-5 text-text-primary dark:text-white" />
+              <SunIcon className="h-5 w-5 text-gray-200" />
             ) : (
-              <MoonIcon className="h-5 w-5 text-text-primary" />
+              <MoonIcon className={`h-5 w-5 ${isScrolled ? 'text-gray-700' : 'text-gray-200'}`} />
             )}
           </button>
 
@@ -96,7 +106,7 @@ export function Header() {
             <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
           </a>
         </div>
-      </nav>
+      </div>
     </header>
   )
 }

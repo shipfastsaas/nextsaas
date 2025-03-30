@@ -1,158 +1,148 @@
 import Image from 'next/image'
+import { ShoppingCartIcon, PlayCircleIcon } from '@heroicons/react/24/solid'
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-background">
+    <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-transparent" />
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-primary-rose/30 rounded-full filter blur-3xl opacity-70 animate-pulse" />
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-primary-purple/30 rounded-full filter blur-3xl opacity-70 animate-pulse delay-75" />
-        <div className="absolute -z-10 inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary-rose/5 to-primary-purple/5" />
+        
+        {/* Simple grid pattern */}
+        <div className="absolute -z-10 inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]" />
+        
+        {/* Elegant accent elements */}
+        <div className="absolute top-20 right-1/4 w-64 h-64 bg-primary-purple/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-primary-rose/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative px-6 py-24 mx-auto max-w-7xl lg:px-8 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Text Content */}
-          <div className="text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-8">
-              <span className="px-3 py-1 text-sm text-primary-purple bg-primary-purple/10 rounded-full">
-                Next.js 14 Universal Starter Kit
-              </span>
-              <span className="flex items-center text-sm text-text-secondary">
-                <span className="w-2 h-2 mr-2 rounded-full bg-green-500 animate-pulse" />
-                Ready to Ship
-              </span>
+        {/* Top Badge Section */}
+        <div className="flex items-center justify-center gap-4 mb-8">
+          <div className="flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+            <div className="flex -space-x-3">
+              <Image 
+                src="/avatars/avatar-1.png" 
+                alt="User Avatar" 
+                width={36} 
+                height={36} 
+                className="rounded-full border-4 border-primary-rose shadow-lg hover:scale-110 transition-transform z-40"
+              />
+              <Image 
+                src="/avatars/avatar-2.png" 
+                alt="User Avatar" 
+                width={36} 
+                height={36} 
+                className="rounded-full border-4 border-primary-purple shadow-lg hover:scale-110 transition-transform z-30"
+              />
+              <Image 
+                src="/avatars/avatar-3.png" 
+                alt="User Avatar" 
+                width={36} 
+                height={36} 
+                className="rounded-full border-4 border-blue-400 shadow-lg hover:scale-110 transition-transform z-20"
+              />
+              <Image 
+                src="/avatars/avatar-4.png" 
+                alt="User Avatar" 
+                width={36} 
+                height={36} 
+                className="rounded-full border-4 border-green-400 shadow-lg hover:scale-110 transition-transform z-10"
+              />
             </div>
+            <span className="text-sm font-medium text-text-secondary">4,000+ Pro Users</span>
+          </div>
+        </div>
+        
+        {/* Main Content - Centered Text */}
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">Simplify, Scale, Succeed</span>
+            <br />
+            <span className="text-text-primary">With Our SaaS Solution</span>
+          </h1>
 
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">The Best Next.js Boilerplate</span>
-              <br />
-              <span className="text-text-primary">SaaS Starter Kit Template</span>
-            </h1>
+          <p className="text-xl text-text-secondary mb-12 max-w-2xl mx-auto">
+            Launch your website in days, not months. Whether it's a SaaS, freelance portfolio, or any web project, our Next.js starter kit includes everything you need.
+            Authentication, payment, SEO, analytics, marketing, security, and more.
+          </p>
 
-            <p className="text-lg text-text-secondary mb-8 max-w-xl mx-auto lg:mx-0">
-              Launch your website in days, not months. Whether it's a SaaS, freelance portfolio, or any web project, our Next.js starter kit includes everything you need: Authentication, Database, Payments, and beautiful UI components.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a
-                href="#pricing"
-                className="w-full sm:w-auto rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-white font-bold shadow-lg shadow-primary-purple/25 hover:shadow-xl transition-all duration-200 text-center text-lg relative overflow-hidden group"
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3.5 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                  </svg>
-                  Buy Next.js Template
-                </span>
-                <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-              </a>
-              <a
-                href="#"
-                className="w-full sm:w-auto rounded-full bg-background-surface px-8 py-4 text-text-primary font-medium shadow hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
-                </svg>
-                Watch Demo
-              </a>
-            </div>
-
-            {/* Trust Signals */}
-            <div className="mt-8 pt-4">
-              {/* Stats Cards */}
-              <div className="flex justify-center lg:justify-start items-center gap-6 mb-8">
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full bg-primary-purple/10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                    </svg>
-                  </div>
-                  <div className="flex flex-col">
-                    <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">200+</div>
-                    <div className="text-xs text-text-secondary">Active Developers</div>
-                  </div>
-                </div>
-                
-                <div className="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
-                
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full bg-primary-purple/10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                    </svg>
-                  </div>
-                  <div className="flex flex-col">
-                    <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">4.9/5</div>
-                    <div className="text-xs text-text-secondary">Average Rating</div>
-                  </div>
-                </div>
-                
-                <div className="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
-                
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full bg-primary-purple/10 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-                    </svg>
-                  </div>
-                  <div className="flex flex-col">
-                    <div className="flex items-center">
-                      <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">24/7</span>
-                      <span className="ml-1 h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                    </div>
-                    <div className="text-xs text-text-secondary">Discord Support</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <p className="text-sm leading-6 text-gray-900">
-                  Don&apos;t waste time building everything from scratch. We&apos;ve already done the heavy lifting
-                </p>
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            {/* CTA Button */}
+            <a
+              href="#pricing"
+              className="rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-lg font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center gap-3"
+            >
+              <ShoppingCartIcon className="h-6 w-6" />
+              <span className="relative z-10">Buy Next.js Template</span>
+              <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+            </a>
+            
+            {/* Demo Button */}
+            <a
+              href="#demo"
+              className="rounded-full bg-white border-2 border-gray-200 dark:bg-gray-800 dark:border-gray-700 px-8 py-4 text-lg font-bold text-text-primary hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-3"
+            >
+              <PlayCircleIcon className="h-6 w-6 text-primary-purple" />
+              <span>See Demo</span>
+            </a>
           </div>
 
-          {/* Right Column - Preview */}
-          <div className="relative lg:block">
-            <div className="relative mx-auto w-full max-w-2xl lg:max-w-none">
-              {/* Code Preview */}
-              <div className="relative rounded-2xl bg-gray-900 p-4 ring-1 ring-gray-800/10 shadow-2xl">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <div className="flex flex-col gap-2 font-mono text-sm text-gray-300">
-                  <div>
-                    <span className="text-purple-400">const</span> <span className="text-blue-400">message</span> <span className="text-purple-400">=</span> <span className="text-green-400">&apos;Welcome to ShipFastStarter!&apos;</span>
-                  </div>
-                  <div>
-                    <span className="text-purple-400">console</span><span className="text-gray-300">.</span><span className="text-blue-400">log</span><span className="text-gray-300">(</span><span className="text-green-400">&apos;Build any website in record time&apos;</span><span className="text-gray-300">)</span>
-                  </div>
-                </div>
-              </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-text-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+            </svg>
+            Available Figma File with Editable Assets
+          </div>
+        </div>
 
-              {/* Illustration */}
-              <div className="mt-8 relative">
-                <Image
-                  src="/Illustration-SFS.png"
-                  alt="ShipFast Illustration"
-                  width={500}
-                  height={400}
-                  className="w-full h-auto rounded-2xl"
-                />
+        {/* Bottom Image Section */}
+        <div className="relative mt-16 mx-auto max-w-6xl">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src="/Illustration-SFS.png"
+              alt="ShipFast Starter Kit"
+              width={1200}
+              height={600}
+              className="w-full h-auto object-cover rounded-2xl"
+            />
+            
+            {/* Feature Badges */}
+            <div className="absolute top-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple mr-1">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+              </svg>
+              <span className="text-xs font-medium">Next.js 14</span>
+            </div>
+            
+            <div className="absolute bottom-4 left-4 flex flex-wrap gap-2">
+              <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-rose mr-1">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+                </svg>
+                <span className="text-xs font-medium">Authentication</span>
               </div>
-
-          
+              
+              <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple mr-1">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                </svg>
+                <span className="text-xs font-medium">Payments</span>
+              </div>
+              
+              <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-3 py-1 shadow-lg flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-rose mr-1">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+                <span className="text-xs font-medium">Email</span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Technology Logos Section */}
-        <div className="mt-16 pt-8">
+        <div className="mt-20">
           <div className="text-center mb-8">
             <h3 className="text-sm font-medium text-text-secondary uppercase tracking-wider">BUILT WITH THE TOOLS YOU LOVE</h3>
           </div>
@@ -187,6 +177,45 @@ export function HeroSection() {
               <div className="h-10 w-auto flex items-center justify-center">
                 <Image 
                   src="/logo/resend-logo.webp" 
+                  alt="Resend" 
+                  width={100} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Resend</span>
+            </div>
+
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/Logo_Google_Analytics.svg.png" 
+                  alt="Resend" 
+                  width={100} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Resend</span>
+            </div>
+
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/Google_Ads_logo.svg.png" 
+                  alt="Resend" 
+                  width={100} 
+                  height={40} 
+                  className="object-contain h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Resend</span>
+            </div>
+
+            <div className="group relative">
+              <div className="h-10 w-auto flex items-center justify-center">
+                <Image 
+                  src="/logo/Google-Tag-Manager.jpg" 
                   alt="Resend" 
                   width={100} 
                   height={40} 

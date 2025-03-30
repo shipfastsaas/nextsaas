@@ -107,13 +107,44 @@ export default function DocsPage() {
             </a>
           </div>
         </div>
+        <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-6">
+          <h3 className="mt-0 flex items-center gap-3">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-rose/10">
+              📈
+            </span>
+            Google Tools
+          </h3>
+          <p>
+            Learn how to integrate and configure Google Ads, Google Search Console, Google Analytics, and Google Tag Manager to optimize your site's performance and marketing efforts.
+          </p>
+          <a
+            href="/docs/google-tools"
+            className="inline-flex items-center text-primary-rose hover:text-primary-rose/90"
+          >
+            Learn more
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="ml-1 h-4 w-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
 
       <h2>Core Features</h2>
       <ul>
         <li>Next.js 14 with App Router</li>
         <li>Authentication with Next-Auth</li>
-        <li>Database with Prisma ORM</li>
+        <li>Database with MongoDB and Prisma ORM</li>
         <li>Payments with Stripe</li>
         <li>Beautiful UI with Tailwind CSS</li>
         <li>Dark Mode Support</li>

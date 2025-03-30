@@ -28,6 +28,20 @@ const config: Config = {
       backgroundImage: {
         'gradient-primary': 'linear-gradient(to right, var(--gradient-start), var(--gradient-end))',
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'float-slow': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-15px)' },
+        },
+      },
+      animation: {
+        float: 'float 3s ease-in-out infinite',
+        'float-slow': 'float-slow 5s ease-in-out infinite',
+      },
       typography: {
         DEFAULT: {
           css: {

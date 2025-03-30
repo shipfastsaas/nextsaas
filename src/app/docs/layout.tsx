@@ -39,6 +39,15 @@ const navigation = [
       { title: 'Production Checklist', href: '/docs/production' },
     ],
   },
+  {
+    title: 'Google Tools',
+    links: [
+      { title: 'Google Ads', href: '/docs/google-ads' },
+      { title: 'Google Search Console', href: '/docs/google-search-console' },
+      { title: 'Google Analytics', href: '/docs/google-analytics' },
+      { title: 'Google Tag Manager', href: '/docs/google-tag-manager' },
+    ],
+  },
 ]
 
 function ClientSideNav() {

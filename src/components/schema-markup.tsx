@@ -31,6 +31,7 @@ export const SchemaMarkup = () => {
     "@type": "Product",
     "name": "The Best Next.js Boilerplate | SaaS Starter Kit Template",
     "description": "Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.",
+    "image": "https://shipfaststarter.com/logo.png",
     "category": "Software Development Tools",
     "brand": {
       "@type": "Brand",
@@ -54,6 +55,7 @@ export const SchemaMarkup = () => {
     "description": "Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.",
     "operatingSystem": "Any",
     "url": "https://shipfaststarter.com",
+    "image": "https://shipfaststarter.com/logo.png",
     "offers": {
       "@type": "Offer",
       "price": "199",
