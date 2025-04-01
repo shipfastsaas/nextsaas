@@ -29,6 +29,20 @@ function FeatureCard({ card }: { card: FeatureCard }) {
   const isMainFeature = card.title === "User Management";
   const isSecondaryFeature = card.title === "Payments" || card.title === "Communication";
   
+  // Déterminer quelle image utiliser en fonction du titre de la carte
+  const getFeatureImage = () => {
+    switch(card.title) {
+      case "Payments":
+        return "/screenshots/payment-feature.png";
+      case "Communication":
+        return "/screenshots/communication-feature.png";
+      case "User Management":
+        return "/screenshots/user-managment.png";
+      default:
+        return "/screenshots/payment-feature.png"; // Image par défaut
+    }
+  };
+  
   return (
     <div className={`bg-white dark:bg-gray-800 rounded-3xl p-8 flex flex-col h-full relative overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 ${isMainFeature ? 'md:col-span-2 md:row-span-2' : ''}`}>
       {/* Accent color indicator */}
@@ -37,7 +51,7 @@ function FeatureCard({ card }: { card: FeatureCard }) {
       )}
       
       {isSecondaryFeature ? (
-        // Layout pour Payments et Communication (texte à gauche, vidéo à droite)
+        // Layout pour Payments et Communication (texte à gauche, image à droite)
         <div className="flex h-full">
           <div className="flex flex-col flex-1">
             <div className="mb-6">
@@ -71,16 +85,13 @@ function FeatureCard({ card }: { card: FeatureCard }) {
           
           <div className="ml-6 flex-1">
             <div className="bg-black rounded-2xl w-full h-full overflow-hidden flex items-center justify-center">
-              <video 
+              <Image 
+                src={getFeatureImage()}
+                alt={card.title}
+                width={500}
+                height={300}
                 className="w-full h-full object-cover"
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-              >
-                <source src="/videos/rapide.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              />
             </div>
           </div>
         </div>
@@ -116,16 +127,13 @@ function FeatureCard({ card }: { card: FeatureCard }) {
           )}
           
           <div className="mt-8 bg-black rounded-2xl w-full aspect-video overflow-hidden flex items-center justify-center">
-            <video 
+            <Image 
+              src={getFeatureImage()}
+              alt={card.title}
+              width={500}
+              height={300}
               className="w-full h-full object-cover"
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-            >
-              <source src="/videos/rapide.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            />
           </div>
         </>
       )}
