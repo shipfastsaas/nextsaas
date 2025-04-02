@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ShoppingCartIcon, PlayCircleIcon } from '@heroicons/react/24/solid'
+import { ShoppingCartIcon, PlayCircleIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 
 export function HeroSection() {
   return (
@@ -82,10 +82,12 @@ export function HeroSection() {
             {/* Demo Button */}
             <a
               href="https://readynext.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-white border-2 border-gray-200 dark:bg-gray-800 dark:border-gray-700 px-8 py-4 text-lg font-bold text-text-primary hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-3"
             >
-              <PlayCircleIcon className="h-6 w-6 text-primary-purple" />
               <span>See Demo</span>
+              <ArrowTopRightOnSquareIcon className="h-5 w-5 text-gray-500" />
             </a>
           </div>
 
