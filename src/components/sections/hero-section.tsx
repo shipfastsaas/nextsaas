@@ -81,7 +81,7 @@ export function HeroSection() {
             
             {/* Demo Button */}
             <a
-              href="#demo"
+              href="https://readynext.vercel.app"
               className="rounded-full bg-white border-2 border-gray-200 dark:bg-gray-800 dark:border-gray-700 px-8 py-4 text-lg font-bold text-text-primary hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-3"
             >
               <PlayCircleIcon className="h-6 w-6 text-primary-purple" />
