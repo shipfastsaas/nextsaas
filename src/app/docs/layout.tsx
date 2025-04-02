@@ -30,7 +30,7 @@ const navigation = [
   },
   {
     title: 'Customization',
-    links: [
+    links: [  
       { title: 'Styling & Theming', href: '/docs/styling' },
       { title: 'Dark Mode', href: '/docs/dark-mode' },
       { title: 'SEO', href: '/docs/seo' },
