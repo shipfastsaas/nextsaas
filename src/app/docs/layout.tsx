@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -10,42 +11,37 @@ const navigation = [
     title: 'Getting Started',
     links: [
       { title: 'Introduction', href: '/docs' },
-      { title: 'Installation', href: '/docs/installation' },
-      { title: 'Quick Start', href: '/docs/quick-start' },
+      { title: 'Setup', href: '/docs/setup' },
     ],
   },
   {
     title: 'Core Features',
     links: [
-      { title: 'Authentication', href: '/docs/authentication' },
       { title: 'Database', href: '/docs/database' },
-      { title: 'API Routes', href: '/docs/api-routes' },
-      { title: 'Stripe Integration', href: '/docs/stripe' },
+      { title: 'API', href: '/docs/api' },
+      { title: 'Authentication', href: '/docs/authentication' },
+      { title: 'Organizations', href: '/docs/organizations' },
+      { title: 'Payments', href: '/docs/payments' },
+      { title: 'Blog', href: '/docs/blog' },
+      { title: 'Mailing', href: '/docs/mailing' },
+      { title: 'Contact Management', href: '/docs/contact-management' },
+      { title: 'Admin Dashboard', href: '/docs/admin-dashboard' },
     ],
   },
   {
-    title: 'Components',
+    title: 'Customization',
     links: [
-      { title: 'UI Components', href: '/docs/ui-components' },
-      { title: 'Forms', href: '/docs/forms' },
-      { title: 'Layouts', href: '/docs/layouts' },
+      { title: 'Styling & Theming', href: '/docs/styling' },
+      { title: 'Dark Mode', href: '/docs/dark-mode' },
+      { title: 'SEO', href: '/docs/seo' },
+      { title: 'Analytics', href: '/docs/analytics' },
     ],
   },
   {
     title: 'Deployment',
     links: [
-      { title: 'Deploy to Vercel', href: '/docs/deploy-vercel' },
-      { title: 'Environment Variables', href: '/docs/env-variables' },
-      { title: 'Production Checklist', href: '/docs/production' },
-    ],
-  },
-  {
-    title: 'Google Tools',
-    links: [
-      { title: 'Google Ads', href: '/docs/google-ads' },
-      { title: 'Google Search Console', href: '/docs/google-search-console' },
-      { title: 'Google Analytics', href: '/docs/google-analytics' },
-      { title: 'Google Tag Manager', href: '/docs/google-tag-manager' },
+      { title: 'Going to Production', href: '/docs/production' },
+      { title: 'Deployment Guide', href: '/docs/deployment' },
     ],
   },
 ]
@@ -101,8 +97,14 @@ function DocsSidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open:
       >
         <div className="sticky top-0 z-50">
           <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200 dark:border-gray-800 bg-background">
-            <Link href="/" className="text-xl font-bold gradient-text">
-              ShipFast
+            <Link href="/" className="ml-4 flex items-center">
+              <Image
+                src="/logo.png"
+                alt="NextReady"
+                width={120}
+                height={40}
+                className="dark:invert"
+              />
             </Link>
             <button
               type="button"
@@ -135,8 +137,14 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
           >
             <Bars3Icon className="w-6 h-6" />
           </button>
-          <Link href="/" className="ml-4 text-xl font-bold gradient-text">
-            ShipFast
+          <Link href="/" className="ml-4 flex items-center">
+            <Image
+              src="/logo.png"
+              alt="NextReady"
+              width={120}
+              height={40}
+              className="dark:invert"
+            />
           </Link>
         </div>
       </div>
