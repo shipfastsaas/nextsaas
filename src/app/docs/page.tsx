@@ -415,13 +415,13 @@ export default function DocsPage() {
       <div className="mt-12 rounded-xl bg-background-secondary p-6">
         <h2 className="mt-0">Need Help?</h2>
         <p>
-          Can't find what you're looking for? Join our Discord community for help and discussions.
+          Can't find what you're looking for? Contact our support team for assistance with any questions.
         </p>
         <a
-          href="#"
+          href="mailto:support@shipfaststarter.com"
           className="inline-flex items-center rounded-lg bg-primary-dark px-4 py-2 text-sm font-semibold text-white hover:bg-primary-dark/90"
         >
-          Join Discord Community
+          Contact Support
         </a>
       </div>
     </article>

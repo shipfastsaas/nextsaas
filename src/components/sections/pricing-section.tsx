@@ -15,7 +15,7 @@ const features = [
   },
   {
     name: 'Premium support',
-    description: 'Access to private Discord community'
+    description: 'Priority email support and assistance'
   },
   {
     name: 'Save 80+ hours',
