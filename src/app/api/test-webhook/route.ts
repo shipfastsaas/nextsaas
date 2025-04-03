@@ -30,9 +30,10 @@ export async function GET(req: Request) {
     };
     
     // Envoyer une requête POST au webhook
-    const webhookUrl = process.env.NEXT_PUBLIC_APP_URL 
-      ? `${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks` 
-      : 'http://localhost:3000/api/webhooks';
+    // En production, utilisez l'URL du site actuel pour le test
+    const host = req.headers.get('host') || 'localhost:3000';
+    const protocol = host.includes('localhost') ? 'http' : 'https';
+    const webhookUrl = `${protocol}://${host}/api/webhooks`;
     
     console.log(`🔄 Sending test event to webhook: ${webhookUrl}`);
     
