@@ -1,10 +1,10 @@
 export default function DocsPage() {
   return (
     <article className="prose prose-slate dark:prose-invert max-w-none">
-      <h1>NextReady Documentation</h1>
+      <h1>ShipFastSaaS Documentation</h1>
       
       <p className="lead">
-        Welcome to the NextReady documentation. Discover our complete Next.js-based SaaS starter kit
+        Welcome to the ShipFastSaaS documentation. Discover our complete Next.js-based SaaS starter kit
         and launch your product faster.
       </p>
 
@@ -27,18 +27,18 @@ export default function DocsPage() {
 
       {/* Introduction */}
       <section id="introduction">
-        <h2>What is NextReady?</h2>
+        <h2>What is ShipFastSaaS?</h2>
         <p>
-          NextReady is a complete SaaS starter kit that helps you build scalable, production-ready web applications faster. 
+        ShipFastSaaS is a complete SaaS starter kit that helps you build scalable, production-ready web applications faster. 
           It integrates the essential features you need to create a modern SaaS and provides a solid foundation for developing large-scale applications.
         </p>
         <p>
-          Whether you're building a SaaS application, a coaching site, an e-commerce platform, or any other type of web project, NextReady provides all the tools you need to succeed.
+          Whether you're building a SaaS application, a coaching site, an e-commerce platform, or any other type of web project, ShipFastSaaS provides all the tools you need to succeed.
         </p>
 
         <h3>Configuration and Customization</h3>
         <p>
-          NextReady is highly configurable and customizable. You have complete control over every aspect of the application and the ability to style each part of the user interface according to your specific needs.
+        ShipFastSaaS is highly configurable and customizable. You have complete control over every aspect of the application and the ability to style each part of the user interface according to your specific needs.
         </p>
       </section>
 
@@ -46,7 +46,7 @@ export default function DocsPage() {
       <section id="marketing-site" className="mt-12">
         <h2>Marketing Site</h2>
         <p>
-          The marketing site is the showcase for your product. NextReady includes all the essential sections to effectively present your SaaS and convert visitors into customers.
+          The marketing site is the showcase for your product. ShipFastSaaS includes all the essential sections to effectively present your SaaS and convert visitors into customers.
         </p>
 
         <div className="mt-8 space-y-12">
@@ -177,7 +177,7 @@ export default function DocsPage() {
       <section id="authentication" className="mt-12">
         <h2>Authentication</h2>
         <p>
-          NextReady includes a complete authentication system based on Next-Auth, with support for multiple providers and session management.
+        ShipFastSaaS includes a complete authentication system based on Next-Auth, with support for multiple providers and session management.
         </p>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -253,7 +253,7 @@ export default function DocsPage() {
       <section id="blog-management" className="mt-12">
         <h2>Blog Management</h2>
         <p>
-          NextReady includes a complete blog system for publishing and managing content.
+        ShipFastSaaS includes a complete blog system for publishing and managing content.
         </p>
 
         <div className="mt-8 space-y-6">
@@ -329,7 +329,7 @@ export default function DocsPage() {
       <section id="payments" className="mt-12">
         <h2>Payments</h2>
         <p>
-          NextReady integrates Stripe to securely manage payments and subscriptions.
+        ShipFastSaaS integrates Stripe to securely manage payments and subscriptions.
         </p>
 
         <div className="mt-8">
@@ -377,7 +377,7 @@ export default function DocsPage() {
       <section id="internationalization" className="mt-12">
         <h2>Internationalization</h2>
         <p>
-          NextReady supports complete internationalization with next-intl, allowing you to translate your application into multiple languages.
+        ShipFastSaaS supports complete internationalization with next-intl, allowing you to translate your application into multiple languages.
         </p>
         <div className="mt-4">
           <h3>Supported Languages</h3>

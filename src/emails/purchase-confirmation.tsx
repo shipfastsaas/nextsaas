@@ -25,13 +25,13 @@ interface PurchaseConfirmationEmailProps {
 
 export const PurchaseConfirmationEmail = ({
   customerName = 'Valued Customer',
-  productName = 'ShipFast Starter Kit',
-  githubLink = 'https://github.com/shipfaststarter/template',
+  productName = 'NextReady SaaS Template',
+  githubLink = 'https://github.com/shipfastsaas/nextsaas',
   amount = '$199',
 }: PurchaseConfirmationEmailProps) => {
-  const previewText = `Merci pour votre achat de ${productName}`;
+  const previewText = `Thank you for your purchase of ${productName}`;
   const logoUrl = 'https://www.shipfastsaas.com/_next/image?url=%2Flogo.png&w=384&q=75';
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://shipfaststarter.com';
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://shipfastsaas.com';
 
   return (
     <Html>
@@ -46,7 +46,7 @@ export const PurchaseConfirmationEmail = ({
               src={logoUrl}
               width="150"
               height="40"
-              alt="ShipFastStarter Logo"
+              alt="NextReady Logo"
               style={logo}
             />
           </Section>
@@ -57,34 +57,34 @@ export const PurchaseConfirmationEmail = ({
               <span style={badge}>Next.js 14 Universal Starter Kit</span>
               <span style={statusBadge}>
                 <span style={statusDot}></span>
-                Livré avec succès
+                Successfully Delivered
               </span>
             </div>
           </Section>
           
           {/* Main heading */}
           <Heading style={h1}>
-            <span style={gradientText}>Merci pour votre achat!</span>
+            <span style={gradientText}>Thank You for Your Purchase!</span>
             <br />
-            <span style={secondaryHeading}>ShipFastStarter Template</span>
+            <span style={secondaryHeading}>NextReady Template</span>
           </Heading>
           
           {/* Main content */}
           <Section style={mainContent}>
-            <Text style={text}>Bonjour {customerName},</Text>
+            <Text style={text}>Hello {customerName},</Text>
             
             <Text style={text}>
-              Votre paiement de <strong>{amount}</strong> pour le <strong>{productName}</strong> a été confirmé avec succès. Nous sommes ravis de vous compter parmi nos clients!
+              Your payment of <strong>{amount}</strong> for the <strong>{productName}</strong> has been successfully confirmed. We're thrilled to have you as our customer!
             </Text>
             
             <Text style={text}>
-              Vous pouvez maintenant accéder au code source complet sur GitHub et commencer à construire votre projet dès aujourd'hui.
+              You can now access the complete source code on GitHub and start building your project today.
             </Text>
             
             {/* CTA Button */}
             <Section style={buttonContainer}>
               <Button style={primaryButton} href={githubLink}>
-                Accéder au Template sur GitHub
+                Access Template on GitHub
               </Button>
             </Section>
             
@@ -94,13 +94,13 @@ export const PurchaseConfirmationEmail = ({
                 <Column style={featureColumn}>
                   <Img src={`${appUrl}/icons/authentication.svg`} width="32" height="32" alt="Authentication" style={featureIcon} />
                   <Text style={featureTitle}>Authentication</Text>
-                  <Text style={featureDescription}>Système d'authentification complet avec NextAuth.js</Text>
+                  <Text style={featureDescription}>Complete authentication system with NextAuth.js</Text>
                 </Column>
                 
                 <Column style={featureColumn}>
                   <Img src={`${appUrl}/icons/database.svg`} width="32" height="32" alt="Database" style={featureIcon} />
                   <Text style={featureTitle}>Database</Text>
-                  <Text style={featureDescription}>Configuration Prisma avec migrations et schémas</Text>
+                  <Text style={featureDescription}>MongoDB configuration with schemas</Text>
                 </Column>
               </Row>
               
@@ -108,24 +108,24 @@ export const PurchaseConfirmationEmail = ({
                 <Column style={featureColumn}>
                   <Img src={`${appUrl}/icons/payments.svg`} width="32" height="32" alt="Payments" style={featureIcon} />
                   <Text style={featureTitle}>Payments</Text>
-                  <Text style={featureDescription}>Intégration Stripe pour les paiements en ligne</Text>
+                  <Text style={featureDescription}>Stripe integration for online payments</Text>
                 </Column>
                 
                 <Column style={featureColumn}>
                   <Img src={`${appUrl}/icons/ui.svg`} width="32" height="32" alt="UI" style={featureIcon} />
                   <Text style={featureTitle}>UI Components</Text>
-                  <Text style={featureDescription}>Composants UI modernes et réutilisables</Text>
+                  <Text style={featureDescription}>Modern and reusable UI components</Text>
                 </Column>
               </Row>
             </Section>
             
             <Text style={text}>
-              Si vous avez des questions concernant l'installation ou l'utilisation du template, n'hésitez pas à consulter notre documentation ou à nous contacter directement.
+              If you have any questions about installing or using the template, please don't hesitate to check our documentation or contact us directly.
             </Text>
             
             <Text style={signatureText}>
-              Bonne création!<br />
-              L'équipe ShipFastStarter
+              Happy building!<br />
+              The NextReady Team
             </Text>
           </Section>
           
@@ -134,12 +134,12 @@ export const PurchaseConfirmationEmail = ({
           {/* Footer */}
           <Section style={footerSection}>
             <Text style={footer}>
-              &copy; {new Date().getFullYear()} ShipFastStarter. Tous droits réservés.
+              &copy; {new Date().getFullYear()} NextReady. All rights reserved.
             </Text>
             <Text style={footer}>
-              <Link href="https://shipfaststarter.com" style={link}>shipfaststarter.com</Link> | 
-              <Link href="https://twitter.com/shipfaststarter" style={link}> Twitter</Link> | 
-              <Link href="https://github.com/shipfaststarter" style={link}> GitHub</Link>
+              <Link href="https://shipfastsaas.com" style={link}>shipfastsaas.com</Link> | 
+              <Link href="https://twitter.com/shipfastsaas" style={link}> Twitter</Link> | 
+              <Link href="https://github.com/shipfastsaas" style={link}> GitHub</Link>
             </Text>
             <Text style={footerTagline}>
               The Best Next.js Boilerplate & SaaS Starter Kit Template
