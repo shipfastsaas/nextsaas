@@ -18,7 +18,7 @@ export async function GET(req: Request) {
       type: 'checkout.session.completed',
       data: {
         object: {
-          id: `cs_test_${Date.now()}`,
+          id: `cs_test_${Date.now()}`, 
           payment_status: 'paid',
           amount_total: 19900,
           customer_details: {
