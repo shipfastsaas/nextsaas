@@ -15,6 +15,7 @@ export function useCheckout() {
         headers: {
           'Content-Type': 'application/json',
         },
+        // Pas besoin d'envoyer l'email et le nom, Stripe les collectera
       })
 
       if (!response.ok) {
@@ -31,6 +32,8 @@ export function useCheckout() {
 
       // Redirect to Checkout
       if (!url) throw new Error('No checkout URL received')
+      
+      // Stripe collectera l'email et le nom de l'utilisateur
 
       // Redirect to the Stripe Checkout page
       window.location.href = url

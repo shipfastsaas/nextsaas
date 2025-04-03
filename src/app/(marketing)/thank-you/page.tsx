@@ -1,13 +1,83 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { CheckCircleIcon, DocumentTextIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 import { useGoogleAdsPageViewConversion } from '@/components/analytics/google-ads'
+import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 
 export default function ThankYouPage() {
+  // État pour suivre l'envoi de l'email
+  const [emailStatus, setEmailStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [emailMessage, setEmailMessage] = useState<string>('');
+  
+  // Récupérer les paramètres d'URL (si disponibles)
+  const searchParams = useSearchParams();
+  
   // Activer le suivi de conversion Google Ads
   useGoogleAdsPageViewConversion()
+  
+  // Envoyer l'email de confirmation directement depuis la page thank-you
+  useEffect(() => {
+    // Ne pas renvoyer l'email si déjà envoyé
+    if (emailStatus !== 'idle') return;
+    
+    // Utiliser un flag dans sessionStorage pour éviter les doubles appels
+    const sessionId = searchParams?.get('session_id');
+    if (!sessionId) {
+      console.error('Aucun ID de session Stripe trouvé dans l\'URL');
+      setEmailStatus('error');
+      setEmailMessage('Impossible d\'envoyer l\'email de confirmation. ID de session manquant.');
+      return;
+    }
+    
+    // Vérifier si cet email a déjà été envoyé pour cette session
+    const emailSentKey = `email_sent_${sessionId}`;
+    if (sessionStorage.getItem(emailSentKey)) {
+      console.log('Email déjà envoyé pour cette session, pas de nouvel envoi');
+      setEmailStatus('success');
+      setEmailMessage('Email de confirmation déjà envoyé!');
+      return;
+    }
+    
+    const sendConfirmationEmail = async () => {
+      try {
+        setEmailStatus('sending');
+        setEmailMessage('Envoi de l\'email de confirmation en cours...');
+        
+        // Marquer l'email comme en cours d'envoi
+        sessionStorage.setItem(emailSentKey, 'sending');
+        
+        // Appeler notre API pour récupérer les détails de la session et envoyer l'email
+        const response = await fetch(`/api/payment-success?session_id=${encodeURIComponent(sessionId)}`);
+        const data = await response.json();
+        
+        if (data.success) {
+          setEmailStatus('success');
+          setEmailMessage('Email de confirmation envoyé avec succès!');
+          console.log('Email envoyé avec succès:', data);
+          // Marquer l'email comme envoyé avec succès
+          sessionStorage.setItem(emailSentKey, 'sent');
+        } else {
+          setEmailStatus('error');
+          setEmailMessage('Échec de l\'envoi de l\'email de confirmation. Veuillez contacter le support.');
+          console.error('Échec de l\'envoi de l\'email:', data.error);
+          // Supprimer le flag pour permettre une nouvelle tentative
+          sessionStorage.removeItem(emailSentKey);
+        }
+      } catch (error) {
+        setEmailStatus('error');
+        setEmailMessage('Une erreur s\'est produite lors de l\'envoi de l\'email de confirmation.');
+        console.error('Erreur lors de l\'envoi de l\'email de confirmation:', error);
+        // Supprimer le flag pour permettre une nouvelle tentative
+        sessionStorage.removeItem(emailSentKey);
+      }
+    };
+    
+    // Envoyer l'email immédiatement
+    sendConfirmationEmail();
+  }, [searchParams, emailStatus]);
   
   return (
     <div className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
@@ -29,6 +99,34 @@ export default function ThankYouPage() {
           <p className="text-xl text-text-secondary mb-6">
             You will receive an email shortly with instructions to access your purchase.
           </p>
+          
+          {/* Statut de l'email */}
+          {emailStatus === 'sending' && (
+            <div className="text-primary-purple mb-4 flex items-center justify-center">
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-primary-purple" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Sending confirmation email...
+            </div>
+          )}
+          
+          {emailStatus === 'success' && (
+            <div className="text-green-600 mb-4 flex items-center justify-center">
+              <CheckCircleIcon className="h-5 w-5 mr-2" />
+              {emailMessage}
+            </div>
+          )}
+          
+          {emailStatus === 'error' && (
+            <div className="text-red-600 mb-4 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {emailMessage}
+            </div>
+          )}
+          
           <div className="w-24 h-1 bg-gradient-to-r from-primary-rose to-primary-purple mx-auto rounded-full"></div>
         </div>
         

@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
-import { stripe, SUCCESS_URL, CANCEL_URL } from '@/lib/stripe'
+import { stripe } from '@/lib/stripe'
+import { CANCEL_URL } from '@/lib/stripe'
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
     // Vérifier les variables d'environnement nécessaires
     if (!process.env.STRIPE_SECRET_KEY) {
@@ -20,9 +21,15 @@ export async function POST() {
       );
     }
 
+    // Construire l'URL de succès avec l'ID de session
+    const SUCCESS_URL = `${process.env.NEXT_PUBLIC_APP_URL}/thank-you?session_id={CHECKOUT_SESSION_ID}`;
+    
+    console.log(`🔄 Creating checkout session`);
+    
     // Create Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
+      customer_email: undefined, // Permet à Stripe de collecter l'email
       line_items: [
         {
           price_data: {
@@ -30,7 +37,7 @@ export async function POST() {
             product_data: {
               name: 'ShipFast Starter Kit',
               description: 'Complete Next.js SaaS starter kit with authentication, payments, and more.',
-              images: [`${process.env.NEXT_PUBLIC_APP_URL}/og.png`],
+              images: ['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'],
             },
             unit_amount: 19900, // $199.00
           },
@@ -43,6 +50,7 @@ export async function POST() {
       metadata: {
         productType: 'starter_kit',
       },
+      // Collecter uniquement l'email du client, pas d'adresse de facturation
     })
 
     return NextResponse.json({ url: session.url })

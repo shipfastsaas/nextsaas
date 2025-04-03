@@ -3,6 +3,7 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useCheckout } from '@/hooks/use-checkout'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const features = [
   {
@@ -25,6 +26,15 @@ const features = [
 
 export function PricingSection() {
   const { checkout, isLoading, error } = useCheckout()
+  const [errorState, setError] = useState("");
+
+  const handleCheckout = async () => {
+    try {
+      await checkout();
+    } catch (err: any) {
+      setError(err?.message || 'Une erreur s\'est produite');
+    }
+  };
 
   return (
     <section id="pricing" className="relative isolate bg-white dark:bg-gray-900 py-24 sm:py-32">
@@ -130,7 +140,7 @@ export function PricingSection() {
               </ul>
 
               <button 
-                onClick={checkout}
+                onClick={handleCheckout}
                 disabled={isLoading}
                 className="w-full rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-6 py-4 text-base font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
               >
