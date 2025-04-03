@@ -7,12 +7,15 @@ import { DemoSection } from '@/components/sections/demo-section'
 import { CtaSection } from '@/components/sections/cta-section'
 import { NewsletterSection } from '@/components/sections/newsletter-section'
 import { UniqueValueSection } from '@/components/sections/unique-value-section'
+import { TimeSavingSection } from '@/components/sections/time-saving-section'
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
+      <TimeSavingSection />
       <FeaturesSection />
+      
       <UniqueValueSection />
       <TestimonialsSection />
       <PricingSection />

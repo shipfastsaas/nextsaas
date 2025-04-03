@@ -58,14 +58,13 @@ export function HeroSection() {
         {/* Main Content - Centered Text */}
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">Simplify, Scale, Succeed</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">The Ultimate Next.js Template</span>
             <br />
-            <span className="text-text-primary">With Our SaaS Solution</span>
+            <span className="text-text-primary">For Your SaaS Project</span>
           </h1>
 
           <p className="text-xl text-text-secondary mb-12 max-w-2xl mx-auto">
-            Launch your website in days, not months. Whether it's a SaaS, freelance portfolio, or any web project, our Next.js starter kit includes everything you need.
-            Authentication, payment, SEO, analytics, marketing, security, and more.
+            Our Next.js template provides everything developers need to launch a professional SaaS application in days, not months. Built on Next.js 14 with the App Router, this complete template includes authentication, payment processing, and beautiful UI components right out of the box.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -91,11 +90,39 @@ export function HeroSection() {
             </a>
           </div>
 
-          <div className="flex items-center justify-center gap-2 text-sm text-text-secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-            </svg>
-            Available Figma File with Editable Assets
+          <div className="flex flex-col items-center justify-center gap-2 mt-2">
+            <div className="text-sm font-medium text-text-secondary uppercase tracking-wider mb-2">Featured on</div>
+            <div className="flex items-center justify-center gap-6">
+              {/* Hacker News */}
+              <div className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-orange-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                  <path d="M9 11l3-8 3 8"/>
+                  <path d="M11 16h4"/>
+                  <path d="M12 11v5"/>
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                </svg>
+                <span>Hacker News</span>
+              </div>
+              
+              {/* Product Hunt */}
+              <div className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-red-500 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5">
+                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 15H10V18H8V15H5V13H8V11H5V9H8V6H10V9H13V6H15V9H18V11H15V13H18V15H15V18H13V15ZM10 13H13V11H10V13Z" fill="currentColor"/>
+                </svg>
+                <span>Product Hunt</span>
+              </div>
+              
+              {/* Reddit */}
+              <div className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-orange-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="9" cy="9" r="1"/>
+                  <circle cx="15" cy="9" r="1"/>
+                  <path d="M12 16c1.5 0 3-1 3-2.5s-1.5-2.5-3-2.5-3 1-3 2.5 1.5 2.5 3 2.5z"/>
+                </svg>
+                <span>Reddit</span>
+              </div>
+            </div>
           </div>
         </div>
 

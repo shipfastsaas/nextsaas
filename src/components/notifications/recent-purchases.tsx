@@ -82,7 +82,7 @@ export function RecentPurchases() {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className="fixed bottom-24 left-4 z-50"
+            className="fixed bottom-24 left-4 z-50 hidden md:block"
           >
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 pr-12 max-w-sm border-l-4 border-primary-rose">
               {/* Content */}

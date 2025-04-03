@@ -11,16 +11,16 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   metadataBase: new URL('https://shipfaststarter.com'),
-  title: 'The Best Next.js Boilerplate | SaaS Starter Kit Template | All-in-One Next.js Solution',
-  description: 'Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.',
-  keywords: 'best next.js boilerplate, next.js template, saas starter kit, react saas boilerplate, nextjs boilerplate, saas template, next.js 14, global saas solution, build and ship faster, multi-language saas, global payments',
+  title: 'Premium Next.js Template | Complete SaaS Starter Kit | Ready-to-Deploy Solution',
+  description: 'Launch your SaaS project with our comprehensive Next.js template. Built with authentication, payments, and beautiful UI components. Save months of development time.',
+  keywords: 'next.js template, saas starter kit, next.js 14, react saas template, nextjs boilerplate, app router, authentication template, payment integration, mongodb nextjs, typescript template, tailwind template',
   alternates: {
     canonical: 'https://shipfaststarter.com',
     
   },
   openGraph: {
-    title: 'The Best Next.js Boilerplate | SaaS Starter Kit Template | ShipFastStarter',
-    description: 'Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.',
+    title: 'Premium Next.js Template | Complete SaaS Starter Kit | ShipFastStarter',
+    description: 'Launch your SaaS project with our comprehensive Next.js template. Built with authentication, payments, and beautiful UI components. Save months of development time.',
     url: 'https://shipfaststarter.com',
     siteName: 'ShipFastStarter',
     images: [
@@ -36,8 +36,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The Best Next.js Boilerplate | SaaS Starter Kit Template',
-    description: 'Launch your SaaS with the best Next.js template and boilerplate. Complete React SaaS starter kit with authentication, payments, and beautiful UI components to ship faster.',
+    title: 'Premium Next.js Template | Complete SaaS Starter Kit',
+    description: 'Launch your SaaS project with our comprehensive Next.js template. Built with authentication, payments, and beautiful UI components. Save months of development time.',
     images: ['https://shipfaststarter.com/twitter-image.jpg'],
   },
 }
