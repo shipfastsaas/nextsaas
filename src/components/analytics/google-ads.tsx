@@ -4,8 +4,16 @@ import Script from 'next/script'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
+// Configuration des paramètres de conversion
+interface ConversionParams {
+  conversionId?: string;
+  conversionLabel?: string;
+  value?: number;
+  currency?: string;
+}
+
 // Fonction pour suivre les conversions de pages vues
-export function useGoogleAdsPageViewConversion() {
+export function useGoogleAdsPageViewConversion(params?: ConversionParams) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   
@@ -15,17 +23,40 @@ export function useGoogleAdsPageViewConversion() {
     
     if (!isThankYouPage) return
     
+    // Paramètres de conversion par défaut
+    const conversionId = params?.conversionId || 'AW-16887311626';
+    const conversionLabel = params?.conversionLabel || 'aaFxCKCerqkaElrav_Q-';
+    const value = params?.value || 199; // Valeur par défaut du template
+    const currency = params?.currency || 'EUR';
+    const transactionId = `TEMPLATE-${Date.now()}`;
+    
     // Attendre que gtag soit disponible
     const checkGtagAndSendConversion = () => {
       if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-        // Envoyer l'événement de conversion avec l'ID spécifique
+        // Envoyer l'événement de conversion avec tous les détails
         (window as any).gtag('event', 'conversion', {
-          'send_to': 'AW-16887311626/aaFxCKCerqkaElrav_Q-'
-        })
-        console.log('Google Ads conversion tracked for page:', pathname)
+          'send_to': `${conversionId}/${conversionLabel}`,
+          'value': value,
+          'currency': currency,
+          'transaction_id': transactionId
+        });
+        
+        // Envoyer également l'événement à Google Analytics 4 (si configuré)
+        (window as any).gtag('event', 'purchase', {
+          'transaction_id': transactionId,
+          'value': value,
+          'currency': currency,
+          'items': [{
+            'id': 'nextjs-template',
+            'name': 'NextReady SaaS Template',
+            'price': value
+          }]
+        });
+        
+        console.log('Google Ads conversion tracked for page:', pathname, 'with value:', value, currency);
       } else {
         // Réessayer dans 1 seconde
-        setTimeout(checkGtagAndSendConversion, 1000)
+        setTimeout(checkGtagAndSendConversion, 1000);
       }
     }
     

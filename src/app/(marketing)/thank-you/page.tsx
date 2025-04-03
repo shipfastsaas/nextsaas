@@ -15,8 +15,12 @@ export default function ThankYouPage() {
   // Récupérer les paramètres d'URL (si disponibles)
   const searchParams = useSearchParams();
   
-  // Activer le suivi de conversion Google Ads
-  useGoogleAdsPageViewConversion()
+  // Activer le suivi de conversion Google Ads avec valeur
+  useGoogleAdsPageViewConversion({
+    value: 199, // Prix de votre template
+    currency: 'EUR',
+    // Les ID et label sont déjà définis par défaut dans le hook
+  })
   
   // Envoyer l'email de confirmation directement depuis la page thank-you
   useEffect(() => {
