@@ -101,8 +101,8 @@ function DocsSidebar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open:
               <Image
                 src="/logo.png"
                 alt="NextReady"
-                width={120}
-                height={40}
+                width={180}
+                height={60}
                 className="dark:invert"
               />
             </Link>
