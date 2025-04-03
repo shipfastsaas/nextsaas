@@ -12,6 +12,24 @@ export async function GET(req: Request) {
     
     console.log(`📧 Creating test checkout session for: ${email}`);
     
+    // Déterminer l'URL de base
+    const host = req.headers.get('host') || 'localhost:3000';
+    const protocol = host.includes('localhost') ? 'http' : 'https';
+    const baseUrl = `${protocol}://${host}`;
+    
+    // ÉTAPE 1: Envoyer directement un email de test
+    // Cette étape garantit qu'un email est envoyé, même si le webhook échoue
+    console.log(`📧 Sending direct test email to ${email}...`);
+    
+    const emailTestUrl = `${baseUrl}/api/test-email?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`;
+    const emailResponse = await fetch(emailTestUrl);
+    const emailResult = await emailResponse.json();
+    
+    console.log(`✉️ Direct email test result:`, emailResult);
+    
+    // ÉTAPE 2: Tester également le webhook pour vérifier qu'il fonctionne
+    console.log(`🔒 Testing webhook functionality...`);
+    
     // Créer un événement de test qui simule un checkout.session.completed
     const testEvent = {
       id: `evt_test_${Date.now()}`,
@@ -29,21 +47,26 @@ export async function GET(req: Request) {
       }
     };
     
-    // Envoyer une requête POST au webhook
-    // En production, utilisez l'URL du site actuel pour le test
-    const host = req.headers.get('host') || 'localhost:3000';
-    const protocol = host.includes('localhost') ? 'http' : 'https';
-    const webhookUrl = `${protocol}://${host}/api/webhooks`;
+    // URL du webhook
+    const webhookUrl = `${baseUrl}/api/webhooks`;
     
     console.log(`🔄 Sending test event to webhook: ${webhookUrl}`);
+    
+    // Ajouter un marqueur pour indiquer que c'est un test et contourner la vérification de signature
+    const testEventWithMarker = {
+      ...testEvent,
+      test_simulation: true,
+      test_webhook: true,
+      source: 'test-endpoint'
+    };
     
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Stripe-Signature': 'test_signature'
+        'Stripe-Signature': 'test_signature_for_simulation'
       },
-      body: JSON.stringify(testEvent)
+      body: JSON.stringify(testEventWithMarker)
     });
     
     const responseText = await response.text();
