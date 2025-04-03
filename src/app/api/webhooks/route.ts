@@ -120,8 +120,13 @@ export async function POST(req: Request) {
     let event;
 
     try {
-      if (TEST_MODE && (body.includes('test_simulation') || !signature)) {
-        // Mode test - Parser directement le JSON sans vérifier la signature
+      // Vérifier si c'est un événement de test explicite (même en production)
+      if (body.includes('test_simulation')) {
+        console.log('🧪 Test simulation detected: Bypassing signature verification');
+        event = JSON.parse(body);
+      } 
+      // Mode test local - Parser directement le JSON sans vérifier la signature
+      else if (TEST_MODE && !signature) {
         if (process.env.NODE_ENV !== 'production') {
           console.log('🧪 TEST MODE: Bypassing signature verification');
         }
