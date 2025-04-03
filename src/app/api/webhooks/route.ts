@@ -4,21 +4,23 @@ import { Resend } from 'resend';
 import { PurchaseConfirmationEmail } from '@/emails/purchase-confirmation';
 import { renderAsync } from '@react-email/components';
 
-// Initialiser Resend directement avec la clé API
+// Initialiser Resend avec la clé API
 const resend = new Resend(process.env.RESEND_API_KEY);
-const SENDER_EMAIL = 'purchases@shipfastsaas.com';
+const SENDER_EMAIL = process.env.SENDER_EMAIL || 'purchases@shipfastsaas.com';
 
-// Mode test - À mettre à false en production
-const TEST_MODE = true;
+// Mode test - Automatiquement désactivé en production
+const TEST_MODE = process.env.NODE_ENV !== 'production';
 
 /**
  * Envoie un email de confirmation d'achat
  */
 async function sendPurchaseEmail(customerEmail: string, customerName: string, productName: string, githubLink: string, amount: string) {
   try {
-    console.log(`📧 Attempting to send email to ${customerEmail} with Resend API...`);
-    console.log(`🔑 Resend API Key available: ${!!process.env.RESEND_API_KEY}`);
-    console.log(`📨 Sender email: ${SENDER_EMAIL}`);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`📧 Attempting to send email to ${customerEmail} with Resend API...`);
+      console.log(`🔑 Resend API Key available: ${!!process.env.RESEND_API_KEY}`);
+      console.log(`📨 Sender email: ${SENDER_EMAIL}`);
+    }
     
     // Générer le HTML de l'email
     const html = await renderAsync(
@@ -43,26 +45,72 @@ async function sendPurchaseEmail(customerEmail: string, customerName: string, pr
       return { success: false, error };
     }
 
-    console.log('✅ Email sent successfully:', data);
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('✅ Email sent successfully:', data);
+    } else {
+      console.log(`✅ Email sent to ${customerEmail}`);
+    }
+    
     return { success: true, data };
   } catch (error) {
     console.error('❌ Exception when sending email:', error);
+    
+    // Tentative de réessai en cas d'erreur (uniquement en production)
+    if (process.env.NODE_ENV === 'production') {
+      try {
+        console.log('🔄 Retrying email send...');
+        
+        // Attendre 2 secondes avant de réessayer
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        const html = await renderAsync(
+          PurchaseConfirmationEmail({
+            customerName,
+            productName,
+            githubLink,
+            amount,
+          })
+        );
+        
+        const { data, error } = await resend.emails.send({
+          from: SENDER_EMAIL,
+          to: customerEmail,
+          subject: `Your Purchase Confirmation - ${productName}`,
+          html,
+        });
+        
+        if (error) {
+          console.error('❌ Retry failed:', error);
+          return { success: false, error };
+        }
+        
+        console.log('✅ Email sent successfully on retry');
+        return { success: true, data };
+      } catch (retryError) {
+        console.error('❌ Retry exception:', retryError);
+      }
+    }
+    
     return { success: false, error };
   }
 }
 
 export async function POST(req: Request) {
-  console.log('🔔 Stripe webhook received');
-  console.log('⚙️ Environment:', process.env.NODE_ENV);
-  console.log('🔐 Webhook secret available:', !!process.env.STRIPE_WEBHOOK_SECRET);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('🔔 Stripe webhook received');
+    console.log('⚙️ Environment:', process.env.NODE_ENV);
+    console.log('🔐 Webhook secret available:', !!process.env.STRIPE_WEBHOOK_SECRET);
+  }
   
   try {
     const body = await req.text()
     const signature = req.headers.get('Stripe-Signature') as string
     
-    // Log the request body for debugging
-    console.log('📝 Request body (first 100 chars):', body.substring(0, 100) + '...');
-    console.log('🔑 Stripe signature:', signature ? signature.substring(0, 20) + '...' : 'MISSING');
+    // Log en développement uniquement
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('📝 Request body (first 100 chars):', body.substring(0, 100) + '...');
+      console.log('🔑 Stripe signature:', signature ? signature.substring(0, 20) + '...' : 'MISSING');
+    }
     
     if (!process.env.STRIPE_WEBHOOK_SECRET && !TEST_MODE) {
       console.error('❌ STRIPE_WEBHOOK_SECRET missing in environment variables');
@@ -74,12 +122,15 @@ export async function POST(req: Request) {
     try {
       if (TEST_MODE && (body.includes('test_simulation') || !signature)) {
         // Mode test - Parser directement le JSON sans vérifier la signature
-        console.log('🧪 TEST MODE: Bypassing signature verification');
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('🧪 TEST MODE: Bypassing signature verification');
+        }
         event = JSON.parse(body);
       } else {
         // Mode production - Vérifier la signature
-        console.log('🔒 Verifying Stripe signature with secret:', 
-                   process.env.STRIPE_WEBHOOK_SECRET ? process.env.STRIPE_WEBHOOK_SECRET.substring(0, 10) + '...' : 'MISSING');
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('🔒 Verifying Stripe signature with secret');
+        }
         
         event = await stripe.webhooks.constructEvent(
           body,
@@ -88,7 +139,9 @@ export async function POST(req: Request) {
         );
       }
       
-      console.log('✅ Stripe event validated:', event.type);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('✅ Stripe event validated:', event.type);
+      }
     } catch (err) {
       console.error('❌ Webhook signature verification failed:', err);
       
@@ -111,22 +164,31 @@ export async function POST(req: Request) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object
-        console.log('💳 Payment session completed:', session.id);
-        console.log('💰 Payment status:', session.payment_status);
-        console.log('💵 Amount:', session.amount_total / 100);
-        console.log('👤 Customer details:', JSON.stringify(session.customer_details));
+        
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('💳 Payment session completed:', session.id);
+          console.log('💰 Payment status:', session.payment_status);
+          console.log('💵 Amount:', session.amount_total / 100);
+          console.log('👤 Customer details:', JSON.stringify(session.customer_details));
+        } else {
+          console.log(`Payment completed: ${session.id}`);
+        }
 
         // Verify the payment and grant access
         if (session.payment_status === 'paid') {
-          console.log('✅ Payment confirmed, processing...');
+          if (process.env.NODE_ENV !== 'production') {
+            console.log('✅ Payment confirmed, processing...');
+          }
           
           try {
             // Récupérer les informations du client depuis la session
             const customerEmail = session.customer_details?.email
             const customerName = session.customer_details?.name || 'Valued Customer'
             
-            console.log('📧 Customer email:', customerEmail);
-            console.log('👤 Customer name:', customerName);
+            if (process.env.NODE_ENV !== 'production') {
+              console.log('📧 Customer email:', customerEmail);
+              console.log('👤 Customer name:', customerName);
+            }
             
             // Récupérer les informations du produit
             const productName = 'NextReady SaaS Template'
@@ -139,7 +201,9 @@ export async function POST(req: Request) {
             const githubLink = 'https://github.com/shipfastsaas/nextsaas'
             
             if (customerEmail) {
-              console.log('📧 Sending confirmation email to:', customerEmail);
+              if (process.env.NODE_ENV !== 'production') {
+                console.log('📧 Sending confirmation email to:', customerEmail);
+              }
               
               // Envoyer l'email de confirmation d'achat
               const emailResult = await sendPurchaseEmail(
@@ -180,7 +244,9 @@ export async function POST(req: Request) {
       }
 
       default: {
-        console.log(`ℹ️ Unhandled event type: ${event.type}`);
+        if (process.env.NODE_ENV !== 'production') {
+          console.log(`ℹ️ Unhandled event type: ${event.type}`);
+        }
       }
     }
 
