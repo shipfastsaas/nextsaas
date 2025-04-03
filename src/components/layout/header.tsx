@@ -9,11 +9,13 @@ import Image from 'next/image'
 
 const navigation = [
   { name: 'Features', href: '#features' },
-  { name: 'Testimonials', href: '#testimonials' },
+
   { name: 'Pricing', href: '#pricing' },
   { name: 'FAQ', href: '#faq' },
+
   { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Docs', href: '/docs' },
 ]
 
 export function Header() {

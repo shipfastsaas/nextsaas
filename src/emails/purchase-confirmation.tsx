@@ -30,7 +30,8 @@ export const PurchaseConfirmationEmail = ({
   amount = '$199',
 }: PurchaseConfirmationEmailProps) => {
   const previewText = `Thank you for your purchase of ${productName}`;
-  const logoUrl = 'https://www.shipfastsaas.com/_next/image?url=%2Flogo.png&w=384&q=75';
+  // Utiliser le logo local pour éviter la confusion entre ShipFastSaaS et NextReady
+  const logoUrl = `${process.env.NEXT_PUBLIC_APP_URL}/logo.png`;
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://shipfastsaas.com';
 
   return (
@@ -66,7 +67,7 @@ export const PurchaseConfirmationEmail = ({
           <Heading style={h1}>
             <span style={gradientText}>Thank You for Your Purchase!</span>
             <br />
-            <span style={secondaryHeading}>NextReady Template</span>
+            <span style={secondaryHeading}>Your SaaS Template</span>
           </Heading>
           
           {/* Main content */}
@@ -78,13 +79,13 @@ export const PurchaseConfirmationEmail = ({
             </Text>
             
             <Text style={text}>
-              You can now access the complete source code on GitHub and start building your project today.
+              You will receive a separate email with instructions to access the complete source code. If you don't receive this email within 24 hours, please contact us.
             </Text>
             
             {/* CTA Button */}
             <Section style={buttonContainer}>
-              <Button style={primaryButton} href={githubLink}>
-                Access Template on GitHub
+              <Button style={primaryButton} href="https://www.shipfastsaas.com/docs">
+                Access Documentation
               </Button>
             </Section>
             
@@ -92,13 +93,11 @@ export const PurchaseConfirmationEmail = ({
             <Section style={featuresSection}>
               <Row>
                 <Column style={featureColumn}>
-                  <Img src={`${appUrl}/icons/authentication.svg`} width="32" height="32" alt="Authentication" style={featureIcon} />
                   <Text style={featureTitle}>Authentication</Text>
                   <Text style={featureDescription}>Complete authentication system with NextAuth.js</Text>
                 </Column>
                 
                 <Column style={featureColumn}>
-                  <Img src={`${appUrl}/icons/database.svg`} width="32" height="32" alt="Database" style={featureIcon} />
                   <Text style={featureTitle}>Database</Text>
                   <Text style={featureDescription}>MongoDB configuration with schemas</Text>
                 </Column>
@@ -106,13 +105,11 @@ export const PurchaseConfirmationEmail = ({
               
               <Row>
                 <Column style={featureColumn}>
-                  <Img src={`${appUrl}/icons/payments.svg`} width="32" height="32" alt="Payments" style={featureIcon} />
                   <Text style={featureTitle}>Payments</Text>
                   <Text style={featureDescription}>Stripe integration for online payments</Text>
                 </Column>
                 
                 <Column style={featureColumn}>
-                  <Img src={`${appUrl}/icons/ui.svg`} width="32" height="32" alt="UI" style={featureIcon} />
                   <Text style={featureTitle}>UI Components</Text>
                   <Text style={featureDescription}>Modern and reusable UI components</Text>
                 </Column>
@@ -125,7 +122,7 @@ export const PurchaseConfirmationEmail = ({
             
             <Text style={signatureText}>
               Happy building!<br />
-              The NextReady Team
+              The Support Team
             </Text>
           </Section>
           
@@ -134,15 +131,10 @@ export const PurchaseConfirmationEmail = ({
           {/* Footer */}
           <Section style={footerSection}>
             <Text style={footer}>
-              &copy; {new Date().getFullYear()} NextReady. All rights reserved.
-            </Text>
-            <Text style={footer}>
-              <Link href="https://shipfastsaas.com" style={link}>shipfastsaas.com</Link> | 
-              <Link href="https://twitter.com/shipfastsaas" style={link}> Twitter</Link> | 
-              <Link href="https://github.com/shipfastsaas" style={link}> GitHub</Link>
+              &copy; {new Date().getFullYear()} All rights reserved.
             </Text>
             <Text style={footerTagline}>
-              The Best Next.js Boilerplate & SaaS Starter Kit Template
+              Premium Next.js SaaS Template
             </Text>
           </Section>
         </Container>
