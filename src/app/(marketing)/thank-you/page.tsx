@@ -22,6 +22,35 @@ export default function ThankYouPage() {
     // Les ID et label sont déjà définis par défaut dans le hook
   })
   
+  // Envoyer les données de conversion à Google Tag Manager
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // S'assurer que dataLayer existe
+      window.dataLayer = window.dataLayer || [];
+      
+      // Envoyer l'événement de conversion avec la valeur
+      window.dataLayer.push({
+        'event': 'purchase',
+        'ecommerce': {
+          'purchase': {
+            'actionField': {
+              'id': `TEMPLATE-${Date.now()}`,
+              'revenue': '199.00'
+            },
+            'products': [{
+              'name': 'NextReady SaaS Template',
+              'id': 'nextjs-template',
+              'price': '199.00',
+              'quantity': 1
+            }]
+          }
+        }
+      });
+      
+      console.log('Conversion data sent to GTM');
+    }
+  }, [])
+  
   // Envoyer l'email de confirmation directement depuis la page thank-you
   useEffect(() => {
     // Ne pas renvoyer l'email si déjà envoyé
