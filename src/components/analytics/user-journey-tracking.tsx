@@ -87,7 +87,18 @@ export function UserJourneyTracking() {
       // CTA Buy Next.js Template dans la hero section
       document.querySelectorAll('.hero-section a[href*="#pricing"]').forEach(cta => {
         cta.addEventListener('click', () => {
+          // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'hero_buy_cta_click', 2);
+          
+          // Envoyer l'événement de conversion à Google Ads
+          if (typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'conversion', {
+              'send_to': 'AW-16887311626/sbw4CI7qlbUaEIrav_Q-',
+              'value': 2.0,
+              'currency': 'EUR'
+            });
+            console.log('Google Ads conversion sent: Hero Buy CTA Click');
+          }
         });
       });
 
