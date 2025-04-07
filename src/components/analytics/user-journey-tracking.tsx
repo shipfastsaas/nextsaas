@@ -105,7 +105,18 @@ export function UserJourneyTracking() {
       // CTA See Demo dans la hero section
       document.querySelectorAll('.hero-section a[href*="/demo"]').forEach(cta => {
         cta.addEventListener('click', () => {
+          // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'hero_demo_cta_click', 1);
+          
+          // Envoyer l'événement de conversion à Google Ads
+          if (typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'conversion', {
+              'send_to': 'AW-16887311626/K1ykCNfqlrUaEIrav_Q-',
+              'value': 1.0,
+              'currency': 'EUR'
+            });
+            console.log('Google Ads conversion sent: Hero Demo CTA Click');
+          }
         });
       });
 
