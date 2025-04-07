@@ -69,7 +69,18 @@ export function UserJourneyTracking() {
       // CTA du header
       document.querySelectorAll('header a[href="#pricing"]').forEach(cta => {
         cta.addEventListener('click', () => {
+          // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'header_cta_click', 1);
+           
+          // Envoyer l'événement de conversion à Google Ads
+          if (typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'conversion', {
+              'send_to': 'AW-16887311626/CvevCJnL_bMaEIrav_Q-',
+              'value': 1.0,
+              'currency': 'EUR'
+            });
+            console.log('Google Ads conversion sent: CTA Header Click');
+          }
         });
       });
 
