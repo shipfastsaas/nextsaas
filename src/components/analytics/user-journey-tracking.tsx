@@ -123,7 +123,18 @@ export function UserJourneyTracking() {
       // CTA Get ShipFast Now dans la section pricing
       document.querySelectorAll('.pricing-section a[href*="/checkout"]').forEach(cta => {
         cta.addEventListener('click', () => {
+          // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'pricing_cta_click', 3);
+          
+          // Envoyer l'événement de conversion à Google Ads
+          if (typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', 'conversion', {
+              'send_to': 'AW-16887311626/o7hRCIX-lrUaEIrav_Q-',
+              'value': 3.0,
+              'currency': 'EUR'
+            });
+            console.log('Google Ads conversion sent: Pricing CTA Click');
+          }
         });
       });
       
