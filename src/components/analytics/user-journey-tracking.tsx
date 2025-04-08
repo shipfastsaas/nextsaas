@@ -145,14 +145,44 @@ export function UserJourneyTracking() {
         if (text.includes('buy next.js template')) {
           el.addEventListener('click', () => {
             sendEvent('click', 'engagement', 'hero_buy_cta_text_match', 2);
+            
+            // Envoyer l'événement de conversion à Google Ads
+            if (typeof (window as any).gtag === 'function') {
+              (window as any).gtag('event', 'conversion', {
+                'send_to': 'AW-16887311626/sbw4CI7qlbUaEIrav_Q-',
+                'value': 2.0,
+                'currency': 'EUR'
+              });
+              console.log('Google Ads conversion sent: Hero Buy CTA Click');
+            }
           });
         } else if (text.includes('see demo')) {
           el.addEventListener('click', () => {
             sendEvent('click', 'engagement', 'hero_demo_cta_text_match', 1);
+            
+            // Envoyer l'événement de conversion à Google Ads
+            if (typeof (window as any).gtag === 'function') {
+              (window as any).gtag('event', 'conversion', {
+                'send_to': 'AW-16887311626/K1ykCNfqlrUaEIrav_Q-',
+                'value': 1.0,
+                'currency': 'EUR'
+              });
+              console.log('Google Ads conversion sent: Hero Demo CTA Click');
+            }
           });
         } else if (text.includes('get shipfast now')) {
           el.addEventListener('click', () => {
             sendEvent('click', 'engagement', 'pricing_cta_text_match', 3);
+            
+            // Envoyer l'événement de conversion à Google Ads
+            if (typeof (window as any).gtag === 'function') {
+              (window as any).gtag('event', 'conversion', {
+                'send_to': 'AW-16887311626/o7hRCIX-lrUaEIrav_Q-',
+                'value': 3.0,
+                'currency': 'EUR'
+              });
+              console.log('Google Ads conversion sent: Pricing CTA Click');
+            }
           });
         }
       });
