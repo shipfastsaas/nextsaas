@@ -105,12 +105,9 @@ export function HeroSection() {
               </div>
               
               {/* Product Hunt */}
-              <div className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-red-500 transition-colors">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 15H10V18H8V15H5V13H8V11H5V9H8V6H10V9H13V6H15V9H18V11H15V13H18V15H15V18H13V15ZM10 13H13V11H10V13Z" fill="currentColor"/>
-                </svg>
-                <span>Product Hunt</span>
-              </div>
+              <a href="https://www.producthunt.com/posts/shipfaststarter?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-shipfaststarter" target="_blank" rel="noopener noreferrer">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=949257&theme=light&t=1744049853419" alt="ShipFastStarter - Saas starter kit template | all-in-one next.js solution | Product Hunt" style={{width: '250px', height: '54px'}} width={250} height={54} />
+              </a>
               
               {/* Reddit */}
               <div className="flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-orange-600 transition-colors">
