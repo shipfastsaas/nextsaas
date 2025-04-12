@@ -123,7 +123,7 @@ export function PricingSection() {
               <p className="text-text-secondary mb-6">for one developer</p>
 
               <div className="flex items-baseline gap-x-2 mb-6">
-                <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">$199</span>
+                <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">$99</span>
                 <span className="text-base text-text-secondary">USD</span>
               </div>
 

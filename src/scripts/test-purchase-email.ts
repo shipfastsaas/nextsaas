@@ -36,7 +36,7 @@ async function testPurchaseEmail() {
   const customerEmail = 'rmahieddine04@gmail.com';
   const customerName = 'Riadh Mahieddine';
   const productName = 'NextReady SaaS Template';
-  const amount = '$199';
+  const amount = '$99';
   const githubLink = 'https://github.com/shipfastsaas/nextsaas';
   
   console.log('\n📧 Détails de l\'achat simulé:');

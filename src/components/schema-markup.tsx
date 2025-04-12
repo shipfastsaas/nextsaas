@@ -40,7 +40,7 @@ export const SchemaMarkup = () => {
     "offers": {
       "@type": "Offer",
       "url": "https://shipfaststarter.com",
-      "price": "199",
+      "price": "99",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock",
       "priceValidUntil": "2026-12-31"
@@ -96,7 +96,7 @@ export const SchemaMarkup = () => {
     "image": "https://shipfaststarter.com/logo.png",
     "offers": {
       "@type": "Offer",
-      "price": "199",
+      "price": "99",
       "priceCurrency": "USD",
       "priceValidUntil": "2026-12-31",
       "availability": "https://schema.org/InStock"

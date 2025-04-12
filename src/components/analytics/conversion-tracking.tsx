@@ -13,7 +13,7 @@ interface ConversionTrackingProps {
 export function ConversionTracking({
   conversionId = 'AW-XXXXXXXXXX', // Remplacez par votre ID de conversion Google Ads
   conversionLabel = 'XXXXXXXXXX', // Remplacez par votre label de conversion
-  conversionValue = 199, // Valeur de votre template
+  conversionValue = 99, // Valeur de votre template
   currency = 'EUR'
 }: ConversionTrackingProps) {
   

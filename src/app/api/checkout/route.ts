@@ -39,7 +39,7 @@ export async function POST(request: Request) {
               description: 'Complete Next.js SaaS starter kit with authentication, payments, and more.',
               images: ['https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'],
             },
-            unit_amount: 19900, // $199.00
+            unit_amount: 9900, // $99.00
           },
           quantity: 1,
         },

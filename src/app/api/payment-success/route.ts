@@ -49,7 +49,7 @@ export async function GET(request: Request) {
     const amount = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD'
-    }).format(session.amount_total ? session.amount_total / 100 : 199);
+    }).format(session.amount_total ? session.amount_total / 100 : 99);
     const githubLink = 'https://github.com/shipfastsaas/nextsaas';
     
     // Générer le HTML de l'email

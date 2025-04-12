@@ -26,7 +26,7 @@ export function useGoogleAdsPageViewConversion(params?: ConversionParams) {
     // Paramètres de conversion par défaut
     const conversionId = params?.conversionId || 'AW-16887311626';
     const conversionLabel = params?.conversionLabel || 'iAZHCJXv7bMaEIrav_Q-';
-    const value = params?.value || 199; // Valeur par défaut du template
+    const value = params?.value || 99; // Valeur par défaut du template
     const currency = params?.currency || 'EUR';
     const transactionId = `TEMPLATE-${Date.now()}`;
     

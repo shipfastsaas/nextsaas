@@ -22,7 +22,7 @@ async function testEmail() {
         customerName: 'Test User',
         productName: 'ShipFast Starter Kit (TEST)',
         githubLink: 'https://github.com/shipfaststarter/template',
-        amount: '$199',
+        amount: '$99',
       })
     );
     

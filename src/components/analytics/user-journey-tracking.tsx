@@ -60,7 +60,7 @@ export function UserJourneyTracking() {
       // Suivre les conversions (page thank-you)
       if (window.location.pathname.includes('/thank-you')) {
         console.log('Thank you page visited - conversion tracked');
-        sendEvent('conversion', 'conversion', 'purchase_completed', 199, false);
+        sendEvent('conversion', 'conversion', 'purchase_completed', 99, false);
       }
     }
 

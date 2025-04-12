@@ -27,7 +27,7 @@ export const PurchaseConfirmationEmail = ({
   customerName = 'Valued Customer',
   productName = 'NextReady SaaS Template',
   githubLink = 'https://github.com/shipfastsaas/nextsaas',
-  amount = '$199',
+  amount = '$99',
 }: PurchaseConfirmationEmailProps) => {
   const previewText = `Thank you for your purchase of ${productName}`;
   // Utiliser le logo local pour éviter la confusion entre ShipFastSaaS et NextReady

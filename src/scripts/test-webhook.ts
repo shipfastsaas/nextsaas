@@ -24,7 +24,7 @@ async function simulateStripeWebhook() {
       object: {
         id: 'cs_test_' + Date.now(),
         payment_status: 'paid',
-        amount_total: 19900, // $199.00
+        amount_total: 9900, // $99.00
         customer_details: {
           email: 'rmahieddine04@gmail.com', // Remplacez par votre email
           name: 'Test User'
