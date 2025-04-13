@@ -66,8 +66,14 @@ export function UserJourneyTracking() {
 
     // Fonction pour suivre les clics sur les CTA
     function trackCTAClicks() {
-      // CTA du header
+      // Créer un Set pour suivre les éléments déjà traités et éviter les doublons
+      const trackedElements = new Set();
+      
+      // CTA du header - "Buy Next.js Template"
       document.querySelectorAll('header a[href="#pricing"]').forEach(cta => {
+        if (trackedElements.has(cta)) return;
+        trackedElements.add(cta);
+        
         cta.addEventListener('click', () => {
           // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'header_cta_click', 1);
@@ -84,8 +90,25 @@ export function UserJourneyTracking() {
         });
       });
 
-      // CTA Buy Next.js Template dans la hero section
-      document.querySelectorAll('.hero-section a[href*="#pricing"]').forEach(cta => {
+      // CTA "Get Started for $99" dans la hero section
+      const heroBuyCTAs = Array.from(document.querySelectorAll('.hero-section a[href="#pricing"]'));
+      // Fallback pour trouver le CTA si la classe a changé
+      if (heroBuyCTAs.length === 0) {
+        const heroSection = document.querySelector('section:nth-of-type(1)');
+        if (heroSection) {
+          const potentialCTAs = Array.from(heroSection.querySelectorAll('a[href="#pricing"]'));
+          potentialCTAs.forEach(cta => {
+            if (cta.textContent?.includes('Get Started for $99')) {
+              heroBuyCTAs.push(cta);
+            }
+          });
+        }
+      }
+      
+      heroBuyCTAs.forEach(cta => {
+        if (trackedElements.has(cta)) return;
+        trackedElements.add(cta);
+        
         cta.addEventListener('click', () => {
           // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'hero_buy_cta_click', 2);
@@ -102,8 +125,25 @@ export function UserJourneyTracking() {
         });
       });
 
-      // CTA See Demo dans la hero section
-      document.querySelectorAll('.hero-section a[href*="/demo"]').forEach(cta => {
+      // CTA "See Demo" dans la hero section
+      const heroDemoCTAs = Array.from(document.querySelectorAll('.hero-section a[href*="demo"], .hero-section a[target="_blank"]'));
+      // Fallback pour trouver le CTA si la classe a changé
+      if (heroDemoCTAs.length === 0) {
+        const heroSection = document.querySelector('section:nth-of-type(1)');
+        if (heroSection) {
+          const potentialCTAs = Array.from(heroSection.querySelectorAll('a[target="_blank"]'));
+          potentialCTAs.forEach(cta => {
+            if (cta.textContent?.includes('See Demo')) {
+              heroDemoCTAs.push(cta);
+            }
+          });
+        }
+      }
+      
+      heroDemoCTAs.forEach(cta => {
+        if (trackedElements.has(cta)) return;
+        trackedElements.add(cta);
+        
         cta.addEventListener('click', () => {
           // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'hero_demo_cta_click', 1);
@@ -120,8 +160,25 @@ export function UserJourneyTracking() {
         });
       });
 
-      // CTA Get ShipFast Now dans la section pricing
-      document.querySelectorAll('.pricing-section a[href*="/checkout"]').forEach(cta => {
+      // CTA "Buy Now - 50% OFF" dans la section pricing
+      const pricingCTAs = Array.from(document.querySelectorAll('.pricing-section button'));
+      // Fallback pour trouver le CTA si la classe a changé
+      if (pricingCTAs.length === 0) {
+        const pricingSection = document.querySelector('section[id="pricing"]') || document.querySelector('section:nth-of-type(6)');
+        if (pricingSection) {
+          const potentialCTAs = Array.from(pricingSection.querySelectorAll('button'));
+          potentialCTAs.forEach(cta => {
+            if (cta.textContent?.includes('Buy Now') || cta.textContent?.includes('50% OFF')) {
+              pricingCTAs.push(cta);
+            }
+          });
+        }
+      }
+      
+      pricingCTAs.forEach(cta => {
+        if (trackedElements.has(cta)) return;
+        trackedElements.add(cta);
+        
         cta.addEventListener('click', () => {
           // Envoyer l'événement à Google Analytics
           sendEvent('click', 'engagement', 'pricing_cta_click', 3);
@@ -138,11 +195,15 @@ export function UserJourneyTracking() {
         });
       });
       
-      // Recherche par texte pour les boutons qui n'ont pas les classes ou href exacts
+      // Recherche par texte pour les boutons qui n'ont pas été trouvés par les sélecteurs précédents
       document.querySelectorAll('a, button').forEach(el => {
+        if (trackedElements.has(el)) return; // Ignorer les éléments déjà traités
+        
         const text = el.textContent?.toLowerCase() || '';
         
-        if (text.includes('buy next.js template')) {
+        // Ne pas utiliser "Buy Next.js Template" car il pourrait correspondre au CTA du header
+        if (text.includes('get started for $99')) {
+          trackedElements.add(el);
           el.addEventListener('click', () => {
             sendEvent('click', 'engagement', 'hero_buy_cta_text_match', 2);
             
@@ -157,6 +218,7 @@ export function UserJourneyTracking() {
             }
           });
         } else if (text.includes('see demo')) {
+          trackedElements.add(el);
           el.addEventListener('click', () => {
             sendEvent('click', 'engagement', 'hero_demo_cta_text_match', 1);
             
@@ -170,7 +232,8 @@ export function UserJourneyTracking() {
               console.log('Google Ads conversion sent: Hero Demo CTA Click');
             }
           });
-        } else if (text.includes('get shipfast now')) {
+        } else if (text.includes('buy now') && text.includes('50% off')) {
+          trackedElements.add(el);
           el.addEventListener('click', () => {
             sendEvent('click', 'engagement', 'pricing_cta_text_match', 3);
             
