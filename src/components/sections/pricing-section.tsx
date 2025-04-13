@@ -3,7 +3,7 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useCheckout } from '@/hooks/use-checkout'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const starterFeatures = [
   {
@@ -62,14 +62,38 @@ const proFeatures = [
 
 export function PricingSection() {
   const { checkout, isLoading, error } = useCheckout()
-  const [selectedPlan, setSelectedPlan] = useState<'starter'|'pro'>('pro');
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [errorState, setError] = useState<string>("");
 
-  // Nous devrons modifier l'API de checkout pour accepter le plan
-  // Pour l'instant, nous utilisons la même fonction checkout
+  // Fonction pour suivre les conversions secondaires avec Google Ads
+  const trackSecondaryConversion = (action: string) => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      // ID de conversion Google Ads pour les conversions secondaires
+      const conversionId = 'AW-16887311626';
+      
+      // Suivre l'événement de clic sur le bouton comme une conversion secondaire
+      (window as any).gtag('event', 'conversion', {
+        'send_to': conversionId,
+        'value': 0.0,
+        'currency': 'USD',
+      });
+      
+      // Suivre également comme un événement GA4 personnalisé
+      (window as any).gtag('event', 'pricing_button_click', {
+        'button_type': action,
+        'section': 'pricing',
+        'plan': selectedPlan || 'starter'
+      });
+      
+      console.log(`Secondary conversion tracked: ${action}`);
+    }
+  };
+
   const handleCheckout = async (plan: 'starter'|'pro') => {
     try {
       setSelectedPlan(plan);
+      // Suivre la conversion secondaire avant de rediriger vers le checkout
+      trackSecondaryConversion('checkout_initiated')
       // Idéalement, nous passerions le plan à l'API
       // Pour l'instant, nous utilisons la même fonction
       await checkout();
@@ -209,6 +233,7 @@ export function PricingSection() {
                 onClick={() => handleCheckout('starter')}
                 disabled={isLoading}
                 className="w-full rounded-full bg-gradient-to-r from-primary-rose to-primary-purple border border-primary-purple px-6 py-4 text-base font-bold text-white shadow-md hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mb-2"
+                data-conversion-tracking="true"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
                   <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
