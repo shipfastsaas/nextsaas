@@ -329,10 +329,29 @@ export function FeaturesSection() {
         </div>
         
         {/* Cartes additionnelles - 2 par ligne en mobile, 3 par ligne en tablette, 4 par ligne en desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
           {additionalCards.map((card, index) => (
             <AdditionalCard key={index} card={card} />
           ))}
+        </div>
+
+        {/* CTA intermédiaire */}
+        <div className="text-center mt-12 mb-8">
+          <div className="inline-flex items-center px-4 py-2 bg-primary-purple/10 rounded-full text-primary-purple text-sm font-medium mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Save 80+ hours of development time</span>
+          </div>
+          <h3 className="text-2xl font-bold text-text-primary dark:text-white mb-4">Ready to accelerate your SaaS development?</h3>
+          <p className="text-text-secondary max-w-2xl mx-auto mb-8">Get instant access to all these features and start building your project today.</p>
+          <a href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-6 py-3 text-base font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group">
+            <span className="relative z-10">Get Started Now</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+            <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+          </a>
         </div>
       </div>
     </section>

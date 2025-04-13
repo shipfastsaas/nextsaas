@@ -51,21 +51,49 @@ export function HeroSection() {
                 className="rounded-full border-4 border-green-400 shadow-lg hover:scale-110 transition-transform z-10"
               />
             </div>
-            <span className="text-sm font-medium text-text-secondary">4,000+ Pro Users</span>
+            <span className="text-sm font-medium text-text-secondary">Trusted by 4,000+ developers</span>
           </div>
         </div>
         
         {/* Main Content - Centered Text */}
         <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-primary-purple/10 rounded-full text-primary-purple text-sm font-medium mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+            </svg>
+            <span>Save 200+ hours of development time</span>
+          </div>
+
           <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">The Ultimate Next.js Template</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">The Best Next.js SaaS Starter Kit</span>
             <br />
-            <span className="text-text-primary">For Your SaaS Project</span>
+            <span className="text-text-primary">Launch in 48 hours, not months</span>
           </h1>
 
-          <p className="text-xl text-text-secondary mb-12 max-w-2xl mx-auto">
-            Our Next.js template provides everything developers need to launch a professional SaaS application in days, not months. Built on Next.js 14 with the App Router, this complete template includes authentication, payment processing, and beautiful UI components right out of the box.
+          <p className="text-xl text-text-secondary mb-6 max-w-2xl mx-auto">
+            Unlike other templates, our Next.js 14 kit includes <strong>everything you need</strong> in one package: authentication with Google OAuth, Stripe payments, MongoDB integration, and a beautiful responsive UI with dark mode support.  
           </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm font-medium">4 languages support</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm font-medium">SEO optimized</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-purple">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-sm font-medium">Multi-tenant ready</span>
+            </div>
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             {/* CTA Button */}
@@ -74,7 +102,7 @@ export function HeroSection() {
               className="rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-lg font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center gap-3"
             >
               <ShoppingCartIcon className="h-6 w-6" />
-              <span className="relative z-10">Buy Next.js Template</span>
+              <span className="relative z-10">Get Started for $99</span>
               <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
             </a>
             
