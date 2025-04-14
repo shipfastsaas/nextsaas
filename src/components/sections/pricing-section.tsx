@@ -15,15 +15,15 @@ const starterFeatures = [
     description: 'Built-in blog system with SEO optimization'
   },
   {
-    name: 'Mailgun emails',
+    name: 'Resend emails',
     description: 'Email notification system integration'
   },
   {
-    name: 'Stripe / Lemon Squeezy',
+    name: 'Stripe Payment',
     description: 'Payment processing integrations'
   },
   {
-    name: 'MongoDB / Supabase',
+    name: 'MongoDB Database',
     description: 'Database options for your application'
   },
   {
