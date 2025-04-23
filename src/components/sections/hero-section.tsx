@@ -102,7 +102,7 @@ export function HeroSection() {
               className="rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-lg font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center gap-3"
             >
               <ShoppingCartIcon className="h-6 w-6" />
-              <span className="relative z-10">Get Next.js Template -50% OFF</span>
+              <span className="relative z-10">Get supastarter for Next.js</span>
               <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
             </a>
             
