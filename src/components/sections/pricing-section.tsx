@@ -4,6 +4,7 @@ import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useCheckout } from '@/hooks/use-checkout'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { CONVERSION_LABELS, gtag_report_conversion } from '@/utils/conversion-tracking'
 
 const starterFeatures = [
   {
@@ -65,35 +66,24 @@ export function PricingSection() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [errorState, setError] = useState<string>("");
 
-  // Fonction pour suivre les conversions secondaires avec Google Ads
-  const trackSecondaryConversion = (action: string) => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      // ID de conversion Google Ads pour les conversions secondaires
-      const conversionId = 'AW-16887311626';
-      
-      // Suivre l'événement de clic sur le bouton comme une conversion secondaire
-      (window as any).gtag('event', 'conversion', {
-        'send_to': conversionId,
-        'value': 0.0,
-        'currency': 'USD',
-      });
-      
-      // Suivre également comme un événement GA4 personnalisé
-      (window as any).gtag('event', 'pricing_button_click', {
-        'button_type': action,
-        'section': 'pricing',
-        'plan': selectedPlan || 'starter'
-      });
-      
-      console.log(`Secondary conversion tracked: ${action}`);
-    }
-  };
+  // Cette fonction a été remplacée par l'utilisation directe de gtag_report_conversion
 
   const handleCheckout = async (plan: 'starter'|'pro') => {
     try {
       setSelectedPlan(plan);
       // Suivre la conversion secondaire avant de rediriger vers le checkout
-      trackSecondaryConversion('checkout_initiated')
+      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+        // Suivre l'événement comme un événement GA4 personnalisé
+        (window as any).gtag('event', 'pricing_button_click', {
+          'button_type': 'checkout_initiated',
+          'section': 'pricing',
+          'plan': plan
+        });
+        
+        // Suivre la conversion Google Ads
+        gtag_report_conversion(CONVERSION_LABELS.PRICING_CTA);
+      }
+      
       // Idéalement, nous passerions le plan à l'API
       // Pour l'instant, nous utilisons la même fonction
       await checkout();

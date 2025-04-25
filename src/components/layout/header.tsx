@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
+import { CONVERSION_LABELS, trackConversion } from '@/utils/conversion-tracking'
 
 const navigation = [
   { name: 'Features', href: '#features' },
@@ -101,7 +102,9 @@ export function Header() {
           {/* CTA Button */}
           <a
             href="#pricing"
+            onClick={(e) => trackConversion(e, CONVERSION_LABELS.HEADER_CTA, '#pricing')}
             className="rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center gap-1.5"
+            data-conversion-tracking="true"
           >
             <ShoppingCartIcon className="h-4 w-4" />
             <span className="relative z-10">Buy Next.js Template</span>
