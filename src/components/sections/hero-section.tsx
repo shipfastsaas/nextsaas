@@ -105,6 +105,8 @@ export function HeroSection() {
               onClick={(e) => trackConversion(e, CONVERSION_LABELS.HERO_BUY_CTA, '#pricing')}
               className="rounded-full bg-gradient-to-r from-primary-rose to-primary-purple px-8 py-4 text-lg font-bold text-white shadow-md shadow-primary-purple/20 hover:shadow-lg transition-all duration-200 relative overflow-hidden group flex items-center gap-3"
               data-conversion-tracking="true"
+              data-conversion-label={CONVERSION_LABELS.HERO_BUY_CTA}
+              data-conversion-value="1.0"
             >
               <ShoppingCartIcon className="h-6 w-6" />
               <span className="relative z-10">Get supastarter for Next.js</span>
@@ -119,6 +121,8 @@ export function HeroSection() {
               onClick={(e) => trackConversion(e, CONVERSION_LABELS.HERO_DEMO_CTA, 'https://readynext.vercel.app')}
               className="rounded-full bg-white border-2 border-gray-200 dark:bg-gray-800 dark:border-gray-700 px-8 py-4 text-lg font-bold text-text-primary hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-3"
               data-conversion-tracking="true"
+              data-conversion-label={CONVERSION_LABELS.HERO_DEMO_CTA}
+              data-conversion-value="1.0"
             >
               <span>See Demo</span>
               <ArrowTopRightOnSquareIcon className="h-5 w-5 text-gray-500" />
