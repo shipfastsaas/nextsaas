@@ -57,10 +57,10 @@ export function BottomCTASection() {
           {/* Price and CTA */}
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <span className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">$99</span>
+              <span className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">$49</span>
               <div className="text-left">
                 <span className="text-sm text-text-secondary">USD</span>
-                <span className="block text-sm text-red-500 line-through">$199</span>
+                <span className="block text-sm text-red-500 line-through">$99</span>
               </div>
             </div>
             
