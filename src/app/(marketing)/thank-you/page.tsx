@@ -17,8 +17,8 @@ export default function ThankYouPage() {
   
   // Activer le suivi de conversion Google Ads avec valeur
   useGoogleAdsPageViewConversion({
-    value: 99, // Prix de votre template
-    currency: 'EUR',
+    value: 49, // Prix actuel du template
+    currency: 'USD', // Utiliser USD comme devise
     // Les ID et label sont déjà définis par défaut dans le hook
   })
   
@@ -28,19 +28,19 @@ export default function ThankYouPage() {
       // S'assurer que dataLayer existe
       window.dataLayer = window.dataLayer || [];
       
-      // Envoyer l'événement de conversion avec la valeur
+      // Envoyer l'événement de conversion avec la valeur mise à jour
       window.dataLayer.push({
         'event': 'purchase',
         'ecommerce': {
           'purchase': {
             'actionField': {
               'id': `TEMPLATE-${Date.now()}`,
-              'revenue': '99.00'
+              'revenue': '49.00'
             },
             'products': [{
               'name': 'NextReady SaaS Template',
               'id': 'nextjs-template',
-              'price': '99.00',
+              'price': '49.00',
               'quantity': 1
             }]
           }

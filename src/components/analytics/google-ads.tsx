@@ -78,12 +78,12 @@ export function GoogleAds() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           
-          // Configuration par défaut - consentement requis
+          // Configuration par défaut - AUTORISER le suivi des conversions
           gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
           });
           
           gtag('config', 'AW-16887311626');
