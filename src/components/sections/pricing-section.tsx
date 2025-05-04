@@ -4,7 +4,7 @@ import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useCheckout } from '@/hooks/use-checkout'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { CONVERSION_LABELS, gtag_report_conversion } from '@/utils/conversion-tracking'
+import { CONVERSION_LABELS, trackConversion } from '@/utils/conversion-tracking'
 
 const starterFeatures = [
   {
@@ -80,8 +80,9 @@ export function PricingSection() {
           'plan': plan
         });
         
-        // Suivre la conversion Google Ads
-        gtag_report_conversion(CONVERSION_LABELS.PRICING_CTA);
+        // Créer un événement factice pour pouvoir utiliser trackConversion
+        const dummyEvent = { preventDefault: () => {} } as React.MouseEvent<HTMLButtonElement>;
+        trackConversion(dummyEvent, CONVERSION_LABELS.PRICING_CTA);
       }
       
       // Idéalement, nous passerions le plan à l'API

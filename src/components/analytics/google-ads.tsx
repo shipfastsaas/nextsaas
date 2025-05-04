@@ -1,21 +1,22 @@
 'use client'
 
 import Script from 'next/script'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
-// Configuration des paramètres de conversion
-interface ConversionParams {
-  conversionId?: string;
-  conversionLabel?: string;
-  value?: number;
-  currency?: string;
-}
+// ID et labels de conversion Google Ads
+export const GOOGLE_ADS_ID = 'AW-16887311626';
+export const GOOGLE_ADS_CONVERSION_LABELS = {
+  PURCHASE: 'aaFxCKCerqkaElrav_Q-', // Conversion principale (achat)
+  HERO_BUY_CTA: 'sbw4CI7qlbUaEIrav_Q-', // Clic sur CTA principal
+  HERO_DEMO_CTA: 'K1ykCNfqlrUaEIrav_Q-', // Clic sur CTA de démo
+  PRICING_CTA: 'o7hRCIX-lrUaEIrav_Q-', // Clic sur CTA de pricing
+  HEADER_CTA: 'CvevCJnL_bMaEIrav_Q-' // Clic sur CTA de header
+};
 
-// Fonction pour suivre les conversions de pages vues
-export function useGoogleAdsPageViewConversion(params?: ConversionParams) {
+// Fonction pour suivre les conversions de pages vues (conversion principale)
+export function useGoogleAdsPageViewConversion() {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
   
   useEffect(() => {
     // Vérifier si nous sommes sur la page thank-you
@@ -23,70 +24,79 @@ export function useGoogleAdsPageViewConversion(params?: ConversionParams) {
     
     if (!isThankYouPage) return
     
-    // Paramètres de conversion par défaut
-    const conversionId = params?.conversionId || 'AW-16887311626';
-    const conversionLabel = params?.conversionLabel || 'iAZHCJXv7bMaEIrav_Q-';
-    const value = params?.value || 99; // Valeur par défaut du template
-    const currency = params?.currency || 'EUR';
+    // Valeurs de conversion pour la page thank-you
+    const value = 49; // Prix actuel du template
+    const currency = 'USD';
     const transactionId = `TEMPLATE-${Date.now()}`;
     
-    // Attendre que gtag soit disponible
-    const checkGtagAndSendConversion = () => {
-      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-        // Envoyer l'événement de conversion avec tous les détails
-        (window as any).gtag('event', 'conversion', {
-          'send_to': `${conversionId}/${conversionLabel}`,
-          'value': value,
-          'currency': currency,
-          'transaction_id': transactionId
-        });
-        
-        // Envoyer également l'événement à Google Analytics 4 (si configuré)
-        (window as any).gtag('event', 'purchase', {
-          'transaction_id': transactionId,
-          'value': value,
-          'currency': currency,
-          'items': [{
-            'id': 'nextjs-template',
-            'name': 'NextReady SaaS Template',
-            'price': value
-          }]
-        });
-        
-        console.log('Google Ads conversion tracked for page:', pathname, 'with value:', value, currency);
-      } else {
-        // Réessayer dans 1 seconde
-        setTimeout(checkGtagAndSendConversion, 1000);
-      }
-    }
+    // Fonction pour envoyer la conversion principale
+    const sendPurchaseConversion = () => {
+      if (typeof window === 'undefined' || typeof (window as any).gtag !== 'function') return;
+      
+      // Utiliser exactement le code de conversion fourni par Google
+      (window as any).gtag('event', 'conversion', {
+        'send_to': `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABELS.PURCHASE}`,
+        'value': value,
+        'currency': currency,
+        'transaction_id': transactionId
+      });
+      
+      console.log(`Conversion d'achat envoyée à Google Ads: ${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABELS.PURCHASE}`);
+    };
     
-    // Démarrer la vérification
-    checkGtagAndSendConversion()
-  }, [pathname, searchParams])
+    // Attendre que la page soit complètement chargée avant d'envoyer la conversion
+    if (document.readyState === 'complete') {
+      sendPurchaseConversion();
+    } else {
+      window.addEventListener('load', sendPurchaseConversion);
+      return () => window.removeEventListener('load', sendPurchaseConversion);
+    }
+  }, [pathname]);
 }
 
+// Fonction pour suivre les conversions de clics sur CTA (conversions secondaires)
+export function gtag_report_conversion(conversionLabel: string, url?: string) {
+  if (typeof window === 'undefined' || typeof (window as any).gtag !== 'function') {
+    if (url) window.location.href = url;
+    return true;
+  }
+  
+  // Fonction de callback pour la redirection
+  const callback = function() {
+    if (typeof url !== 'undefined') {
+      window.location.href = url;
+    }
+  };
+  
+  // Utiliser exactement le format recommandé par Google
+  (window as any).gtag('event', 'conversion', {
+    'send_to': `${GOOGLE_ADS_ID}/${conversionLabel}`,
+    'event_callback': callback
+  });
+  
+  console.log(`Conversion de clic CTA envoyée à Google Ads: ${GOOGLE_ADS_ID}/${conversionLabel}`);
+  
+  // Retourner false pour empêcher le comportement par défaut
+  return false;
+}
+
+// Composant principal Google Ads - Utilise exactement le script recommandé par Google
 export function GoogleAds() {
   return (
     <>
+      {/* Script Google tag (gtag.js) exactement comme fourni par Google */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=AW-16887311626"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
         strategy="beforeInteractive"
       />
-      <Script id="google-ads" strategy="beforeInteractive">
+      
+      {/* Configuration Google Ads exactement comme fournie par Google */}
+      <Script id="google-ads-config" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          
-          // Configuration par défaut - AUTORISER le suivi des conversions
-          gtag('consent', 'default', {
-            'analytics_storage': 'granted',
-            'ad_storage': 'granted',
-            'ad_user_data': 'granted',
-            'ad_personalization': 'granted'
-          });
-          
-          gtag('config', 'AW-16887311626');
+          gtag('config', '${GOOGLE_ADS_ID}');
         `}
       </Script>
     </>

@@ -15,12 +15,30 @@ export default function ThankYouPage() {
   // Récupérer les paramètres d'URL (si disponibles)
   const searchParams = useSearchParams();
   
-  // Activer le suivi de conversion Google Ads avec valeur
-  useGoogleAdsPageViewConversion({
-    value: 49, // Prix actuel du template
-    currency: 'USD', // Utiliser USD comme devise
-    // Les ID et label sont déjà définis par défaut dans le hook
-  })
+  // Activer le suivi de conversion Google Ads pour la page thank-you
+  useGoogleAdsPageViewConversion()
+  
+  // Script de conversion spécifique pour la page thank-you
+  useEffect(() => {
+    // Vérifier si le script a déjà été ajouté
+    if (document.getElementById('google-ads-purchase-conversion')) return;
+    
+    // Créer le script de conversion
+    const script = document.createElement('script');
+    script.id = 'google-ads-purchase-conversion';
+    script.innerHTML = `
+      gtag('event', 'conversion', {
+        'send_to': 'AW-16887311626/aaFxCKCerqkaEIrav_Q-',
+        'value': 49.0,
+        'currency': 'USD',
+        'transaction_id': 'TEMPLATE-${Date.now()}'
+      });
+      console.log('Conversion principale (achat) envoyée à Google Ads');
+    `;
+    
+    // Ajouter le script à la page
+    document.head.appendChild(script);
+  }, []);
   
   // Envoyer les données de conversion à Google Tag Manager
   useEffect(() => {

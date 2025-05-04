@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { ShoppingCartIcon, PlayCircleIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import { CONVERSION_LABELS, trackConversion } from '@/utils/conversion-tracking'
+import { useEffect } from 'react'
 
 export function HeroSection() {
   return (
