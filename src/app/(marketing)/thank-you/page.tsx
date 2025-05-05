@@ -20,24 +20,49 @@ export default function ThankYouPage() {
   
   // Script de conversion spécifique pour la page thank-you
   useEffect(() => {
-    // Vérifier si le script a déjà été ajouté
-    if (document.getElementById('google-ads-purchase-conversion')) return;
+    // Attendre que gtag soit défini
+    const checkGtagAndSendConversion = () => {
+      if (typeof window === 'undefined') return;
+      
+      // Vérifier si gtag est disponible
+      if (typeof (window as any).gtag === 'function') {
+        // Valeurs de conversion
+        const value = 49.0;
+        const currency = 'USD';
+        const transactionId = `TEMPLATE-${Date.now()}`;
+        
+        // Envoyer la conversion avec le format exact de Google
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-16887311626/aaFxCKCerqkaEIrav_Q-',
+          'value': value,
+          'currency': currency,
+          'transaction_id': transactionId
+        });
+        
+        console.log('Conversion principale (achat) envoyée à Google Ads avec ID: AW-16887311626/aaFxCKCerqkaEIrav_Q-');
+        
+        // Ajouter un marqueur pour éviter les envois multiples
+        (window as any).purchaseConversionSent = true;
+      } else {
+        // Si gtag n'est pas encore disponible, réessayer après un délai
+        console.log('gtag non disponible, nouvelle tentative dans 500ms...');
+        setTimeout(checkGtagAndSendConversion, 500);
+      }
+    };
     
-    // Créer le script de conversion
-    const script = document.createElement('script');
-    script.id = 'google-ads-purchase-conversion';
-    script.innerHTML = `
-      gtag('event', 'conversion', {
-        'send_to': 'AW-16887311626/aaFxCKCerqkaEIrav_Q-',
-        'value': 49.0,
-        'currency': 'USD',
-        'transaction_id': 'TEMPLATE-${Date.now()}'
-      });
-      console.log('Conversion principale (achat) envoyée à Google Ads');
-    `;
+    // Ne pas envoyer la conversion si elle a déjà été envoyée
+    if ((window as any).purchaseConversionSent) {
+      console.log('Conversion déjà envoyée, pas de nouvel envoi');
+      return;
+    }
     
-    // Ajouter le script à la page
-    document.head.appendChild(script);
+    // Démarrer la vérification une fois que la page est complètement chargée
+    if (document.readyState === 'complete') {
+      checkGtagAndSendConversion();
+    } else {
+      window.addEventListener('load', checkGtagAndSendConversion);
+      return () => window.removeEventListener('load', checkGtagAndSendConversion);
+    }
   }, []);
   
   // Envoyer les données de conversion à Google Tag Manager

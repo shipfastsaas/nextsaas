@@ -80,23 +80,50 @@ export function gtag_report_conversion(conversionLabel: string, url?: string) {
   return false;
 }
 
-// Composant principal Google Ads - Utilise exactement le script recommandé par Google
+// Composant principal Google Ads - Revenir à une implémentation plus proche de celle qui fonctionnait
 export function GoogleAds() {
   return (
     <>
-      {/* Script Google tag (gtag.js) exactement comme fourni par Google */}
+      {/* Script Google tag (gtag.js) */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
         strategy="beforeInteractive"
       />
       
-      {/* Configuration Google Ads exactement comme fournie par Google */}
+      {/* Configuration Google Ads avec paramètres de consentement explicites */}
       <Script id="google-ads-config" strategy="beforeInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
+          
+          // Définir explicitement le consentement pour Google Ads
+          gtag('consent', 'default', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+          });
+          
+          // Configuration Google Ads
           gtag('config', '${GOOGLE_ADS_ID}');
+          
+          // Définir la fonction globale de suivi des conversions
+          window.gtag_report_conversion = function(conversionLabel, url) {
+            var callback = function () {
+              if (typeof(url) != 'undefined') {
+                window.location = url;
+              }
+            };
+            gtag('event', 'conversion', {
+              'send_to': '${GOOGLE_ADS_ID}/' + conversionLabel,
+              'event_callback': callback
+            });
+            console.log('Conversion envoyée via gtag_report_conversion: ' + '${GOOGLE_ADS_ID}/' + conversionLabel);
+            return false;
+          };
+          
+          console.log('Google Ads script initialized with ID: ' + '${GOOGLE_ADS_ID}');
         `}
       </Script>
     </>

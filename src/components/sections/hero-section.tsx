@@ -112,24 +112,44 @@ export function HeroSection() {
             </a>
           </div>
 
-          {/* Testimonial Quote */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-4 rounded-xl shadow-md mb-8 max-w-2xl mx-auto border-l-4 border-primary-purple">
-            <p className="text-text-secondary italic mb-2">
-              "I launched my SaaS in just 6 days instead of 3 months. This template saved me over $15,000 in development costs and helped me get my first paying customers within 2 weeks."
-            </p>
-            <div className="flex items-center gap-2">
-              <img src="/testimonials/cameron.jpg" alt="Mark Johnson" className="w-8 h-8 rounded-full" />
-              <div>
-                <p className="text-sm font-semibold text-text-primary">Mark Johnson</p>
-                <p className="text-xs text-text-secondary">Founder of TaskFlow.io</p>
+          {/* Social Proof Section - Testimonial and MRR Stats */}
+          <div className="flex flex-col md:flex-row gap-4 mb-6 max-w-3xl mx-auto">
+            {/* Testimonial Quote - Plus compact */}
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-lg shadow-sm border-l-4 border-primary-purple md:w-1/2">
+              <p className="text-sm text-text-secondary italic mb-1">
+                "I launched my SaaS in just 6 days instead of 3 months. This template saved me over $15,000 in development costs."
+              </p>
+              <div className="flex items-center gap-2">
+                <img src="/testimonials/cameron.jpg" alt="Mark Johnson" className="w-6 h-6 rounded-full" />
+                <div>
+                  <p className="text-xs font-semibold text-text-primary">Mark Johnson</p>
+                  <p className="text-xs text-text-secondary">TaskFlow.io</p>
+                </div>
+                <div className="ml-auto flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 text-yellow-400">
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                    </svg>
+                  ))}
+                </div>
               </div>
-              <div className="ml-auto flex">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-yellow-400">
-                    <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
-                  </svg>
-                ))}
+            </div>
+            
+            {/* MRR Stats Card - Plus compact */}
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-3 rounded-lg shadow-sm border-l-4 border-green-500 md:w-1/2">
+              <p className="text-xs font-medium text-gray-600 dark:text-gray-300 mb-1 text-center">
+                Customer Results
+              </p>
+              <div className="flex justify-center">
+                <img 
+                  src="/stripe-sold.png" 
+                  alt="MRR Growth" 
+                  className="h-16 object-contain rounded" 
+                />
               </div>
+              <p className="text-xs text-center mt-1 text-gray-500 dark:text-gray-400">
+                +48.9% MRR growth with our template
+              </p>
             </div>
           </div>
 

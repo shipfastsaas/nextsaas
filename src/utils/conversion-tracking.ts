@@ -20,16 +20,36 @@ export function trackConversion(
   // Log pour débogage
   console.log(`Tracking conversion click: ${conversionLabel} to ${url || 'no URL'}`);
   
-  // Utiliser la fonction de suivi des conversions de Google Ads
-  const result = googleAdsReportConversion(conversionLabel, url);
+  // Utiliser la fonction globale gtag_report_conversion si disponible
+  if (typeof window !== 'undefined' && typeof (window as any).gtag_report_conversion === 'function') {
+    // Appeler la fonction globale définie dans google-ads.tsx
+    (window as any).gtag_report_conversion(conversionLabel, url);
+    return;
+  }
   
-  // Si la fonction de suivi des conversions n'est pas disponible ou en cas d'erreur,
-  // effectuer la redirection manuellement après un court délai
-  if (result && url) {
-    console.log(`Fallback redirection to: ${url}`);
-    setTimeout(() => {
-      window.location.href = url;
-    }, 500); // Délai plus long pour s'assurer que l'événement est envoyé
+  // Solution de secours si gtag_report_conversion n'est pas disponible
+  if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+    // Envoyer directement l'événement de conversion
+    (window as any).gtag('event', 'conversion', {
+      'send_to': `AW-16887311626/${conversionLabel}`,
+      'event_callback': function() {
+        if (url) {
+          window.location.href = url;
+        }
+      }
+    });
+    
+    console.log(`Conversion de secours envoyée via gtag: AW-16887311626/${conversionLabel}`);
+  } else {
+    // Utiliser la fonction de secours si aucune méthode n'est disponible
+    const result = googleAdsReportConversion(conversionLabel, url);
+    
+    // Si la fonction de suivi des conversions n'est pas disponible, rediriger manuellement
+    if (url) {
+      setTimeout(() => {
+        window.location.href = url;
+      }, 500);
+    }
   }
 }
 
