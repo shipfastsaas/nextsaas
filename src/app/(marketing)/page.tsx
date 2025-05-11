@@ -7,6 +7,7 @@ import { BottomCTASection } from '@/components/sections/bottom-cta-section'
 
 import { UniqueValueSection } from '@/components/sections/unique-value-section'
 import { TimeSavingSection } from '@/components/sections/time-saving-section'
+import EmailCaptureSection from '@/components/sections/email-capture-section'
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <HeroSection />
       <TimeSavingSection />
       <FeaturesSection />
+      
+
       
       <UniqueValueSection />
       <TestimonialsSection />

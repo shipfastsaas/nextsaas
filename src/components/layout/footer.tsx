@@ -149,6 +149,9 @@ export function Footer() {
                   ))}
                 </ul>
               </div>
+              <div className="mt-10 md:mt-0">
+       
+              </div>
             </div>
           </div>
         </div>

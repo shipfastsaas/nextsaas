@@ -18,54 +18,11 @@ export default function ThankYouPage() {
   // Activer le suivi de conversion Google Ads pour la page thank-you
   useGoogleAdsPageViewConversion()
   
-  // Script de conversion spécifique pour la page thank-you
-  useEffect(() => {
-    // Attendre que gtag soit défini
-    const checkGtagAndSendConversion = () => {
-      if (typeof window === 'undefined') return;
-      
-      // Vérifier si gtag est disponible
-      if (typeof (window as any).gtag === 'function') {
-        // Valeurs de conversion
-        const value = 49.0;
-        const currency = 'USD';
-        const transactionId = `TEMPLATE-${Date.now()}`;
-        
-        // Envoyer la conversion avec le format exact de Google
-        (window as any).gtag('event', 'conversion', {
-          'send_to': 'AW-16887311626/aaFxCKCerqkaEIrav_Q-',
-          'value': value,
-          'currency': currency,
-          'transaction_id': transactionId
-        });
-        
-        console.log('Conversion principale (achat) envoyée à Google Ads avec ID: AW-16887311626/aaFxCKCerqkaEIrav_Q-');
-        
-        // Ajouter un marqueur pour éviter les envois multiples
-        (window as any).purchaseConversionSent = true;
-      } else {
-        // Si gtag n'est pas encore disponible, réessayer après un délai
-        console.log('gtag non disponible, nouvelle tentative dans 500ms...');
-        setTimeout(checkGtagAndSendConversion, 500);
-      }
-    };
-    
-    // Ne pas envoyer la conversion si elle a déjà été envoyée
-    if ((window as any).purchaseConversionSent) {
-      console.log('Conversion déjà envoyée, pas de nouvel envoi');
-      return;
-    }
-    
-    // Démarrer la vérification une fois que la page est complètement chargée
-    if (document.readyState === 'complete') {
-      checkGtagAndSendConversion();
-    } else {
-      window.addEventListener('load', checkGtagAndSendConversion);
-      return () => window.removeEventListener('load', checkGtagAndSendConversion);
-    }
-  }, []);
+  // Utiliser UNIQUEMENT le hook officiel pour le suivi des conversions Google Ads
+  // Ce hook s'occupe de tout : vérification de gtag, envoi de la conversion, gestion des erreurs
+  useGoogleAdsPageViewConversion()
   
-  // Envoyer les données de conversion à Google Tag Manager
+  // Envoyer les données de conversion à Google Tag Manager (pour l'analytics)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // S'assurer que dataLayer existe
@@ -78,19 +35,19 @@ export default function ThankYouPage() {
           'purchase': {
             'actionField': {
               'id': `TEMPLATE-${Date.now()}`,
-              'revenue': '49.00'
+              'revenue': '149.00'
             },
             'products': [{
               'name': 'NextReady SaaS Template',
               'id': 'nextjs-template',
-              'price': '49.00',
+              'price': '149.00',
               'quantity': 1
             }]
           }
         }
       });
       
-      console.log('Conversion data sent to GTM');
+      console.log('[ThankYouPage] Données de conversion envoyées à GTM');
     }
   }, [])
   

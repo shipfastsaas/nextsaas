@@ -190,13 +190,13 @@ export function PricingSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
                   </svg>
-                  <span>50% OFF</span>
+                  <span>25% OFF</span>
                 </span>
               </div>
               <p className="text-text-secondary mb-4">Complete solution for developers</p>
 
               <div className="flex items-baseline gap-x-2 mb-2">
-                <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">$49</span>
+                <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-rose to-primary-purple">$149</span>
                 <span className="text-base text-text-secondary">USD</span>
                 <span className="text-sm text-red-500 line-through ml-1">$199</span>
               </div>
@@ -205,7 +205,7 @@ export function PricingSection() {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-amber-600 dark:text-amber-400 flex-shrink-0">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Offer ends in <span className="font-extrabold">7 days</span> - <span className="font-extrabold text-red-600 dark:text-red-400">50% OFF</span></span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Offer ends in <span className="font-extrabold">7 days</span> - <span className="font-extrabold text-red-600 dark:text-red-400">25% OFF</span></span>
               </div>
 
               <ul role="list" className="space-y-3 mb-8">
@@ -229,7 +229,7 @@ export function PricingSection() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
                   <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
                 </svg>
-                <span className="relative z-10">{isLoading && selectedPlan === 'starter' ? 'Processing...' : 'Buy Now - Only $49'}</span>
+                <span className="relative z-10">{isLoading && selectedPlan === 'starter' ? 'Processing...' : 'Buy Now - Only $149'}</span>
                 <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
               </button>
               

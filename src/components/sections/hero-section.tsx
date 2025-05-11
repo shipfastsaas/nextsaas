@@ -73,7 +73,7 @@ export function HeroSection() {
           </h1>
 
           <p className="text-xl text-text-secondary mb-4 max-w-2xl mx-auto">
-            Unlike other templates, our Next.js 14 kit starter includes <strong>everything you need</strong> in one package: authentication, payments, and beautiful UI. <strong>Save 200+ hours of development time for just $49.</strong>
+            Unlike other templates, our Next.js 14 kit starter includes <strong>everything you need</strong> in one package: authentication, payments, and beautiful UI. <strong>Save 200+ hours of development time for just $149.</strong>
           </p>
       
 
@@ -91,7 +91,7 @@ export function HeroSection() {
                 data-conversion-value="1.0"
               >
                 <ShoppingCartIcon className="h-6 w-6" />
-                <span className="relative z-10">Get Started for $49 - Save 75%</span>
+                <span className="relative z-10">Get Started for $149 - Save 25%</span>
                 <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
               </a>
             </div>

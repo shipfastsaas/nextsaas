@@ -94,7 +94,7 @@ export async function GET(request: Request) {
           },
           {
             id: 'ch_mock2',
-            amount: 4900,
+            amount: 14900,
             status: 'succeeded',
             email: 'client2@example.com',
             date: new Date('2025-03-09T15:45:00').toISOString()
